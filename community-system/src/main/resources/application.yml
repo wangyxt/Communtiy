@@ -1,0 +1,33 @@
+server:
+  port: 8000
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/community?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+  activemq:
+    broker-url:
+
+  #thymeleaf start
+  thymeleaf:
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    #开发时关闭缓存,不然没法看到实时页面
+    cache: true
+  #thymeleaf end
+
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+mybatis:
+  #配置mapper.xml所在的路径
+  mapper-locations: classpath:mapper/*Mapper.xml
+  #配置映射类所在的包名
+  type-aliases-package: com.lixiangshequ.domain
+
+
+
