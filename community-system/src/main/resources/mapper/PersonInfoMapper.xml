@@ -13,20 +13,20 @@
         select * from person_info where person_id = #{person_id}
     </select>
 
-    <resultMap id="person" type="com.lixiangshequ.domain.PersonInfo">
+    <resultMap id="person" type="com.lixiangshequ.entity.PersonInfo">
         <association property="residency_id" select="selectResidency" column="residency_id"></association>
     </resultMap>
-    <select id="selectResidency" resultType="com.lixiangshequ.domain.Residency">
+    <select id="selectResidency" resultType="com.lixiangshequ.entity.Residency">
         select * from residency where residency_id = #{residency_id}
     </select>
 
 
-    <insert id="insertPerson" useGeneratedKeys="true" keyProperty="id" parameterType="com.lixiangshequ.domain.PersonInfo">
+    <insert id="insertPerson" useGeneratedKeys="true" keyProperty="id" parameterType="com.lixiangshequ.entity.PersonInfo">
         insert into person_info (name,age,sex,certificate,certificate_no,residency_id,relation,marriage,birthday,Ethnic,Photo_path,Culture,Health,Soldier_status,career,religion,Residency_type,address,Connection_phone,mail,volunteer)
         values(#{name},#{age},#{sex},#{certificate},#{certificate_no},null,#{relation},#{marriage},#{birthday},#{Ethnic},#{Photo_path},#{Culture},#{Health},#{Soldier_status},#{career},#{religion},#{Residency_type},#{address},#{Connection_phone},#{mail},#{volunteer})
     </insert>
 
-    <update id="update" parameterType="com.lixiangshequ.domain.PersonInfo">
+    <update id="update" parameterType="com.lixiangshequ.entity.PersonInfo">
         update user
         <trim prefix="set" suffixOverrides=",">
             <if test="name!=null">name=#{name},</if>
@@ -54,7 +54,7 @@
         where id=#{id}
     </update>
 
-    <delete id="delete" parameterType="com.lixiangshequ.domain.PersonInfo">
+    <delete id="delete" parameterType="com.lixiangshequ.entity.PersonInfo">
         delete from person_info where person_id = #{person_id}
     </delete>
 </mapper>

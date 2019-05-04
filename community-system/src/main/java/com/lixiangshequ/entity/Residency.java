@@ -1,4 +1,4 @@
-package com.lixiangshequ.domain;
+package com.lixiangshequ.entity;
 
 import lombok.Data;
 

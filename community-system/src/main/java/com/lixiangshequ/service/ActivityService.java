@@ -1,7 +1,7 @@
 package com.lixiangshequ.service;
 
-import com.lixiangshequ.domain.Activity;
-import com.lixiangshequ.domain.User;
+import com.lixiangshequ.entity.Activity;
+import com.lixiangshequ.entity.ActivityList;
 
 import java.util.List;
 
@@ -36,7 +36,20 @@ public interface ActivityService {
 
     /**
      * 删除活动
-     * @param activity
+     * @param act_id
      */
-    void delete(User user, Activity activity);
+    String delete(int act_id);
+
+    /**
+     * 添加活动
+     * @param activity
+     * @return
+     */
+    Activity insert(Activity activity);
+
+    List selectNumByActId(int act_id);
+
+    boolean insertActivityNum(ActivityList activityList);
+
+    ActivityList selectIsApply(ActivityList activityList);
 }

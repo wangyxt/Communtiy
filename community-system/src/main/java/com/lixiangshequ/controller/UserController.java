@@ -1,7 +1,7 @@
 package com.lixiangshequ.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lixiangshequ.domain.User;
+import com.lixiangshequ.entity.User;
 import com.lixiangshequ.service.UserService;
 import com.lixiangshequ.vo.AuthorizationUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.sql.Timestamp;
-import java.time.LocalTime;
 
 @Controller
 @RequestMapping(value = "/auth",method = RequestMethod.GET)

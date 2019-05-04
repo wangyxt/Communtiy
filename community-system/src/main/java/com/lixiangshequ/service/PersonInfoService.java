@@ -1,6 +1,6 @@
 package com.lixiangshequ.service;
 
-import com.lixiangshequ.domain.PersonInfo;
+import com.lixiangshequ.entity.PersonInfo;
 
 import java.util.List;
 

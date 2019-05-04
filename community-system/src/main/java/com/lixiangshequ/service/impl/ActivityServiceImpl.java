@@ -1,7 +1,7 @@
 package com.lixiangshequ.service.impl;
 
-import com.lixiangshequ.domain.Activity;
-import com.lixiangshequ.domain.User;
+import com.lixiangshequ.entity.Activity;
+import com.lixiangshequ.entity.ActivityList;
 import com.lixiangshequ.repository.ActivityMapper;
 import com.lixiangshequ.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +24,44 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     public Activity selectByActId(int id) {
-        return null;
+        return activityMapper.selectByActId(id);
     }
 
     public Activity updateTime(Activity activity) {
         return null;
     }
 
-    public void delete(User user, Activity activity) {
+    public String delete(int act_id) {
+        int result = activityMapper.delect(act_id);
+        if(result==0){
+            return "删除成功";
+        }else {
+            return "删除失败";
+        }
+    }
 
+    @Override
+    public Activity insert(Activity activity) {
+        return activityMapper.insert(activity);
+    }
+
+    @Override
+    public List selectNumByActId(int act_id) {
+        return activityMapper.selectNumByActId(act_id);
+    }
+
+    @Override
+    public boolean insertActivityNum(ActivityList activityList) {
+        int r = activityMapper.insertActivityNum(activityList);
+        if(r>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public ActivityList selectIsApply(ActivityList activityList) {
+        return activityMapper.selectByPrimaryKey(activityList);
     }
 }

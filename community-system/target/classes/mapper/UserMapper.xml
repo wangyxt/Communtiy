@@ -9,10 +9,10 @@
         select * from user where tel = #{tel}
     </select>
 
-    <resultMap id="user" type="com.lixiangshequ.domain.User">
+    <resultMap id="user" type="com.lixiangshequ.entity.User">
         <association property="person_id" select="selectPersonInfo" column="person_id"></association>
     </resultMap>
-    <select id="selectPersonInfo" resultType="com.lixiangshequ.domain.PersonInfo">
+    <select id="selectPersonInfo" resultType="com.lixiangshequ.entity.PersonInfo">
         select * from person_info where person_id = #{person_id}
     </select>
 
@@ -20,11 +20,11 @@
         select * from user where name = #{name}
     </select>
 
-    <insert id="insertOne" useGeneratedKeys="true" keyProperty="id" parameterType="com.lixiangshequ.domain.User">
+    <insert id="insertOne" useGeneratedKeys="true" keyProperty="id" parameterType="com.lixiangshequ.entity.User">
         insert into user (name,password,role,tel,email,creatTime,person_id) values(#{name},#{password},#{role},#{tel},#{email},now(),null)
     </insert>
 
-    <update id="updateUser" parameterType="com.lixiangshequ.domain.User">
+    <update id="updateUser" parameterType="com.lixiangshequ.entity.User">
         update user
         <trim prefix="set" suffixOverrides=",">
             <if test="name!=null">name=#{name},</if>
@@ -37,7 +37,7 @@
         where id=#{id}
     </update>
 
-    <delete id="deleteUser" parameterType="com.lixiangshequ.domain.User">
+    <delete id="deleteUser" parameterType="com.lixiangshequ.entity.User">
         delete from user where id = #{id}
     </delete>
 </mapper>

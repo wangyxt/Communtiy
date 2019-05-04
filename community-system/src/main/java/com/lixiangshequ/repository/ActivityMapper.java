@@ -1,6 +1,7 @@
 package com.lixiangshequ.repository;
 
-import com.lixiangshequ.domain.Activity;
+import com.lixiangshequ.entity.Activity;
+import com.lixiangshequ.entity.ActivityList;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -38,7 +39,15 @@ public interface ActivityMapper {
 
     /**
      * 删除活动
-     * @param activity
+     * @param act_id
      */
-    void delect(Activity activity);
+    int delect(int act_id);
+
+    Activity insert(Activity activity);
+
+    List selectNumByActId(int act_id);
+
+    int insertActivityNum(ActivityList activityList);
+
+    ActivityList selectByPrimaryKey(ActivityList activityList);
 }

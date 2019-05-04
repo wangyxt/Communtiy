@@ -1,6 +1,6 @@
 package com.lixiangshequ.service.impl;
 
-import com.lixiangshequ.domain.User;
+import com.lixiangshequ.entity.User;
 import com.lixiangshequ.repository.UserMapper;
 import com.lixiangshequ.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

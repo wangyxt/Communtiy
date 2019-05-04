@@ -1,6 +1,6 @@
 package com.lixiangshequ.service.impl;
 
-import com.lixiangshequ.domain.PersonInfo;
+import com.lixiangshequ.entity.PersonInfo;
 import com.lixiangshequ.repository.PersonInfoMapper;
 import com.lixiangshequ.service.PersonInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

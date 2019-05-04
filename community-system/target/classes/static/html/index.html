@@ -50,9 +50,9 @@
           <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
-          <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
-          <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+          <dd><a href="../html/user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+          <dd><a href="../html/user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+          <dd><a href="../html/user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
           <hr style="margin: 5px 0;">
           <dd><a href="/user/logout/" style="text-align: center;">退出</a></dd>
         </dl>
@@ -632,31 +632,7 @@
           <button class="layui-btn layui-btn-disabled">今日已签到</button>
           <span>获得了<cite>20</cite>飞吻</span>
           &ndash;&gt;-->
-          <script src="../res/layui/layui.all.js" charset="utf-8"></script>
-          <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
-          <script>
-            layui.use('table', function(){
-              var table = layui.table;
-
-              table.render({
-                elem: '#test'
-                ,url:'http://localhost:8000/activity/all'
-                ,cols: [[
-                  {field:'act_id', width:80, title: 'ID', sort: true}
-                  ,{field:'username', width:80, title: '用户名'}
-                  ,{field:'type', width:80, title: '类型', sort: true}
-                  ,{field:'desc', width:150, title: '描述'}
-                  ,{field:'state', title: '状态', minWidth: 80}
-                  ,{field:'start_time', width:80, title: '开始时间', sort: true}
-                  ,{field:'end_time', width:80, title: '结束时间', sort: true}
-                  /*,{field:'classify', width:80, title: '职业'}
-                  ,{field:'wealth', width:135, title: '财富', sort: true}*/
-                ]]
-                ,page: true
-              });
-            });
-          </script>
         </div>
       </div>
 

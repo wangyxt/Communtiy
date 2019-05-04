@@ -1,6 +1,6 @@
 package com.lixiangshequ.repository;
 
-import com.lixiangshequ.domain.PersonInfo;
+import com.lixiangshequ.entity.PersonInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
