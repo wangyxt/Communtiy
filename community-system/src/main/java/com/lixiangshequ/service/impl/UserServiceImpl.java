@@ -16,8 +16,16 @@ public class UserServiceImpl implements UserService {
        return userMapper.selectById(id);
     }
 
-    public User creat(User resouces) {
-        return null;
+    public void creat(User resouces) {
+        if(resouces.getRole()==0){
+            resouces.setRole(2);
+        }
+        int result = userMapper.insertOne(resouces);
+        System.out.println("========================================================>"+result);
+    }
+
+    public User selectByName(String name) {
+        return userMapper.selectByName(name);
     }
 
     public void update(User resouces) {

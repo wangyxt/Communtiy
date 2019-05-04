@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.time.LocalTime;
 
 @Controller
 @RequestMapping(value = "/auth",method = RequestMethod.GET)
@@ -27,6 +29,13 @@ public class UserController {
         return "../static/html/user/login";
     }
 
+    /**
+     * 登录接口
+     * @param authorizationUser
+     * @param modelAndView
+     * @param httpSession
+     * @return
+     */
     @PostMapping(value = "/login")
 //    @ResponseBody
     public ModelAndView login(@Validated AuthorizationUser authorizationUser, ModelAndView modelAndView, HttpSession httpSession){
@@ -44,5 +53,39 @@ public class UserController {
         modelAndView.setViewName("../static/html/index");
         httpSession.setAttribute("user",user);
         return modelAndView;
+    }
+
+    /**
+     * 注册接口
+     * @param user
+     * @param modelAndView
+     * @return
+     */
+    @PostMapping(value = "/register")
+    public ModelAndView register(@Validated User user,ModelAndView modelAndView){
+        userService.creat(user);
+//        user.setCreatTime(LocalTime.now());
+
+        modelAndView.setViewName("../static/html/user/login");
+        return modelAndView;
+    }
+
+    /**
+     * 验证用户名是否存在
+     * @param name
+     * @return
+     */
+    @PostMapping(value = "/verificationName")
+    @ResponseBody
+    public boolean verificationName(String name){
+        User result = userService.selectByName(name);
+        if(result==null){
+            return false;
+        }
+        return true;
+    }
+
+    public void updateUser(User user){
+
     }
 }

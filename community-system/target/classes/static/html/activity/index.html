@@ -14,32 +14,70 @@
     <link rel="stylesheet" href="../../res/css/global.css">
 </head>
 <body>
+<!--
+<ul>
+    <li class="layui-nav-item" th:unless="${session.user==null}">
+        <a class="fly-nav-avatar" href="javascript:;">
+            <cite class="layui-hide-xs" th:text="${session.user.getName()}">用户名</cite>
+            <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
+            <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
+            <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+        </a>
+        <dl class="layui-nav-child">
+            <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+            <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+            <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+            <hr style="margin: 5px 0;">
+            <dd><a href="/user/logout/" style="text-align: center;">退出</a> </dd>
+        </dl>
+    </li>
+</ul>-->
+<div class="fly-header layui-bg-black">
+    <div class="layui-container">
+        <a class="fly-logo" href="/">
+            <img src="../res/images/logo.png" alt="layui">
+        </a>
 
-<table class="layui-hide" id="test"></table>
-<script src="../../res/layui/layui.all.js" charset="utf-8"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
-<script>
-    layui.use('table', function(){
-        var table = layui.table;
+        <ul class="layui-nav fly-nav-user">
 
-        table.render({
-            elem: '#test'
-            ,url:'http://localhost:8000/activity/all'
-            ,cols: [[
-                {field:'act_id', width:80, title: 'ID', sort: true}
-                ,{field:'username', width:80, title: '用户名'}
-                ,{field:'type', width:80, title: '类型', sort: true}
-                ,{field:'desc', width:300,title: '描述'}
-                ,{field:'state',width:80, title: '状态'}
-                ,{field:'start_time', width:100, title: '开始时间', sort: true}
-                ,{field:'end_time', width:100, title: '结束时间', sort: true}
-                /*,{field:'classify', width:80, title: '职业'}
-                ,{field:'wealth', width:135, title: '财富', sort: true}*/
-            ]]
-            ,page: true
-        });
-    });
-</script>
+            <!-- 未登入的状态 -->
+            <li class="layui-nav-item" th:if="${session.user==null}">
+                <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
+            </li>
+            <li class="layui-nav-item" th:if="${session.user==null}">
+                <a href="user/login.html">登入</a>
+            </li>
+            <li class="layui-nav-item" th:if="${session.user==null}">
+                <a href="user/reg.html">注册</a>
+            </li>
+            <!--<li class="layui-nav-item layui-hide-xs">
+              <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs">
+              <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" title="微博登入" class="iconfont icon-weibo"></a>
+            </li>-->
+
+            登入后的状态
+            <li class="layui-nav-item" th:unless="${session.user==null}">
+                <a class="fly-nav-avatar" href="javascript:;">
+                    <cite class="layui-hide-xs" th:text="${session.user.getName()}">用户名</cite>
+                    <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
+                    <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
+                    <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+                    <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+                    <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+                    <hr style="margin: 5px 0;">
+                    <dd><a href="/user/logout/" style="text-align: center;">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="../../res/layui/layui.all.js"></script>
 </body>
 </html>

@@ -11,4 +11,8 @@ public interface UserMapper {
     User selectById(int id);
 
     User selectByTel(String tel);
+
+    User selectByName(String name);
+
+    int insertOne(User user);
 }

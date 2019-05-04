@@ -17,7 +17,9 @@ public interface UserService {
      * @param resouces
      * @return
      */
-    User creat(User resouces);
+    void creat(User resouces);
+
+    User selectByName(String name);
 
     /**
      * update

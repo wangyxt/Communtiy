@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lixiangshequ.repository.UserMapper">
-    <select id="findById" resultType="com.lixiangshequ.domain.User">
+    <select id="findById" resultMap="user">
         select * from user where uid = $[id]
     </select>
 
-    <select id="selectByTel" resultType="com.lixiangshequ.domain.User">
+    <select id="selectByTel" resultMap="user">
         select * from user where tel = #{tel}
     </select>
+
+    <resultMap id="user" type="com.lixiangshequ.domain.User">
+        <association property="person_id" select="selectPersonInfo" column="person_id"></association>
+    </resultMap>
+    <select id="selectPersonInfo" resultType="com.lixiangshequ.domain.PersonInfo">
+        select * from person_info where person_id = #{person_id}
+    </select>
+
+    <select id="selectByName" resultMap="user">
+        select * from user where name = #{name}
+    </select>
+
+    <insert id="insertOne" useGeneratedKeys="true" keyProperty="id" parameterType="com.lixiangshequ.domain.User">
+        insert into user (name,password,role,tel,email,creatTime,person_id) values(#{name},#{password},#{role},#{tel},#{email},now(),null)
+    </insert>
+
+    <update id="updateUser" parameterType="com.lixiangshequ.domain.User">
+        update user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name!=null">name=#{name},</if>
+            <if test="password!=null">password=#{password},</if>
+            <if test="role!=null">role=#{role},</if>
+            <if test="tel!=null">tel=#{tel},</if>
+            <if test="email!=null">email=#{email},</if>
+            <if test="person_id!=null">person_id=#{person_id},</if>
+        </trim>
+        where id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="com.lixiangshequ.domain.User">
+        delete from user where id = #{id}
+    </delete>
 </mapper>

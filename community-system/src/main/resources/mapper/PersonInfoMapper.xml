@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lixiangshequ.repository.PersonInfoMapper">
+    <select id="selectByCard" resultMap="person">
+        select * from person_info where certificate_no = $[certificate_no]
+    </select>
+
+    <select id="selectByName" resultMap="person" >
+        select * from person_info where name = #{name}
+    </select>
+
+    <select id="selectById" resultMap="person" >
+        select * from person_info where person_id = #{person_id}
+    </select>
+
+    <resultMap id="person" type="com.lixiangshequ.domain.PersonInfo">
+        <association property="residency_id" select="selectResidency" column="residency_id"></association>
+    </resultMap>
+    <select id="selectResidency" resultType="com.lixiangshequ.domain.Residency">
+        select * from residency where residency_id = #{residency_id}
+    </select>
+
+
+    <insert id="insertPerson" useGeneratedKeys="true" keyProperty="id" parameterType="com.lixiangshequ.domain.PersonInfo">
+        insert into person_info (name,age,sex,certificate,certificate_no,residency_id,relation,marriage,birthday,Ethnic,Photo_path,Culture,Health,Soldier_status,career,religion,Residency_type,address,Connection_phone,mail,volunteer)
+        values(#{name},#{age},#{sex},#{certificate},#{certificate_no},null,#{relation},#{marriage},#{birthday},#{Ethnic},#{Photo_path},#{Culture},#{Health},#{Soldier_status},#{career},#{religion},#{Residency_type},#{address},#{Connection_phone},#{mail},#{volunteer})
+    </insert>
+
+    <update id="update" parameterType="com.lixiangshequ.domain.PersonInfo">
+        update user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name!=null">name=#{name},</if>
+            <if test="age!=null">age=#{age},</if>
+            <if test="sex!=null">sex=#{sex},</if>
+            <if test="certificate!=null">certificate=#{certificate},</if>
+            <if test="certificate_no!=null">certificate_no=#{certificate_no},</if>
+            <if test="residency_id!=null">residency_id=#{residency_id},</if>
+            <if test="relation!=null">relation=#{relation},</if>
+            <if test="marriage!=null">marriage=#{marriage},</if>
+            <if test="birthday!=null">birthday=#{birthday},</if>
+            <if test="ethnic!=null">ethnic=#{ethnic},</if>
+            <if test="photo_path!=null">photo_path=#{photo_path},</if>
+            <if test="culture!=null">culture=#{culture},</if>
+            <if test="health!=null">health=#{health},</if>
+            <if test="soldier_status!=null">soldier_status=#{soldier_status},</if>
+            <if test="career!=null">career=#{career},</if>
+            <if test="religion!=null">religion=#{religion},</if>
+            <if test="residency_type!=null">residency_type=#{residency_type},</if>
+            <if test="address!=null">address=#{address},</if>
+            <if test="connection_phone!=null">connection_phone=#{connection_phone},</if>
+            <if test="mail!=null">mail=#{mail},</if>
+            <if test="volunteer!=null">volunteer=#{volunteer},</if>
+        </trim>
+        where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="com.lixiangshequ.domain.PersonInfo">
+        delete from person_info where person_id = #{person_id}
+    </delete>
+</mapper>

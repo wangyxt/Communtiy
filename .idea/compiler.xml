@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="community" target="1.5" />
-      <module name="community-system" target="1.5" />
+      <module name="community-system" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
