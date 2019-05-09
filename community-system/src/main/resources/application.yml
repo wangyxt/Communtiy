@@ -16,7 +16,7 @@ spring:
     servlet:
       content-type: text/html
     #开发时关闭缓存,不然没法看到实时页面
-    cache: true
+    cache: false
   #thymeleaf end
 
   devtools:
@@ -29,5 +29,11 @@ mybatis:
   #配置映射类所在的包名
   type-aliases-package: com.lixiangshequ.entity
 
+spring.output.ansi.enabled: always
 
-
+logging.level.com:
+  springframework:
+    security: info
+  lixiangshequ:
+    repository:
+      UserMapper: debug

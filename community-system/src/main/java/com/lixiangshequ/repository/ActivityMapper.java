@@ -43,11 +43,13 @@ public interface ActivityMapper {
      */
     int delect(int act_id);
 
-    Activity insert(Activity activity);
+    int insert(Activity activity);
 
     List selectNumByActId(int act_id);
 
     int insertActivityNum(ActivityList activityList);
 
     ActivityList selectByPrimaryKey(ActivityList activityList);
+
+    int deleteByPrimaryKey(ActivityList activityList);
 }

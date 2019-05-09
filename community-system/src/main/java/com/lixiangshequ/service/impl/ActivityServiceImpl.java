@@ -41,7 +41,7 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public Activity insert(Activity activity) {
+    public int insert(Activity activity) {
         return activityMapper.insert(activity);
     }
 
@@ -50,6 +50,11 @@ public class ActivityServiceImpl implements ActivityService {
         return activityMapper.selectNumByActId(act_id);
     }
 
+    /**
+     * 报名，返回ture代表报名成功
+     * @param activityList
+     * @return
+     */
     @Override
     public boolean insertActivityNum(ActivityList activityList) {
         int r = activityMapper.insertActivityNum(activityList);
@@ -63,5 +68,10 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public ActivityList selectIsApply(ActivityList activityList) {
         return activityMapper.selectByPrimaryKey(activityList);
+    }
+
+    @Override
+    public void cancelActivityNum(ActivityList activityList) {
+        activityMapper.deleteByPrimaryKey(activityList);
     }
 }

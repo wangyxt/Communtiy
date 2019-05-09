@@ -2,8 +2,13 @@ package com.lixiangshequ.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lixiangshequ.entity.User;
+import com.lixiangshequ.model.ResultMap;
 import com.lixiangshequ.service.UserService;
 import com.lixiangshequ.vo.AuthorizationUser;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -16,42 +21,24 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/auth",method = RequestMethod.GET)
 public class UserController {
 
+    private final static Logger logger = LoggerFactory.getLogger(UserController.class);
+
+    @Autowired
+    private ResultMap resultMap;
+
     @Autowired
     private UserService userService;
 
     @Autowired
     ObjectMapper objectMapper;
 
+
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String index(){
         return "../static/html/user/login";
     }
 
-    /**
-     * 登录接口
-     * @param authorizationUser
-     * @param modelAndView
-     * @param httpSession
-     * @return
-     */
-    @PostMapping(value = "/login")
-//    @ResponseBody
-    public ModelAndView login(@Validated AuthorizationUser authorizationUser, ModelAndView modelAndView, HttpSession httpSession){
-        String tel = authorizationUser.getTel();
-        User user = userService.findByTel(tel);
-        if(!user.getPassword().equals(authorizationUser.getPassword())){
-            modelAndView.addObject("mess","用户名或密码错误");
-            modelAndView.setViewName("../static/html/user/login");
-            return modelAndView;
-        }
-//        ReturnStatus returnStatus = new ReturnStatus(0,"",1,"你好");
-//        String jsonString = objectMapper.writeValueAsString(returnStatus);
-//        ReturnStatus returnStatus = mapper.readValue(jsonString, returnStatus.class);
-        modelAndView.addObject("user",user);
-        modelAndView.setViewName("../static/html/index");
-        httpSession.setAttribute("user",user);
-        return modelAndView;
-    }
+
 
     /**
      * 注册接口
@@ -83,7 +70,44 @@ public class UserController {
         return true;
     }
 
-    public void updateUser(User user){
+    /**
+     * 注销接口
+     * @param httpSession
+     * @return
+     */
+    @RequestMapping("/logout")
+    public String logout(HttpSession httpSession){
+        Subject subject = SecurityUtils.getSubject();
+        //注销
+        subject.logout();
+        return "redirect:/auth/";
+    }
 
+    /**
+     * 根据手机号获取用户信息
+     * @param tel
+     * @return
+     */
+    @PostMapping("/getMessByTel")
+    @ResponseBody
+    public User getMessByTel(@RequestParam(required = true) String tel){
+        return userService.findByTel(tel);
+    }
+
+    /**
+     * 根据用户名获取用户信息
+     * @param name
+     * @return
+     */
+    @PostMapping("/getMessByName")
+    @ResponseBody
+    public User getMessByName(@RequestParam(required = true) String name){
+        return userService.selectByName(name);
+    }
+
+
+    @RequestMapping("/updatePassword")
+    public void updatePassword(User user){
+        userService.update(user);
     }
 }

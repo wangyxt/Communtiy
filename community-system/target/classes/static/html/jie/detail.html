@@ -16,7 +16,7 @@
     <a class="fly-logo" href="/">
       <img src="../../res/images/logo.png" alt="layui">
     </a>
-    <ul class="layui-nav fly-nav layui-hide-xs">
+    <!--<ul class="layui-nav fly-nav layui-hide-xs">
       <li class="layui-nav-item layui-this">
         <a href="/"><i class="iconfont icon-jiaoliu"></i>交流</a>
       </li>
@@ -26,7 +26,7 @@
       <li class="layui-nav-item">
         <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
       </li>
-    </ul>
+    </ul>-->
 
     <ul class="layui-nav fly-nav-user">
 
@@ -60,7 +60,7 @@
           <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
           <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
           <hr style="margin: 5px 0;">
-          <dd><a href="/user/logout/" style="text-align: center;">退出</a></dd>
+          <dd><a href="/auth/logout/" style="text-align: center;">退出</a></dd>
         </dl>
       </li>
     </ul>
@@ -142,7 +142,9 @@
           </div>
           <div class="detail-hits" id="LAY_jieAdmin" data-id="123">
             <span style="padding-right: 10px; color: #FF7200">悬赏：60飞吻</span>  
-            <span class="layui-btn layui-btn-xs jie-admin" type="edit"><a href="add.html">编辑此贴</a></span>
+            <span class="layui-btn layui-btn-xs jie-admin" type="edit">
+              <a id="updateActivity" >编辑此贴</a>
+            </span>
           </div>
         </div>
         <div class="detail-body photos">
@@ -154,7 +156,8 @@
           <i class="iconfont" title="报名截止日期">&#xe60f;</i>截止到：
           <span th:text="${activity.getEnd_time()}"></span>
           </div>
-          <button id="applyActivity" class="layui-btn layui-btn-normal">点击报名</button>
+          <button id="applyActivity" class="layui-btn layui-btn-normal" th:text="${isApply}">报名状态</button>
+
           <!--<p>更新日志：</p>
 <pre>
 # v3.0 2017-11-30
@@ -375,6 +378,9 @@
   无数据
   {{#  } }}
 </ul>-->
+<form id="center">
+    <input type="hidden" name="act_id" th:value="${activity.getAct_id()}">
+</form>
 
 <script src="../../res/layui/layui.js"></script>
 <script>
@@ -411,10 +417,51 @@ layui.config({
             function () {
               //获取当前act_id
               var act_id = /*[[${activity.getAct_id()}]]*/;
+              //获取报名状态
+              var activityStatus = $("#applyActivity");
+              //访问url
+              var url = "http://localhost:8000/activity/apply";
+              if (activityStatus.html()==="点击报名!"){
+                url = "http://localhost:8000/activity/apply"
+              }else {
+                url = "http://localhost:8000/activity/cancelActivity"
+              }
               //请求活动报名接口
               $.post(
-                    "http://localhost:8000/activity/apply",{"act_id":act_id},function (data) {
+                    url,
+                      {"act_id":act_id},
+                      function (data) {
                         alert(data);
+                        if (data==="报名成功！"){
+                          $("#applyActivity").html("取消报名!")
+                        }else if (data==="已取消报名！"){
+                          $("#applyActivity").html("点击报名!")
+                        }
+                      }
+              )
+            }
+    )
+    //点击编辑按钮钱发送ajax验证当前用户是否有权限
+    $("#updateActivity").click(
+            function () {
+              //要请求的url
+              var url = "http://localhost:8000/clerk/updateOrAddPage";
+              var act_id = /*[[${activity.getAct_id()}]]*/;
+              $.get(
+                  url,
+                      {"act_id":act_id},
+                      function (data) {
+                        var mess = data.message;
+                        if ("您没有权限！"===mess) {
+                          /*http://localhost:8000/activity/detail/0*/
+                          alert(mess);
+                        }else if ("您尚未登陆！"===mess){
+                          alert(mess);
+                        }else {
+                          $("#center").attr("action","/clerk/updateOrAddPage");
+                          $("#center").submit();
+                        }
+
                       }
               )
             }

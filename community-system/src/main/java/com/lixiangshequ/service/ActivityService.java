@@ -45,11 +45,13 @@ public interface ActivityService {
      * @param activity
      * @return
      */
-    Activity insert(Activity activity);
+    int insert(Activity activity);
 
     List selectNumByActId(int act_id);
 
     boolean insertActivityNum(ActivityList activityList);
 
     ActivityList selectIsApply(ActivityList activityList);
+
+    void cancelActivityNum(ActivityList activityList);
 }

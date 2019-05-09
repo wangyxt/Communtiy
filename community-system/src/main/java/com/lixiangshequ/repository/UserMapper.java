@@ -4,6 +4,8 @@ import com.lixiangshequ.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface UserMapper {
@@ -15,4 +17,8 @@ public interface UserMapper {
     User selectByName(String name);
 
     int insertOne(User user);
+
+    String getRole(String name);
+
+    List selectResourceByRoleId(int roleId);
 }

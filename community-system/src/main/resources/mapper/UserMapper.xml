@@ -20,6 +20,10 @@
         select * from user where name = #{name}
     </select>
 
+    <select id="getRole" parameterType="java.lang.String" resultType="java.lang.String">
+        select role.role from role,user where role.id = user.role and tel = #{tel}
+    </select>
+
     <insert id="insertOne" useGeneratedKeys="true" keyProperty="id" parameterType="com.lixiangshequ.entity.User">
         insert into user (name,password,role,tel,email,creatTime,person_id) values(#{name},#{password},#{role},#{tel},#{email},now(),null)
     </insert>
@@ -40,4 +44,8 @@
     <delete id="deleteUser" parameterType="com.lixiangshequ.entity.User">
         delete from user where id = #{id}
     </delete>
+
+    <select id="selectResourceByRoleId" resultType="com.lixiangshequ.entity.RoleResource">
+        select * from role r,role_resource rr where r.id=rr.role_id and r.id = #{roleId}
+    </select>
 </mapper>

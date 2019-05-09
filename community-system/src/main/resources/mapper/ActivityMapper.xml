@@ -24,7 +24,7 @@
     </select>
 
     <insert id="insert" parameterType="com.lixiangshequ.entity.Activity">
-        insert into activity (publish_id,type,start_time,end_time,desc,state) activity values (null,#{type},#{start_time},#{end_time},#{desc},#{state})
+        insert into activity (publish_id,type,start_time,end_time,desc,state) activity values (#{publish_id.uid},#{type},#{start_time},#{end_time},#{desc},#{state})
     </insert>
 
     <delete id="delete" parameterType="int">
@@ -39,7 +39,12 @@
         insert into activity_list values (#{act_id},#{uid})
     </insert>
 
+    <delete id="deleteByPrimaryKey"  parameterType="com.lixiangshequ.entity.ActivityList">
+        delete from activity_list where act_id = #{act_id} and uid = #{uid}
+    </delete>
+
     <select id="selectByPrimaryKey" resultType="com.lixiangshequ.entity.ActivityList">
         select * from activity_list where act_id = #{act_id} and uid = #{uid}
     </select>
+
 </mapper>
