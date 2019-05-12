@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lixiangshequ.repository.BuildingInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lixiangshequ.entity.BuildingInfo" >
+    <id column="building_id" property="buildingId" jdbcType="INTEGER" />
+    <result column="building_name" property="buildingName" jdbcType="VARCHAR" />
+    <result column="building_type" property="buildingType" jdbcType="INTEGER" />
+    <result column="building_time" property="buildingTime" jdbcType="DATE" />
+    <result column="building_strut" property="buildingStrut" jdbcType="INTEGER" />
+    <result column="building_add" property="buildingAdd" jdbcType="VARCHAR" />
+    <result column="room_num" property="roomNum" jdbcType="INTEGER" />
+    <result column="room_lived" property="roomLived" jdbcType="INTEGER" />
+    <result column="floor" property="floor" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    building_id, building_name, building_type, building_time, building_strut, building_add, 
+    room_num, room_lived, floor
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from building_info
+    where building_id = #{buildingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from building_info
+    where building_id = #{buildingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lixiangshequ.entity.BuildingInfo" >
+    insert into building_info (building_id, building_name, building_type, 
+      building_time, building_strut, building_add, 
+      room_num, room_lived, floor
+      )
+    values (#{buildingId,jdbcType=INTEGER}, #{buildingName,jdbcType=VARCHAR}, #{buildingType,jdbcType=INTEGER}, 
+      #{buildingTime,jdbcType=DATE}, #{buildingStrut,jdbcType=INTEGER}, #{buildingAdd,jdbcType=VARCHAR}, 
+      #{roomNum,jdbcType=INTEGER}, #{roomLived,jdbcType=INTEGER}, #{floor,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lixiangshequ.entity.BuildingInfo" >
+    insert into building_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="buildingId != null" >
+        building_id,
+      </if>
+      <if test="buildingName != null" >
+        building_name,
+      </if>
+      <if test="buildingType != null" >
+        building_type,
+      </if>
+      <if test="buildingTime != null" >
+        building_time,
+      </if>
+      <if test="buildingStrut != null" >
+        building_strut,
+      </if>
+      <if test="buildingAdd != null" >
+        building_add,
+      </if>
+      <if test="roomNum != null" >
+        room_num,
+      </if>
+      <if test="roomLived != null" >
+        room_lived,
+      </if>
+      <if test="floor != null" >
+        floor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="buildingId != null" >
+        #{buildingId,jdbcType=INTEGER},
+      </if>
+      <if test="buildingName != null" >
+        #{buildingName,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingType != null" >
+        #{buildingType,jdbcType=INTEGER},
+      </if>
+      <if test="buildingTime != null" >
+        #{buildingTime,jdbcType=DATE},
+      </if>
+      <if test="buildingStrut != null" >
+        #{buildingStrut,jdbcType=INTEGER},
+      </if>
+      <if test="buildingAdd != null" >
+        #{buildingAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNum != null" >
+        #{roomNum,jdbcType=INTEGER},
+      </if>
+      <if test="roomLived != null" >
+        #{roomLived,jdbcType=INTEGER},
+      </if>
+      <if test="floor != null" >
+        #{floor,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lixiangshequ.entity.BuildingInfo" >
+    update building_info
+    <set >
+      <if test="buildingName != null" >
+        building_name = #{buildingName,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingType != null" >
+        building_type = #{buildingType,jdbcType=INTEGER},
+      </if>
+      <if test="buildingTime != null" >
+        building_time = #{buildingTime,jdbcType=DATE},
+      </if>
+      <if test="buildingStrut != null" >
+        building_strut = #{buildingStrut,jdbcType=INTEGER},
+      </if>
+      <if test="buildingAdd != null" >
+        building_add = #{buildingAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNum != null" >
+        room_num = #{roomNum,jdbcType=INTEGER},
+      </if>
+      <if test="roomLived != null" >
+        room_lived = #{roomLived,jdbcType=INTEGER},
+      </if>
+      <if test="floor != null" >
+        floor = #{floor,jdbcType=INTEGER},
+      </if>
+    </set>
+    where building_id = #{buildingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lixiangshequ.entity.BuildingInfo" >
+    update building_info
+    set building_name = #{buildingName,jdbcType=VARCHAR},
+      building_type = #{buildingType,jdbcType=INTEGER},
+      building_time = #{buildingTime,jdbcType=DATE},
+      building_strut = #{buildingStrut,jdbcType=INTEGER},
+      building_add = #{buildingAdd,jdbcType=VARCHAR},
+      room_num = #{roomNum,jdbcType=INTEGER},
+      room_lived = #{roomLived,jdbcType=INTEGER},
+      floor = #{floor,jdbcType=INTEGER}
+    where building_id = #{buildingId,jdbcType=INTEGER}
+  </update>
+</mapper>

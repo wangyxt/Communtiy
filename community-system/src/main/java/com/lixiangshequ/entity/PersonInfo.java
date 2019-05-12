@@ -1,4 +1,4 @@
-package com.lixiangshequ.domain;
+package com.lixiangshequ.entity;
 
 import lombok.Data;
 
@@ -49,5 +49,9 @@ public class PersonInfo implements Serializable {
     private String email;
 
     private Boolean volunteer;
+
+    private String culture;
+
+    private String photo_path;
 
 }

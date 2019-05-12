@@ -27,44 +27,42 @@
         <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
       </li>
     </ul>-->
-    
+
     <ul class="layui-nav fly-nav-user">
-      
+
       <!-- 未登入的状态 -->
-      <li class="layui-nav-item">
+      <li class="layui-nav-item" th:if="${session.user==null}">
         <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
       </li>
-      <li class="layui-nav-item">
+      <li class="layui-nav-item" th:if="${session.user==null}">
         <a href="user/login.html">登入</a>
       </li>
-      <li class="layui-nav-item">
+      <li class="layui-nav-item" th:if="${session.user==null}">
         <a href="user/reg.html">注册</a>
       </li>
-      <li class="layui-nav-item layui-hide-xs">
+      <!--<li class="layui-nav-item layui-hide-xs">
         <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>
       </li>
       <li class="layui-nav-item layui-hide-xs">
         <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" title="微博登入" class="iconfont icon-weibo"></a>
-      </li>
-      
-      <!-- 登入后的状态 -->
-      <!--
-      <li class="layui-nav-item">
+      </li>-->
+
+      登入后的状态
+      <li class="layui-nav-item" th:unless="${session.user==null}">
         <a class="fly-nav-avatar" href="javascript:;">
-          <cite class="layui-hide-xs">贤心</cite>
+          <cite class="layui-hide-xs" th:text="${session.user.getName()}">用户名</cite>
           <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
           <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
           <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="../user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
-          <dd><a href="../user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
-          <dd><a href="../user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+          <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+          <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+          <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
           <hr style="margin: 5px 0;">
-          <dd><a href="" style="text-align: center;">退出</a></dd>
+          <dd><a href="/auth/logout/" style="text-align: center;">退出</a></dd>
         </dl>
       </li>
-      -->
     </ul>
   </div>
 </div>
@@ -123,7 +121,7 @@
             </a>
             <h2>
               <a class="layui-badge">活动</a>
-              <a href="detail.html" th:text="${activity.desc}">活动描述</a>
+              <a th:href="@{detail/}+${activity.act_id}" th:text="${activity.desc}">活动描述</a>
             </h2>
             <div class="fly-list-info">
               <a href="../user/home.html" link th:text="${activity.publish_id.name}">
@@ -133,7 +131,7 @@
                 <i class="layui-badge fly-badge-vip">VIP3</i>
                 -->
               </a>
-              <span th:text="${activity.start_time}">刚刚</span>
+              <span th:text="${activity.start_time}">活动开始时间</span>
 
               <span class="fly-list-kiss layui-hide-xs" title="已报名"><i class="iconfont icon-kiss"></i> 60</span>
               <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
@@ -260,3 +258,42 @@ layui.config({
 
 </body>
 </html>
+
+<table class="layui-hide" id="test" lay-filter="test"></table>
+<script>
+  layui.use('table', function(){
+    var table = layui.table;
+
+    table.render({
+      elem: '#test'
+      ,url:'/clerk/getAllPerson'
+      ,toolbar: true
+      ,title: '用户数据表'
+      ,totalRow: true
+      ,cols: [[
+        {field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计行'}
+        ,{field:'username', title:'用户名', width:120, edit: 'text'}
+        ,{field:'email', title:'邮箱', width:150, edit: 'text'}
+        ,{field:'experience', title:'积分', width:80, sort: true, totalRow: true}
+        ,{field:'sex', title:'性别', width:80, edit: 'text', sort: true}
+        ,{field:'logins', title:'登入次数', width:100, sort: true, totalRow: true}
+        ,{field:'sign', title:'签名'}
+        ,{field:'city', title:'城市', width:100}
+        ,{field:'ip', title:'IP', width:120}
+        ,{field:'joinTime', title:'加入时间', width:120}
+      ]]
+      ,page: true
+      ,response: {
+        statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
+      }
+      ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据
+        return {
+          "code": res.status, //解析接口状态
+          "msg": res.message, //解析提示文本
+          "count": res.total, //解析数据长度
+          "data": res.rows.item //解析数据列表
+        };
+      }
+    });
+  });
+</script>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lixiangshequ.repository.ActivityMapper">
-    <resultMap id="activityList" type="com.lixiangshequ.domain.Activity">
+    <resultMap id="activityList" type="com.lixiangshequ.entity.Activity">
         <id property="act_id" column="act_id"></id>
         <result property="type" column="type"></result>
         <result property="start_time" column="start_time"></result>
@@ -11,17 +11,40 @@
         <association property="publish_id" select="selectPublish" column="publish_id"></association>
     </resultMap>
 
-    <select id="selectPublish" resultType="com.lixiangshequ.domain.User">
+    <select id="selectPublish" resultType="com.lixiangshequ.entity.User">
         select * from user where uid = #{publish_id}
     </select>
 
-    <select id="selectByActId" resultType="com.lixiangshequ.domain.Activity">
-        select * from activity where act_id = ${act_id}
+    <select id="selectByActId" resultMap="activityList">
+        select * from activity where act_id = #{act_id}
     </select>
 
     <select id="selectAll" resultMap="activityList">
         select * from activity
     </select>
 
+    <insert id="insert" parameterType="com.lixiangshequ.entity.Activity">
+        insert into activity (publish_id,type,start_time,end_time,desc,state) activity values (#{publish_id.uid},#{type},#{start_time},#{end_time},#{desc},#{state})
+    </insert>
+
+    <delete id="delete" parameterType="int">
+        delete from activity where act_id = #{act_id}
+    </delete>
+
+    <select id="selectNumByActId" resultType="int">
+        select count(*) from activity a,activity_list al where a.act_id = al.act_id and a.act_id = #{act_id}
+    </select>
+
+    <insert id="insertActivityNum" parameterType="com.lixiangshequ.entity.ActivityList">
+        insert into activity_list values (#{act_id},#{uid})
+    </insert>
+
+    <delete id="deleteByPrimaryKey"  parameterType="com.lixiangshequ.entity.ActivityList">
+        delete from activity_list where act_id = #{act_id} and uid = #{uid}
+    </delete>
+
+    <select id="selectByPrimaryKey" resultType="com.lixiangshequ.entity.ActivityList">
+        select * from activity_list where act_id = #{act_id} and uid = #{uid}
+    </select>
 
 </mapper>

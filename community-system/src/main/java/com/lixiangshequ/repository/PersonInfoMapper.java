@@ -1,6 +1,6 @@
 package com.lixiangshequ.repository;
 
-import com.lixiangshequ.domain.PersonInfo;
+import com.lixiangshequ.entity.PersonInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface PersonInfoMapper {
 
-    void insertPerson(PersonInfo personInfo);
+    int insertPerson(PersonInfo personInfo);
 
     List selectByName(String name);
 
@@ -20,4 +20,6 @@ public interface PersonInfoMapper {
     PersonInfo update(PersonInfo personInfo);
 
     PersonInfo delete (PersonInfo personInfo);
+
+    List selectAll();
 }

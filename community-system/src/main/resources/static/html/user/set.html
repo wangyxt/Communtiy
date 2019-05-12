@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <title>帐号设置</title>
@@ -17,33 +17,22 @@
     <a class="fly-logo" href="/">
       <img src="../../res/images/logo.png" alt="layui">
     </a>
-    <ul class="layui-nav fly-nav layui-hide-xs">
-      <li class="layui-nav-item layui-this">
-        <a href="/"><i class="iconfont icon-jiaoliu"></i>交流</a>
-      </li>
-      <li class="layui-nav-item">
-        <a href="../case/case.html"><i class="iconfont icon-iconmingxinganli"></i>案例</a>
-      </li>
-      <li class="layui-nav-item">
-        <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
-      </li>
-    </ul>
     
     <ul class="layui-nav fly-nav-user">
-      <!-- 登入后的状态 -->
-      <li class="layui-nav-item">
+      <!--登入后的状态-->
+      <li class="layui-nav-item" th:unless="${session.user==null}">
         <a class="fly-nav-avatar" href="javascript:;">
-          <cite class="layui-hide-xs">贤心</cite>
+          <cite class="layui-hide-xs" th:text="${session.user.getName()}">用户名</cite>
           <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
           <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
           <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
-          <dd><a href="message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
-          <dd><a href="home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+          <dd><a href="../user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+          <dd><a href="../user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+          <dd><a href="../user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
           <hr style="margin: 5px 0;">
-          <dd><a href="" style="text-align: center;">退出</a></dd>
+          <dd><a href="../../auth/logout/" style="text-align: center;">退出</a></dd>
         </dl>
       </li>
     </ul>
@@ -103,26 +92,26 @@
             <div class="layui-form-item">
               <label for="L_email" class="layui-form-label">邮箱</label>
               <div class="layui-input-inline">
-                <input type="text" id="L_email" name="email" required lay-verify="email" autocomplete="off" value="" class="layui-input">
+                <input type="text" id="L_email" th:text="${session.user.getEmail()}" name="email" required lay-verify="email" autocomplete="off" value="" class="layui-input"/>
               </div>
               <div class="layui-form-mid layui-word-aux">如果您在邮箱已激活的情况下，变更了邮箱，需<a href="activate.html" style="font-size: 12px; color: #4f99cf;">重新验证邮箱</a>。</div>
             </div>
             <div class="layui-form-item">
               <label for="L_username" class="layui-form-label">昵称</label>
               <div class="layui-input-inline">
-                <input type="text" id="L_username" name="username" required lay-verify="required" autocomplete="off" value="" class="layui-input">
+                <input type="text" id="L_username" th:text="${session.user.getName()}" name="name" required lay-verify="required" autocomplete="off" value="" class="layui-input">
               </div>
               <div class="layui-inline">
                 <div class="layui-input-inline">
-                  <input type="radio" name="sex" value="0" checked title="男">
-                  <input type="radio" name="sex" value="1" title="女">
+                  <input type="radio" name="sex" value="0" checked title="男"/>
+                  <input type="radio" name="sex" value="1" title="女"/>
                 </div>
               </div>
             </div>
             <div class="layui-form-item">
-              <label for="L_city" class="layui-form-label">城市</label>
+              <label for="L_city" class="layui-form-label">手机号</label>
               <div class="layui-input-inline">
-                <input type="text" id="L_city" name="city" autocomplete="off" value="" class="layui-input">
+                <input type="text" th:text="${session.user.getTel()}" id="L_city" name="tel" autocomplete="off" value="" class="layui-input"/>
               </div>
             </div>
             <div class="layui-form-item layui-form-text">
@@ -135,6 +124,7 @@
               <button class="layui-btn" key="set-mine" lay-filter="*" lay-submit>确认修改</button>
             </div>
           </div>
+
           
           <div class="layui-form layui-form-pane layui-tab-item">
             <div class="layui-form-item">
@@ -228,6 +218,15 @@ layui.config({
 }).extend({
   fly: 'index'
 }).use('fly');
+</script>
+
+<script th:inline="javascript">
+  $(function () {
+    var tel = /*[[${session.user.}]]*/;
+    if(null != activity){
+      //发送post请求
+    }
+  })
 </script>
 
 </body>

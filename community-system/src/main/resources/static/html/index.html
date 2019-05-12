@@ -50,11 +50,11 @@
           <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
-          <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
-          <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+          <dd><a href="../html/user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+          <dd><a href="../html/user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+          <dd><a href="../html/user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
           <hr style="margin: 5px 0;">
-          <dd><a href="/user/logout/" style="text-align: center;">退出</a></dd>
+          <dd><a href="/auth/logout/" style="text-align: center;">退出</a></dd>
         </dl>
       </li>
     </ul>
@@ -70,14 +70,20 @@
       <li><a href="../html/jie/index.html">优抚对象</a></li>
       <li><a href="../html/jie/index.html">招聘求职</a></li>
       <li><a href="../html/jie/index.html">问题</a></li>
-      <li><a href="../html/jie/index.html">动态</a></li>
+      <li>
+        <select name="居民档案">
+          <option name="selectAll"><a href="../html/person/index.html">社区居民</a></option>
+          <option name="">添加居民</option>
+          <option name="">搜素</option>
+        </select>
+      </li>
       <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li> 
       
       <!-- 用户登入后显示 -->
-      <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="user/index.html">我发表的贴</a></li>
-      <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="user/index.html#collection">我收藏的贴</a></li>
-    </ul> 
-    
+      <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../html/user/index.html">我参加的活动</a></li>
+      <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../html/user/index.html#collection">我收藏的贴</a></li>
+    </ul>
+
     <div class="fly-column-right layui-hide-xs"> 
       <span class="fly-search"><i class="layui-icon"></i></span> 
       <a href="jie/add.html" class="layui-btn">发表新帖</a>
@@ -632,31 +638,7 @@
           <button class="layui-btn layui-btn-disabled">今日已签到</button>
           <span>获得了<cite>20</cite>飞吻</span>
           &ndash;&gt;-->
-          <script src="../res/layui/layui.all.js" charset="utf-8"></script>
-          <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
-          <script>
-            layui.use('table', function(){
-              var table = layui.table;
-
-              table.render({
-                elem: '#test'
-                ,url:'http://localhost:8000/activity/all'
-                ,cols: [[
-                  {field:'act_id', width:80, title: 'ID', sort: true}
-                  ,{field:'username', width:80, title: '用户名'}
-                  ,{field:'type', width:80, title: '类型', sort: true}
-                  ,{field:'desc', width:150, title: '描述'}
-                  ,{field:'state', title: '状态', minWidth: 80}
-                  ,{field:'start_time', width:80, title: '开始时间', sort: true}
-                  ,{field:'end_time', width:80, title: '结束时间', sort: true}
-                  /*,{field:'classify', width:80, title: '职业'}
-                  ,{field:'wealth', width:135, title: '财富', sort: true}*/
-                ]]
-                ,page: true
-              });
-            });
-          </script>
         </div>
       </div>
 

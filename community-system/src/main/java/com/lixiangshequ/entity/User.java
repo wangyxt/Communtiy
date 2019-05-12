@@ -1,5 +1,6 @@
-package com.lixiangshequ.domain;
+package com.lixiangshequ.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,9 +10,12 @@ import java.sql.Timestamp;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class User implements Serializable {
 
     private static final long serialVersionUID = 7059272902617954794L;
+
+    public User(){}
 
     private int uid;
     @NotNull
@@ -27,7 +31,7 @@ public class User implements Serializable {
 
     private Timestamp creatTime;
 
-    private PersonInfo person_id;
+    private String certificate_no;
 
     @Override
     public String toString() {
@@ -39,7 +43,7 @@ public class User implements Serializable {
                 ", tel='" + tel + '\'' +
                 ", email='" + email + '\'' +
                 ", creatTime=" + creatTime +
-                ", person_id=" + person_id +
+                ", certificate_no=" + certificate_no +
                 '}';
     }
 }

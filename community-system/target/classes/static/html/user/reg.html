@@ -79,7 +79,7 @@
                 <div class="layui-input-inline">
                   <input type="text" id="name" name="name" required lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
-                <div id="verificationNameResult" class="layui-form-mid layui-word-aux"></div>
+                <div id="verificationNameResult"></div>
               </div>
               <div class="layui-form-item">
                 <label for="L_pass" class="layui-form-label">密码</label>
@@ -107,6 +107,8 @@
                 <label for="vercode" class="layui-form-label">人类验证</label>
                 <div class="layui-input-inline">
                   <input id="vercode" lay-verfy="required" type="text" value="" placeholder="请输入验证码" class="layui-input" autocomplete="off">
+                </div>
+                <div>
                   <canvas id="canvas" width="100" height="43"></canvas>
                 </div>
               </div>
@@ -280,6 +282,7 @@ layui.config({
                   $("#name").val(null)
                 }else{
                   usernameInfo = "该用户名可以使用"
+                  $("#verificationNameResult").css("color","green");
                 }
                 $("#verificationNameResult").html(usernameInfo);
               },

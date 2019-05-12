@@ -1,7 +1,5 @@
- 
- 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <title>Fly Template v3.0，基于 layui 的极简社区页面模版</title>
@@ -18,7 +16,7 @@
     <a class="fly-logo" href="/">
       <img src="../../res/images/logo.png" alt="layui">
     </a>
-    <ul class="layui-nav fly-nav layui-hide-xs">
+    <!--<ul class="layui-nav fly-nav layui-hide-xs">
       <li class="layui-nav-item layui-this">
         <a href="/"><i class="iconfont icon-jiaoliu"></i>交流</a>
       </li>
@@ -28,43 +26,41 @@
       <li class="layui-nav-item">
         <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
       </li>
-    </ul>
-    
+    </ul>-->
+
     <ul class="layui-nav fly-nav-user">
-      
+
       <!-- 未登入的状态 -->
-      <!--
-      <li class="layui-nav-item">
+      <li class="layui-nav-item" th:if="${session.user==null}">
         <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
       </li>
-      <li class="layui-nav-item">
-        <a href="user/login.html">登入</a>
+      <li class="layui-nav-item" th:if="${session.user==null}">
+        <a href="../user/login.html">登入</a>
       </li>
-      <li class="layui-nav-item">
-        <a href="user/reg.html">注册</a>
+      <li class="layui-nav-item" th:if="${session.user==null}">
+        <a href="../user/reg.html">注册</a>
       </li>
-      <li class="layui-nav-item layui-hide-xs">
+      <!--<li class="layui-nav-item layui-hide-xs">
         <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>
       </li>
       <li class="layui-nav-item layui-hide-xs">
         <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" title="微博登入" class="iconfont icon-weibo"></a>
-      </li>
-       -->
-      
-      <!-- 登入后的状态 -->
-      <li class="layui-nav-item">
+      </li>-->
+
+      <!--登入后的状态-->
+      <li class="layui-nav-item" th:unless="${session.user==null}">
         <a class="fly-nav-avatar" href="javascript:;">
-          <cite class="layui-hide-xs">贤心</cite>
+          <cite class="layui-hide-xs" th:text="${session.user.getName()}">用户名</cite>
           <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
           <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
           <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="../user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
-          <dd><a href="../user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
-          <dd><a href="../user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+          <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+          <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+          <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
           <hr style="margin: 5px 0;">
-          <dd><a href="" style="text-align: center;">退出</a></dd>
+          <dd><a href="/auth/logout/" style="text-align: center;">退出</a></dd>
         </dl>
       </li>
     </ul>
@@ -75,20 +71,20 @@
   <div class="fly-panel fly-column">
     <div class="layui-container">
       <ul class="layui-clear">
-        <li class="layui-hide-xs"><a href="/">首页</a></li> 
-        <li class="layui-this"><a href="">提问</a></li> 
-        <li><a href="">分享<span class="layui-badge-dot"></span></a></li> 
-        <li><a href="">讨论</a></li> 
-        <li><a href="">建议</a></li> 
-        <li><a href="">公告</a></li> 
-        <li><a href="">动态</a></li> 
-        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li> 
-        
+        <li class="layui-hide-xs"><a href="/">首页</a></li>
+        <li class="layui-this"><a href="http://localhost:8000/activity/all">活动</a></li>
+        <li><a href="../../html/jie/index.html">公告<span class="layui-badge-dot"></span></a></li>
+        <li><a href="../../html/jie/index.html">优抚对象</a></li>
+        <li><a href="../../html/jie/index.html">招聘求职</a></li>
+        <li><a href="../../html/jie/index.html">问题</a></li>
+        <li><a href="../../html/jie/index.html">动态</a></li>
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
+
         <!-- 用户登入后显示 -->
-        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li> 
-        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li> 
-      </ul> 
-      
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li>
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li>
+      </ul>
+
       <div class="fly-column-right layui-hide-xs"> 
         <span class="fly-search"><i class="layui-icon"></i></span> 
         <a href="add.html" class="layui-btn">发表新帖</a> 
@@ -104,7 +100,7 @@
   <div class="layui-row layui-col-space15">
     <div class="layui-col-md8 content detail">
       <div class="fly-panel detail-box">
-        <h1>Fly Template v3.0，基于 layui 的极简社区页面模版</h1>
+        <h1 th:text="${activity.getDesc()}"></h1>
         <div class="fly-detail-info">
           <!-- <span class="layui-badge">审核中</span> -->
           <span class="layui-badge layui-bg-green fly-detail-column">动态</span>
@@ -125,8 +121,11 @@
             <!-- <span class="layui-btn layui-btn-xs jie-admin" type="set" field="status" rank="0" style="background-color:#ccc;">取消加精</span> -->
           </div>
           <span class="fly-list-nums"> 
-            <a href="#comment"><i class="iconfont" title="回答">&#xe60c;</i> 66</a>
-            <i class="iconfont" title="人气">&#xe60b;</i> 99999
+            <a href="#comment"><i class="iconfont" title="活动开始时间">&#xe60c;</i>
+              <span th:text="${activity.getStart_time()}">活动开始时间</span>
+            </a>
+            <i class="iconfont" title="已报名">&#xe60b;</i>
+            <span id="activityNum" th:text="${num}">已报名人数</span>
           </span>
         </div>
         <div class="detail-about">
@@ -135,7 +134,7 @@
           </a>
           <div class="fly-detail-user">
             <a href="../user/home.html" class="fly-link">
-              <cite>贤心</cite>
+              <cite th:text="${activity.getPublish_id().getName()}">发布人</cite>
               <i class="iconfont icon-renzheng" title="认证信息：{{ rows.user.approve }}"></i>
               <i class="layui-badge fly-badge-vip">VIP3</i>
             </a>
@@ -143,14 +142,23 @@
           </div>
           <div class="detail-hits" id="LAY_jieAdmin" data-id="123">
             <span style="padding-right: 10px; color: #FF7200">悬赏：60飞吻</span>  
-            <span class="layui-btn layui-btn-xs jie-admin" type="edit"><a href="add.html">编辑此贴</a></span>
+            <span class="layui-btn layui-btn-xs jie-admin" type="edit">
+              <a id="updateActivity" >编辑此贴</a>
+            </span>
           </div>
         </div>
         <div class="detail-body photos">
-          <p>
-            该模版由 layui官方社区（<a href="http://fly.layui.com/" target="_blank">fly.layui.com</a>）倾情提供，只为表明我们对 layui 执着的信念、以及对未来持续加强的承诺。该模版基于 layui 搭建而成，可作为极简通用型社区的页面支撑。
+          <p th:text="${activity.getDesc()}">
+            <!--该模版由 layui官方社区（<a href="http://fly.layui.com/" target="_blank">fly.layui.com</a>）倾情提供，只为表明我们对 layui 执着的信念、以及对未来持续加强的承诺。该模版基于 layui 搭建而成，可作为极简通用型社区的页面支撑。-->
+            暂时没有详细描述。请联系管理员！
           </p>
-          <p>更新日志：</p>
+          <div>
+          <i class="iconfont" title="报名截止日期">&#xe60f;</i>截止到：
+          <span th:text="${activity.getEnd_time()}"></span>
+          </div>
+          <button id="applyActivity" class="layui-btn layui-btn-normal" th:text="${isApply}">点击报名!</button>
+
+          <!--<p>更新日志：</p>
 <pre>
 # v3.0 2017-11-30
 * 采用 layui 2.2.3 作为 UI 支撑
@@ -167,11 +175,11 @@
           封面<hr>
           <p>
             <img src="../../res/images/fly.jpg" alt="Fly社区">
-          </p>
+          </p>-->
         </div>
       </div>
 
-      <div class="fly-panel detail-box" id="flyReply">
+      <!--<div class="fly-panel detail-box" id="flyReply">
         <fieldset class="layui-elem-field layui-field-title" style="text-align: center;">
           <legend>回帖</legend>
         </fieldset>
@@ -191,11 +199,11 @@
                 </a>
                 
                 <span>(楼主)</span>
-                <!--
+                &lt;!&ndash;
                 <span style="color:#5FB878">(管理员)</span>
                 <span style="color:#FF9E3F">（社区之光）</span>
                 <span style="color:#999">（该号已被封）</span>
-                -->
+                &ndash;&gt;
               </div>
 
               <div class="detail-hits">
@@ -219,7 +227,7 @@
               <div class="jieda-admin">
                 <span type="edit">编辑</span>
                 <span type="del">删除</span>
-                <!-- <span class="jieda-accept" type="accept">采纳</span> -->
+                &lt;!&ndash; <span class="jieda-accept" type="accept">采纳</span> &ndash;&gt;
               </div>
             </div>
           </li>
@@ -259,8 +267,8 @@
             </div>
           </li>
           
-          <!-- 无数据时 -->
-          <!-- <li class="fly-none">消灭零回复</li> -->
+          &lt;!&ndash; 无数据时 &ndash;&gt;
+          &lt;!&ndash; <li class="fly-none">消灭零回复</li> &ndash;&gt;
         </ul>
         
         <div class="layui-form layui-form-pane">
@@ -277,7 +285,7 @@
             </div>
           </form>
         </div>
-      </div>
+      </div>-->
     </div>
     <div class="layui-col-md4">
       <dl class="fly-panel fly-list-one">
@@ -356,6 +364,24 @@
   </p>
 </div>
 
+<!--<h3>{{ d.title }}</h3>
+<ul>
+  {{#  layui.each(d.list, function(index, item){ }}
+  <li>
+    <span>{{ item.modname }}</span>
+    <span>{{ item.alias }}：</span>
+    <span>{{ item.site || '' }}</span>
+  </li>
+  {{#  }); }}
+
+  {{#  if(d.list.length === 0){ }}
+  无数据
+  {{#  } }}
+</ul>-->
+<form id="center">
+    <input type="hidden" name="act_id" th:value="${activity.getAct_id()}">
+</form>
+
 <script src="../../res/layui/layui.js"></script>
 <script>
 layui.cache.page = 'jie';
@@ -382,6 +408,65 @@ layui.config({
   });
   */
 });
+</script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<!--发送ajax请求-->
+<script th:inline="javascript">
+  $(function(){
+    $("#applyActivity").click(
+            function () {
+              //获取当前act_id
+              var act_id = /*[[${activity.getAct_id()}]]*/;
+              //获取报名状态
+              var activityStatus = $("#applyActivity");
+              //访问url
+              var url = "http://localhost:8000/activity/apply";
+              if (activityStatus.html()==="点击报名!"){
+                url = "http://localhost:8000/activity/apply"
+              }else {
+                url = "http://localhost:8000/activity/cancelActivity"
+              }
+              //请求活动报名接口
+              $.post(
+                    url,
+                      {"act_id":act_id},
+                      function (data) {
+                        alert(data);
+                        if (data==="报名成功！"){
+                          $("#applyActivity").html("取消报名!")
+                        }else if (data==="已取消报名！"){
+                          $("#applyActivity").html("点击报名!")
+                        }
+                      }
+              )
+            }
+    )
+    //点击编辑按钮钱发送ajax验证当前用户是否有权限
+    $("#updateActivity").click(
+            function () {
+              //要请求的url
+              var url = "http://localhost:8000/clerk/updateOrAddPage";
+              var act_id = /*[[${activity.getAct_id()}]]*/;
+              $.get(
+                  url,
+                      {"act_id":act_id},
+                      function (data) {
+                        var mess = data.message;
+                        if ("您没有权限！"===mess) {
+                          /*http://localhost:8000/activity/detail/0*/
+                          alert(mess);
+                        }else if ("您尚未登陆！"===mess){
+                          alert(mess);
+                        }else {
+                          $("#center").attr("action","/clerk/updateOrAddPage");
+                          $("#center").submit();
+                        }
+
+                      }
+              )
+            }
+    )
+  })
 </script>
 
 </body>

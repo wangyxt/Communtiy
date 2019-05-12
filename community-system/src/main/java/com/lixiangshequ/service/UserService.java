@@ -1,7 +1,6 @@
 package com.lixiangshequ.service;
 
-import com.lixiangshequ.domain.User;
-import com.lixiangshequ.service.dto.UserDto;
+import com.lixiangshequ.entity.User;
 
 public interface UserService {
 
