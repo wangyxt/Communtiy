@@ -50,4 +50,8 @@ public class PersonInfo implements Serializable {
 
     private Boolean volunteer;
 
+    private String culture;
+
+    private String photo_path;
+
 }

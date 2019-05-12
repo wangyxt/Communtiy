@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface PersonInfoMapper {
 
-    void insertPerson(PersonInfo personInfo);
+    int insertPerson(PersonInfo personInfo);
 
     List selectByName(String name);
 
@@ -20,4 +20,6 @@ public interface PersonInfoMapper {
     PersonInfo update(PersonInfo personInfo);
 
     PersonInfo delete (PersonInfo personInfo);
+
+    List selectAll();
 }

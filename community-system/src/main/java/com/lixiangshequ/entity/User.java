@@ -31,7 +31,7 @@ public class User implements Serializable {
 
     private Timestamp creatTime;
 
-    private PersonInfo person_id;
+    private String certificate_no;
 
     @Override
     public String toString() {
@@ -43,7 +43,7 @@ public class User implements Serializable {
                 ", tel='" + tel + '\'' +
                 ", email='" + email + '\'' +
                 ", creatTime=" + creatTime +
-                ", person_id=" + person_id +
+                ", certificate_no=" + certificate_no +
                 '}';
     }
 }

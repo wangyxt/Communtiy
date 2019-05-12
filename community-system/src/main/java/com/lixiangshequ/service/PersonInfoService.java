@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PersonInfoService {
 
-    void insertPerson(PersonInfo personInfo);
+    int insertPerson(PersonInfo personInfo);
 
     List selectByName(String name);
 
@@ -17,4 +17,6 @@ public interface PersonInfoService {
     PersonInfo update(PersonInfo personInfo);
 
     PersonInfo delete (PersonInfo personInfo);
+
+    List selectAll();
 }

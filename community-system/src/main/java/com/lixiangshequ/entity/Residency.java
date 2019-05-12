@@ -1,6 +1,8 @@
 package com.lixiangshequ.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -8,6 +10,8 @@ import java.io.Serializable;
  * 户籍信息
  */
 @Data
+@Getter
+@Setter
 public class Residency implements Serializable {
 
     private static final long serialVersionUID = 6107197030010606559L;
