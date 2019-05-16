@@ -16,17 +16,6 @@
         <a class="fly-logo" href="/">
             <img src="../../res/images/logo.png" alt="layui">
         </a>
-        <!--<ul class="layui-nav fly-nav layui-hide-xs">
-          <li class="layui-nav-item layui-this">
-            <a href="/"><i class="iconfont icon-jiaoliu"></i>交流</a>
-          </li>
-          <li class="layui-nav-item">
-            <a href="../case/case.html"><i class="iconfont icon-iconmingxinganli"></i>案例</a>
-          </li>
-          <li class="layui-nav-item">
-            <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
-          </li>
-        </ul>-->
 
         <ul class="layui-nav fly-nav-user">
 
@@ -78,7 +67,7 @@
 </div>
 
 <div>
-    <table class="layui-hide" id="test" lay-filter="test"></table>
+    <table class="layui-hide" id="test" lay-filter="test" th:name="${ratify}"></table>
 
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container">
@@ -93,14 +82,6 @@
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
 </div>
-<!--<div class="fly-footer">
-    <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
-    <p>
-        <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
-        <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
-        <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
-    </p>
-</div>-->
 
 <script src="../../res/layui/layui.js"></script>
 <script>
@@ -122,14 +103,20 @@
 
 <script>
     layui.use('table', function(){
+        $ = layui.jquery;
         var table = layui.table;
-
+        var url = "/clerk/selectAllSpecial";
+        var name = $('#test').attr('name');
+        if ("toAuditSpecial"===name){
+            url = "/admin/selectAllNotPass";
+        }
         table.render({
             elem: '#test'
-            ,url:'/clerk/selectAllSpecial'
+            ,url: url
             ,toolbar: '#toolbarDemo'
             ,title: '用户数据表'
-            ,cols: [[
+            ,cols: [
+                [
                 {type: 'checkbox', fixed: 'left'}
                 ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
                 ,{field:'name', title:'姓名', width:120, edit: 'text'}
@@ -143,7 +130,8 @@
                 ,{field:'status', title:'办理状态', width:120}
                 ,{field:'bak', title:'户口类别', width:120}
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
-            ]]
+                ]
+            ]
             ,page: true
         });
 
@@ -170,12 +158,13 @@
             var data = obj.data;
             //console.log(obj)
             if(obj.event === 'del'){
-                layer.confirm('真的删除行么', function(index){
+                layer.confirm('真的删除行么', function(){
                     obj.del();
-                    layer.close(index);
+                    location.href = "http://localhost:8000/clerk/deleteSpecial?id="+data.id;
                 });
             } else if(obj.event === 'edit'){
-                layer.prompt({
+                location.href = "http://localhost:8000/clerk/findUpdateSpecialById?id="+data.id;
+                /*layer.prompt({
                     formType: 2
                     ,value: data.email
                 }, function(value, index){
@@ -184,7 +173,7 @@
                     });
                     alert(index)
                     layer.close(index);
-                });
+                });*/
             }
         });
     });

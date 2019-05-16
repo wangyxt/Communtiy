@@ -2,6 +2,7 @@ package com.lixiangshequ.repository;
 
 import com.lixiangshequ.entity.SpecialCare;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,5 +22,7 @@ public interface SpecialCareMapper {
 
     int updateByPrimaryKey(SpecialCare record);
 
-    List selectAll();
+    List selectAll(@Param("begin") int begin, @Param("end") int end);
+
+    List selectAllNotPass();
 }

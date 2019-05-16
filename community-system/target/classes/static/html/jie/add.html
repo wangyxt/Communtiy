@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>发表问题 编辑问题 公用</title>
+  <title>编辑活动</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="fly,layui,前端社区">
   <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
@@ -48,9 +48,9 @@
           <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
-          <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
-          <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+          <dd><a href="../user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+          <dd><a href="../user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+          <dd><a href="../user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
           <hr style="margin: 5px 0;">
           <dd><a href="/auth/logout/" style="text-align: center;">退出</a></dd>
         </dl>
@@ -62,26 +62,26 @@
 <div class="layui-container fly-marginTop">
   <div class="fly-panel" pad20 style="padding-top: 5px;">
     <!--<div class="fly-none">没有权限</div>-->
-    <div class="layui-form layui-form-pane">
+    <div class="layui-form layui-form-pane" id="show2">
       <div class="layui-tab layui-tab-brief" lay-filter="user">
         <ul class="layui-tab-title">
           <li class="layui-this">发表新帖<!-- 编辑帖子 --></li>
         </ul>
         <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
           <div class="layui-tab-item layui-show">
-            <form action="" method="post">
+            <form action="/clerk/insertActivity" method="post" id="form">
               <div class="layui-row layui-col-space15 layui-form-item">
                 <div class="layui-col-md3">
-                  <label class="layui-form-label">所在专栏</label>
+                  <label class="layui-form-label">活动类型</label>
                   <div class="layui-input-block">
-                    <select lay-verify="required" name="class" lay-filter="column"> 
-                      <option></option> 
-                      <option value="0">提问</option> 
-                      <option value="99">分享</option> 
-                      <option value="100">讨论</option> 
-                      <option value="101">建议</option> 
-                      <option value="168">公告</option> 
-                      <option value="169">动态</option> 
+                    <select lay-verify="required" lay-filter="column" name="type">
+                      <option th:value="${activity.getType()}" th:text="${activity.getType()}"></option>
+                      <option value="逛商场">逛商场</option>
+                      <option value="看电影">看电影</option>
+                      <option value="棋牌">棋牌</option>
+                      <option value="超市活动">超市活动</option>
+                      <option value="广场舞">广场舞</option>
+                      <option value="网游">网游</option>
                     </select>
                   </div>
                 </div>
@@ -122,7 +122,7 @@
               </div>
               <div class="layui-form-item layui-form-text">
                 <div class="layui-input-block">
-                  <textarea id="L_content" name="content" required lay-verify="required" placeholder="详细描述" class="layui-textarea fly-editor" style="height: 260px;"></textarea>
+                  <textarea id="L_content" name="detail" th:value="${activity.detail}" required lay-verify="required" placeholder="详细描述" class="layui-textarea fly-editor" style="height: 260px;"></textarea>
                 </div>
               </div>
               <div class="layui-form-item">
@@ -141,16 +141,41 @@
                 </div>
               </div>
               <div class="layui-form-item">
-                <label for="L_vercode" class="layui-form-label">人类验证</label>
-                <div class="layui-input-inline">
-                  <input type="text" id="L_vercode" name="vercode" required lay-verify="required" placeholder="请回答后面的问题" autocomplete="off" class="layui-input">
+                <!--<div class="layui-inline">
+                  <label class="layui-form-label">开始日期</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                  </div>
+                </div>-->
+                <!--<div class="layui-inline">
+                  <label class="layui-form-label">结束日期</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="end_time" id="end_time" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                  </div>
+                </div>-->
+                <div class="layui-inline">
+                  <label class="layui-form-label">开始时间</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="start_time" th:value="${activity.getStart_time()}" class="layui-input" id="test5" placeholder="yyyy-MM-dd HH:mm:ss">
+                  </div>
                 </div>
-                <div class="layui-form-mid">
-                  <span style="color: #c00;">1+1=?</span>
+                <div class="layui-inline">
+                  <label class="layui-form-label">日期时间选择器</label>
+                  <div class="layui-input-inline">
+                    <input type="text" class="layui-input" th:value="${activity.getEnd_time()}" name="end_time" id="test6" placeholder="yyyy-MM-dd HH:mm:ss">
+                  </div>
                 </div>
               </div>
+              <!--<div class="layui-form-item">
+                <div class="layui-inline">
+                  <label class="layui-form-label">结束时间</label>
+                  <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="test6" placeholder="yyyy-MM-dd HH:mm:ss">
+                  </div>
+                </div>
+              </div>-->
               <div class="layui-form-item">
-                <button class="layui-btn" lay-filter="*" lay-submit>立即发布</button>
+                <button class="layui-btn" lay-filter="*" id="submit">立即发布</button>
               </div>
             </form>
           </div>
@@ -187,5 +212,36 @@ layui.config({
 }).use('fly');
 </script>
 
+<script>
+  layui.use('laydate', function(){
+    var laydate = layui.laydate;
+
+    //日期时间选择器
+    laydate.render({
+      elem: '#test5'
+      ,type: 'datetime'
+    });
+
+    //日期时间选择器
+    laydate.render({
+      elem: '#test6'
+      ,type: 'datetime'
+    });
+  });
+</script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script th:inline="javascript">
+  $(function () {
+    var act_id = /*[[${activity.getAct_id()}]]*/;
+    if (null!=act_id){
+      $("#form").attr("action","/clerk/updateActivity")
+    }
+    $("#submit").click(
+            function () {
+              $("#form").submit()
+            }
+    )
+  })
+</script>
 </body>
 </html>

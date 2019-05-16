@@ -11,10 +11,22 @@ import java.util.List;
 @Repository
 public interface ActivityMapper {
     /**
-     * 查询所有活动
+     * 查询所有审核通过活动
      * @return
      */
     List selectAll();
+
+    /**
+     * 根据发布人id查询活动
+     * @return
+     */
+    List selectAllByPublishId(int publish_id);
+
+    /**
+     * 查询所有待审核活动
+     * @return
+     */
+    List selectAllToAudit();
 
     /**
      * 根据发布人id查活动
@@ -35,7 +47,7 @@ public interface ActivityMapper {
      * @param activity
      * @return
      */
-    Activity update(Activity activity);
+    int update(Activity activity);
 
     /**
      * 删除活动

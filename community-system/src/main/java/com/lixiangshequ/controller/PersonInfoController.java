@@ -7,23 +7,18 @@ import com.lixiangshequ.service.PersonInfoService;
 import com.lixiangshequ.service.dto.ReturnStatus;
 import com.lixiangshequ.utils.SimpleDateFormat;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AccountException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
@@ -57,9 +52,15 @@ public class PersonInfoController {
         return new ReturnStatus(0,"",list.size(),list);
     }
 
+    /**
+     * 填加居民
+     * @param personInfo
+     * @return
+     */
     @PostMapping("/clerk/insertPerson")
     @ResponseBody
     public ResultMap insertPerson(PersonInfo personInfo){
+        System.out.println(personInfo);
         int i = personInfoService.insertPerson(personInfo);
         if (i>0){
             return resultMap.success().message("添加成功！");
@@ -96,63 +97,75 @@ public class PersonInfoController {
     @ResponseBody
     @PostMapping("clerk/updatePerson")
     public ResultMap updatePerson(PersonInfo personInfo){
-        PersonInfo result = personInfoService.update(personInfo);
-        if (null!=result){
-            return resultMap.success().message(result);
+        System.out.println(personInfo);
+        int result = personInfoService.update(personInfo);
+        if (result>0){
+            return resultMap.success().message("修改成功");
         }
         logger.error("修改用户信息失败");
         return resultMap.fail().message("修改居民信息失败");
     }
 
+    @GetMapping("/clerk/findUpdatePageById")
+    public String findUpdatePageById(int id,Model model){
+        //根据id查找社区居民
+        PersonInfo personInfo = personInfoService.selectById(id);
+        if (null==personInfo){
+            throw new AccountException("未找到此居民");
+        }
+        model.addAttribute("person",personInfo);
+        return "../static/html/person/add";
+    }
+
+    /**
+     * 上传头像
+     * @param file
+     * @param request
+     * @return
+     */
     @ResponseBody
     @PostMapping("/upload/headImg")
-    public Object uploadHeadImg(@RequestParam(value="file",required=false) MultipartFile file, HttpServletRequest request){
+    public Object uploadHeadImg(@RequestParam(value="file") MultipartFile file, HttpServletRequest request){
         /*if (SecurityUtils.getSubject().isAuthenticated() == false) {
             return "redirect:/backEnd/login";
         }*/
         String prefix="";
         String dateStr="";
         //保存上传
-        OutputStream out = null;
-        InputStream fileInput=null;
+        String originalName = file.getOriginalFilename();
+        prefix=originalName.substring(originalName.lastIndexOf(".")+1);
+        dateStr = SimpleDateFormat.formatDate(LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault()));
+        dateStr = dateStr.replace(" ",":");
+        dateStr = dateStr.replace("-",":");
+        dateStr = dateStr.replace(":","");
+        System.out.println(dateStr);
+//                filepath = request.getServletContext().getRealPath("/static/") + "photo/" + dateStr + "." + prefix;
+        String filepath = "D://temp-photo//"+dateStr+"."+prefix;
+//                filepath = filepath.replace("\\", "/");
+        File files=new File(filepath);
+        //打印查看上传路径
+        System.out.println(filepath);
+        if(!files.getParentFile().exists()){
+            files.getParentFile().mkdirs();
+        }
         try{
-            if(file!=null){
-                String originalName = file.getOriginalFilename();
-                prefix=originalName.substring(originalName.lastIndexOf(".")+1);
-                dateStr = SimpleDateFormat.formatDate(LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault()));
-                String filepath = request.getServletContext().getRealPath("/static") + "photo" + dateStr + "." + prefix;
-                filepath = filepath.replace("\\", "/");
-                File files=new File(filepath);
-                //打印查看上传路径
-                System.out.println(filepath);
-                if(!files.getParentFile().exists()){
-                    files.getParentFile().mkdirs();
-                }
                 file.transferTo(files);
-            }
         }catch (Exception e){
-        }finally{
-            try {
-                if(out!=null){
-                    out.close();
-                }
-                if(fileInput!=null){
-                    fileInput.close();
-                }
-            } catch (IOException e) {
                 e.printStackTrace();
-            }
         }
         Map<String,Object> map2=new HashMap<>();
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("msg","");
         map.put("data",map2);
-        map2.put("src","../../../static"+"photo" + dateStr + "." + prefix);
+//        map2.put("src","../../../static/"+"photo/" + dateStr + "." + prefix);
+        map2.put("src","/temp-photo/"+dateStr+"."+prefix);
         return map;
     }
+//    C:\Users\10526\AppData\Local\Temp\tomcat-docbase.4317855923748757971.8000\static\photo
+//    public void getPhotoFileByte()
 
-    @ResponseBody
+    /*@ResponseBody
     @RequestMapping("/upload")
     public Map<String, String> uploadaaa(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws IllegalStateException, IOException{
         //String path = request.getSession().getServletContext().getRealPath("upload");
@@ -177,7 +190,7 @@ public class PersonInfoController {
 
         return map;
 
-    }
+    }*/
 
 
 }

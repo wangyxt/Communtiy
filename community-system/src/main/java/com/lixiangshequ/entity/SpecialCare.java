@@ -1,7 +1,8 @@
 package com.lixiangshequ.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+
 
 public class SpecialCare implements Serializable {
     private static final long serialVersionUID = -1651453275427392109L;

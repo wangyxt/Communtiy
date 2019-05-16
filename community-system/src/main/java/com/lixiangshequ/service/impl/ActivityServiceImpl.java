@@ -15,8 +15,19 @@ public class ActivityServiceImpl implements ActivityService {
     @Autowired
     private ActivityMapper activityMapper;
 
+    @Override
     public List selectAll() {
         return activityMapper.selectAll();
+    }
+
+    @Override
+    public List selectAllByPublishId(int id) {
+        return activityMapper.selectAllByPublishId(id);
+    }
+
+    @Override
+    public List selectAllToAudit() {
+        return activityMapper.selectAllToAudit();
     }
 
     public List selectByPublishId(int id) {
@@ -73,5 +84,10 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public void cancelActivityNum(ActivityList activityList) {
         activityMapper.deleteByPrimaryKey(activityList);
+    }
+
+    @Override
+    public int update(Activity activity) {
+        return activityMapper.update(activity);
     }
 }

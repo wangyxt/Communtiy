@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:file="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>优抚对象编辑页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="fly,layui,前端社区">
+    <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
+    <link rel="stylesheet" href="../../res/layui/css/layui.css">
+    <link rel="stylesheet" href="../../res/css/global.css">
+</head>
+<body>
+
+<div class="fly-header layui-bg-black">
+    <div class="layui-container">
+        <a class="fly-logo" href="/">
+            <img src="../../res/images/logo.png" alt="layui">
+        </a>
+
+        <ul class="layui-nav fly-nav-user">
+
+            <!-- 未登入的状态 -->
+            <li class="layui-nav-item" th:if="${session.user==null}">
+                <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
+            </li>
+            <li class="layui-nav-item" th:if="${session.user==null}">
+                <a href="user/login.html">登入</a>
+            </li>
+            <li class="layui-nav-item" th:if="${session.user==null}">
+                <a href="user/reg.html">注册</a>
+            </li>
+
+            登入后的状态
+            <li class="layui-nav-item" th:unless="${session.user==null}">
+                <a class="fly-nav-avatar" href="javascript:;">
+                    <cite class="layui-hide-xs" th:text="${session.user.getName()}">用户名</cite>
+                    <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
+                    <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
+                    <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+                    <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+                    <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+                    <hr style="margin: 5px 0;">
+                    <dd><a href="/auth/logout/" style="text-align: center;">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="fly-panel fly-column">
+    <div class="layui-container">
+        <ul class="layui-clear">
+            <li class="layui-hide-xs"><a href="/">首页</a></li>
+            <li ><a href="http://localhost:8000/activity/all">活动</a></li>
+            <li><a href="../../html/jie/index.html">公告<span class="layui-badge-dot"></span></a></li>
+            <li><a href="../../html/special/index.html">优抚对象</a></li>
+            <li><a href="../../html/jie/index.html">招聘求职</a></li>
+            <li><a href="../../html/jie/index.html">问题</a></li>
+            <li class="layui-this">
+                <a href="/clerk/getManagementMenu">社区管理</a>
+            </li>
+            <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
+
+            <!-- 用户登入后显示 -->
+            <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li>
+            <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li>
+        </ul>
+
+        <div class="fly-column-right layui-hide-xs">
+            <span class="fly-search"><i class="layui-icon"></i></span>
+            <a href="add.html" class="layui-btn">发表新帖</a>
+        </div>
+        <div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;">
+            <a href="add.html" class="layui-btn">发表新帖</a>
+        </div>
+    </div>
+</div>
+
+<div>
+
+    <form class="layui-form" method="post" id="f" action="/clerk/insertSpecial" th:action="|/clerk/updateSpecial|">
+        <div class="layui-form-item">
+            <label for="name" class="layui-form-label">姓  名</label>
+            <div class="layui-input-inline">
+                <input type="hidden" name="id" th:value="${specialCare.getId()}">
+                <input type="text" id="name" name="name" th:value="${specialCare.getName()}" required lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">真实姓名</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性  别</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="男" th:field="*{specialCare.sex}" title="男" checked="">
+                <input type="radio" name="sex" value="女" th:field="*{specialCare.sex}" title="女">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">证件类别</label>
+            <div class="layui-input-block">
+                <select name="idcardType" lay-filter="aihao">
+                    <option value=""></option>
+                    <option value="0" selected="" th:field="*{specialCare.idcardType}">身份证</option>
+                    <option value="1" th:field="*{specialCare.idcardType}">护照</option>
+                    <option value="2" th:field="*{specialCare.idcardType}">医保卡</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="idcardNumber" class="layui-form-label">证件号</label>
+            <div class="layui-input-inline">
+                <input type="text" id="idcardNumber" th:value="${specialCare.idcardNumber}" name="idcardNumber" required lay-verify="required" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">出生日期</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="birthday" th:value="${specialCare.getBirthday()}" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item" th:if="${session.user.getRole() eq 0}">
+            <label class="layui-form-label">申报状态</label>
+            <div class="layui-input-block">
+                <select name="status" lay-filter="aihao">
+                    <option value=""></option>
+                    <option value="1" th:field="*{specialCare.status}" selected="">审核中</option>
+                    <option value="2" th:field="*{specialCare.status}">审核通过</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">所在街道</label>
+            <div class="layui-input-block">
+                <input type="text" name="street" th:value="${specialCare.street}" lay-verify="title" autocomplete="off" placeholder="请输入街道名" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">居住地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="address" th:value="${specialCare.address}" lay-verify="title" autocomplete="off" placeholder="请输入住址" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">联系电话</label>
+                <div class="layui-input-inline">
+                    <input type="tel" name="mobile" th:value="${specialCare.mobile}" lay-verify="required|phone" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label">个人照片</label>
+            <div class="layui-input-inline uploadHeadImage">
+                <div class="layui-upload-drag" id="headImg">
+                    <i class="layui-icon"></i>
+                    <p>点击上传图片，或将图片拖拽到此处</p>
+                </div>
+            </div>
+            <div class="layui-input-inline" >
+                <div class="layui-upload-list">
+                    &lt;!&ndash;<img style="opacity:0;widh:100%;height:100%" class="layui-upload-img headImage" src="http://t.cn/RCzsdCq" id="demo1" alt="">&ndash;&gt;
+                    <img class="layui-upload-img headImage" src="file///C:/Users/10526/AppData/Local/Temp/static/photo/20190515082332.jpg" alt="个人一寸照片" th:src="${specialCare.photo_path}" id="demo1">
+                </div>&lt;!&ndash;../../res/images/zhangfei.png&ndash;&gt;
+                <p id="demoText"></p>
+                <input type="hidden" name="photo_path" id="photo" th:value="${specialCare.photo_path}" value="">
+            </div>
+        </div>-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">户口所在地</label>
+            <div class="layui-input-inline">
+                <select name="quiz1">
+                    <option value="">请选择省</option>
+                    <option value="浙江" selected="">浙江省</option>
+                    <option value="你的工号">江西省</option>
+                    <option value="你最喜欢的老师">福建省</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="quiz2">
+                    <option value="">请选择市</option>
+                    <option value="杭州">杭州</option>
+                    <option value="宁波" disabled="">宁波</option>
+                    <option value="温州">温州</option>
+                    <option value="温州">台州</option>
+                    <option value="温州">绍兴</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="residency">
+                    <option value="">请选择县/区</option>
+                    <option value="哈尔滨市" th:value="${specialCare.residency}">哈尔滨市</option>
+                    <option value="余杭区" th:value="${specialCare.residency}">余杭区</option>
+                    <option value="拱墅区" th:value="${specialCare.residency}">临安市</option>
+                </select>
+            </div>
+            <div class="layui-form-mid layui-word-aux">此处只是演示联动排版，并未做联动交互</div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" name="bak" class="layui-textarea" th:text="${specialCare.bak}" th:value="${specialCare.bak}"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" id="sb" type="button">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script src="../../res/layui/layui.js"></script>
+<script>
+    layui.cache.page = 'jie';
+    layui.cache.user = {
+        username: '游客'
+        ,uid: -1
+        ,avatar: '../../res/images/avatar/00.jpg'
+        ,experience: 83
+        ,sex: '男'
+    };
+    layui.config({
+        version: "3.0.0"
+        ,base: '../../res/mods/'
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '不得少于5字符';
+                }
+            }
+            ,pass: [
+                /^[\S]{6,12}$/
+                ,'密码必须6到12位，且不能出现空格'
+            ]
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //表单初始赋值
+        form.val('example', {
+            "username": "贤心" // "name": "value"
+            ,"password": "123456"
+            ,"interest": 1
+            ,"like[write]": true //复选框选中状态
+            ,"close": true //开关状态
+            ,"sex": "女"
+            ,"desc": "我爱 layui"
+        })
+
+
+    });
+</script>
+<script type="text/javascript">
+    /*$(function () {
+        $("#demo1").style.opacity
+        style="opacity:0;widh:100%;height:100%"
+    })*/
+
+    layui.use(["jquery", "upload", "form", "layer", "element"], function () {
+        var $ = layui.$,
+            element = layui.element,
+            layer = layui.layer,
+            upload = layui.upload,
+            form = layui.form;
+        //拖拽上传
+        var uploadInst = upload.render({
+            elem: '#headImg'
+            , url: '/upload/headImg'
+            , size: 500
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+                $("#photo").val(res.data.src);
+                alert(res.data.src)
+                //打印后台传回的地址: 把地址放入一个隐藏的input中, 和表单一起提交到后台, 此处略..
+                var src = console.log(res.data.src);
+                /*window.parent.uploadHeadImage(res.data.src);*/
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #8f8f8f;">上传成功!!!</span>');
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+        element.init();
+    });
+</script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+<script th:inline="javascript">
+    $(function () {
+        $("#sb").click(function () {
+            /*var id = null;
+            id = [[${specialCare.getId()}]];
+            var url = "/clerk/insertSpecial";
+            if (null===id){
+                url = "/clerk/insertSpecial";
+            } else {
+                url = "/clerk/updateSpecial";
+            }*/
+            var url = $("#f").attr("action");
+            $.ajax({
+                type : 'POST',
+                datatype : 'text',
+                url : url,
+                data : $("#f").serializeArray(),
+                contentType : "application/x-www-form-urlencoded",
+                success : function (data) {
+                    alert(data.message);
+                    location.href="/clerk/getManagementMenu"
+                }
+            });
+        });
+    })
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:javascript="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>帐号设置</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="fly,layui,前端社区">
+    <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
+    <link rel="stylesheet" href="../../res/layui/css/layui.css">
+    <link rel="stylesheet" href="../../res/css/global.css">
+</head>
+<body>
+
+<div class="fly-header layui-bg-black">
+    <div class="layui-container">
+        <a class="fly-logo" href="/">
+            <img src="../../res/images/logo.png" alt="layui">
+        </a>
+
+        <ul class="layui-nav fly-nav-user">
+            <!--登入后的状态-->
+            <li class="layui-nav-item">
+                <a class="fly-nav-avatar" href="javascript:;">
+                    <cite class="layui-hide-xs" th:text="${session.user.getName()}">用户名</cite>
+                    <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
+                    <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
+                    <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="../user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+                    <dd><a href="../user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+                    <dd><a href="../user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+                    <hr style="margin: 5px 0;">
+                    <dd><a href="../../auth/logout/" style="text-align: center;">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="layui-container fly-marginTop fly-user-main">
+    <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
+        <li class="layui-nav-item">
+            <a href="../../html/index.html">
+                <i class="layui-icon">&#xe609;</i>
+                社区主页
+            </a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;"><i class="layui-icon">&#xe611;</i>活动管理</a>
+            <dl class="layui-nav-child">
+                <dd><a id="0" class="activity" name="/activity/all" href="javascript:;">查看活动</a></dd>
+                <dd><a id="1" class="activity" name="/activity/selectAllByPublishId" href="javascript:;">查看我发布的活动</a></dd>
+                <dd><a id="2" class="activity" name="/activity/selectAllToAudit" href="javascript:;">查看待审核活动</a></dd>
+                <dd><a href="../../html/jie/add.html">添加活动</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;"><i class="layui-icon">&#xe612;</i>居民信息管理</a>
+            <dl class="layui-nav-child">
+                <dd class="">
+                    <a href="../../html/person/index.html">管理社区居民</a>
+                </dd>
+                <dd class="">
+                    <a href="../../html/person/add.html">添加社区居民</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;"><i class="layui-icon">&#xe611;</i>户籍管理</a>
+            <dl class="layui-nav-child">
+                <dd class="">
+                    <a href="../../html/person/index.html">管理户籍</a>
+                </dd>
+                <dd class="">
+                    <a href="../../html/person/add.html">添加户籍</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">
+                <i class="layui-icon">&#xe612;</i>
+                优抚对象管理
+            </a>
+            <dl class="layui-nav-child">
+                <dd class="">
+                    <a href="../../html/special/index.html">管理优抚对象</a>
+                </dd>
+                <dd class="">
+                    <a href="../../html/special/edit.html">新增优抚对象</a>
+                </dd>
+                <dd class="" th:if="${session.user.getRole() eq 0}">
+                    <a href="/admin/toAuditSpecial">查看待审批对象</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">
+                <i class="layui-icon">&#xe612;</i>
+                志愿者管理
+            </a>
+            <dl class="layui-nav-child">
+                <dd class="">
+                    <a href="../../html/person/index.html">管理志愿者</a>
+                </dd>
+                <dd class="">
+                    <a href="../../html/person/add.html">新增志愿者</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">
+                <i class="layui-icon">&#xe612;</i>
+                停车场管理
+            </a>
+            <dl class="layui-nav-child">
+                <dd class="">
+                    <a href="../../html/person/index.html">现有停车位</a>
+                </dd>
+                <dd class="">
+                    <a href="../../html/person/add.html">查询停车位</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">
+                <i class="layui-icon">&#xe611;</i>
+                就业管理
+            </a>
+            <dl class="layui-nav-child">
+                <dd class="">
+                    <a href="../../html/person/index.html">招聘信息管理</a>
+                </dd>
+                <dd class="">
+                    <a href="../../html/person/add.html">添加招聘信息</a>
+                </dd>
+            </dl>
+        </li>>
+        <<li class="layui-nav-item">
+            <a href="javascript:;">
+                <i class="layui-icon">&#xe612;</i>
+                问题管理
+            </a>
+            <dl class="layui-nav-child">
+                <dd class="">
+                    <a href="../../html/person/index.html">查看问题</a>
+                </dd>
+                <dd class="">
+                    <a href="../../html/person/add.html">查看未完结问题</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">
+                <i class="layui-icon">&#xe612;</i>
+                用户管理
+            </a>
+            <dl class="layui-nav-child">
+                <dd class="">
+                    <a href="../../html/person/index.html">查看用户</a>
+                </dd>
+                <dd class="">
+                    <a href="../../html/person/add.html">授权用户</a>
+                </dd>
+            </dl>
+        </li>
+    </ul>
+
+    <div class="site-tree-mobile layui-hide">
+        <i class="layui-icon">&#xe602;</i>
+    </div>
+    <div class="site-mobile-shade"></div>
+
+    <div class="site-tree-mobile layui-hide">
+        <i class="layui-icon">&#xe602;</i>
+    </div>
+    <div class="site-mobile-shade"></div>
+
+    <!--右侧展示栏-->
+    <div class="fly-panel fly-panel-user" pad20>
+        <div id="show">
+            <!--<iframe src=""></iframe>-->
+            <img src="../../res/images/management.png" alt="主页图片" width="910" height="610">
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="fly-footer">
+    <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
+    <p>
+        <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
+        <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
+        <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+    </p>
+</div>
+
+<script src="../../res/layui/layui.js"></script>
+<script>
+    layui.cache.page = '';
+    layui.cache.user = {
+        username: '游客'
+        ,uid: -1
+        ,avatar: '../res/images/avatar/00.jpg'
+        ,experience: 83
+        ,sex: '男'
+    };
+    layui.config({
+        version: "3.0.0"
+        ,base: '../res/mods/' //这里实际使用时，建议改成绝对路径
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script th:inline="javascript">
+    $(function () {
+        $(".activity").click(
+            function () {
+                //要请求的url
+                /*var url =  "http://localhost:8000/activity/all";*/
+                var url = $(this).attr("name");
+                var id = $(this).attr("id");
+                if (id==1){
+                    var publish_id = /*[[${session.user.getUid()}]]*/;
+                    $.get(
+                        url,
+                        {"id":publish_id},
+                        function (data) {
+                            $("#show").html($(data).find("#show1").html())
+                        }
+                    )
+                } else {
+                    $.get(
+                        url,
+                        {},
+                        function (data) {
+                            $("#show").html($(data).find("#show1").html())
+                        }
+                    )
+                }
+            }
+        )
+
+    })
+</script>
+
+</body>
+</html>

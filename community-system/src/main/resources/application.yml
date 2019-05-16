@@ -21,8 +21,12 @@ spring:
 
   devtools:
     restart:
+      enabled: true  #设置开启热部署
+    freemarker:
+      cache: false    #页面不加载缓存，修改即时生效
+  servlet:
+    multipart:
       enabled: true
-      additional-paths: src/main/java
 mybatis:
   #配置mapper.xml所在的路径
   mapper-locations: classpath:mapper/*Mapper.xml
@@ -31,9 +35,15 @@ mybatis:
 
 spring.output.ansi.enabled: always
 
-logging.level.com:
-  springframework:
-    security: info
+logging.level:
   lixiangshequ:
     repository:
-      UserMapper: debug
+      UserMapper: DEBUG
+  org:
+    springframework:
+      security: info
+      boot:
+        autoconfigure: ERROR
+
+debug: true
+

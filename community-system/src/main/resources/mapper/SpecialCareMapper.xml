@@ -20,8 +20,13 @@
     status, bak
   </sql>
   <select id="selectAll" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List" /> from special_care
+    select <include refid="Base_Column_List" /> from special_care where status = 2 limit ${begin},${end}
   </select>
+
+  <select id="selectAllNotPass" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from special_care where status = 1
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

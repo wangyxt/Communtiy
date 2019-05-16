@@ -36,7 +36,7 @@ public class PersonInfoServiceImpl implements PersonInfoService {
     }
 
     @Override
-    public PersonInfo update(PersonInfo personInfo) {
+    public int update(PersonInfo personInfo) {
         return personInfoMapper.update(personInfo);
     }
 

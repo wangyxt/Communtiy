@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>基于 layui 的极简社区页面模版</title>
+  <title>理想社区主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="fly,layui,前端社区">
   <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
@@ -26,10 +26,10 @@
       
       <!-- 未登入的状态 -->
       <li class="layui-nav-item" th:if="${session.user==null}">
-        <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
+        <a class="iconfont icon-touxiang layui-hide-xs" href="/auth/"></a>
       </li>
       <li class="layui-nav-item" th:if="${session.user==null}">
-        <a href="user/login.html">登入</a>
+        <a href="/auth/">登入</a>
       </li>
       <li class="layui-nav-item" th:if="${session.user==null}">
         <a href="user/reg.html">注册</a>
@@ -67,15 +67,11 @@
       <li class="layui-hide-xs layui-this"><a href="/">首页</a></li> 
       <li><a href="http://localhost:8000/activity/all">活动</a></li>
       <li><a href="../html/jie/index.html">公告<span class="layui-badge-dot"></span></a></li>
-      <li><a href="../html/jie/index.html">优抚对象</a></li>
+      <!--<li><a href="../html/jie/index.html">优抚对象</a></li>-->
       <li><a href="../html/jie/index.html">招聘求职</a></li>
       <li><a href="../html/jie/index.html">问题</a></li>
-      <li>
-        <select name="居民档案">
-          <option name="selectAll"><a href="../html/person/index.html">社区居民</a></option>
-          <option name="">添加居民</option>
-          <option name="">搜素</option>
-        </select>
+      <li th:if="${session.user ne null}">
+        <a href="/clerk/getManagementMenu" th:if="${session.user.getRole() lt 2}">社区管理</a>
       </li>
       <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li> 
       

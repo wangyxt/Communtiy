@@ -1,11 +1,15 @@
 package com.lixiangshequ.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.sql.Date;
 
 @Data
+@Getter
+@Setter
 public class PersonInfo implements Serializable {
 
     private static final long serialVersionUID = 5438146329214336495L;
@@ -54,4 +58,31 @@ public class PersonInfo implements Serializable {
 
     private String photo_path;
 
+    @Override
+    public String toString() {
+        return "PersonInfo{" +
+                "person_id=" + person_id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", certificate='" + certificate + '\'' +
+                ", certificate_no='" + certificate_no + '\'' +
+                ", residency_id=" + residency_id +
+                ", relation='" + relation + '\'' +
+                ", marriage=" + marriage +
+                ", birthday=" + birthday +
+                ", ethnic='" + ethnic + '\'' +
+                ", health='" + health + '\'' +
+                ", soldier_status='" + soldier_status + '\'' +
+                ", career='" + career + '\'' +
+                ", religion='" + religion + '\'' +
+                ", residency_type='" + residency_type + '\'' +
+                ", address='" + address + '\'' +
+                ", connection_phone='" + connection_phone + '\'' +
+                ", email='" + email + '\'' +
+                ", volunteer=" + volunteer +
+                ", culture='" + culture + '\'' +
+                ", photo_path='" + photo_path + '\'' +
+                '}';
+    }
 }

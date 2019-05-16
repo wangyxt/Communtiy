@@ -77,7 +77,9 @@
         <li><a href="../../html/jie/index.html">优抚对象</a></li>
         <li><a href="../../html/jie/index.html">招聘求职</a></li>
         <li><a href="../../html/jie/index.html">问题</a></li>
-        <li><a href="../../html/jie/index.html">动态</a></li>
+        <li>
+          <a href="/clerk/getManagementMenu" th:if="${session.user.getRole()<2}">社区管理</a>
+        </li>
         <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
 
         <!-- 用户登入后显示 -->
@@ -100,7 +102,7 @@
   <div class="layui-row layui-col-space15">
     <div class="layui-col-md8 content detail">
       <div class="fly-panel detail-box">
-        <h1 th:text="${activity.getDesc()}"></h1>
+        <h1 th:text="${activity.getDetail()}"></h1>
         <div class="fly-detail-info">
           <!-- <span class="layui-badge">审核中</span> -->
           <span class="layui-badge layui-bg-green fly-detail-column">动态</span>
@@ -148,7 +150,7 @@
           </div>
         </div>
         <div class="detail-body photos">
-          <p th:text="${activity.getDesc()}">
+          <p th:text="${activity.getDetail()}">
             <!--该模版由 layui官方社区（<a href="http://fly.layui.com/" target="_blank">fly.layui.com</a>）倾情提供，只为表明我们对 layui 执着的信念、以及对未来持续加强的承诺。该模版基于 layui 搭建而成，可作为极简通用型社区的页面支撑。-->
             暂时没有详细描述。请联系管理员！
           </p>

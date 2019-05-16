@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
@@ -71,12 +70,14 @@
   <div class="layui-container">
     <ul class="layui-clear">
       <li class="layui-hide-xs"><a href="/">首页</a></li>
-      <li class="layui-this"><a href="http://localhost:8000/activity/all">活动</a></li>
+      <li class="layui-this"><a href="/activity/all">活动</a></li>
       <li><a href="../../html/jie/index.html">公告<span class="layui-badge-dot"></span></a></li>
       <li><a href="../../html/jie/index.html">优抚对象</a></li>
       <li><a href="../../html/jie/index.html">招聘求职</a></li>
       <li><a href="../../html/jie/index.html">问题</a></li>
-      <li><a href="../../html/jie/index.html">动态</a></li>
+      <li th:if="${session.user ne null}">
+        <a href="/clerk/getManagementMenu" th:if="${session.user.getRole()lt 2}">社区管理</a>
+      </li>
       <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
 
       <!-- 用户登入后显示 -->
@@ -97,7 +98,7 @@
 <div class="layui-container">
   <div class="layui-row layui-col-space15">
     <div class="layui-col-md8">
-      <div class="fly-panel" style="margin-bottom: 0;">
+      <div id="show1" class="fly-panel" style="margin-bottom: 0;">
         
         <div class="fly-panel-title fly-filter">
           <a href="" class="layui-this">综合</a>
@@ -121,17 +122,17 @@
             </a>
             <h2>
               <a class="layui-badge">活动</a>
-              <a th:href="@{detail/}+${activity.act_id}" th:text="${activity.desc}">活动描述</a>
+              <a th:href="@{http://localhost:8000/activity/detail/}+${activity.act_id}" th:text="${activity.getDetail()}">活动描述</a>
             </h2>
             <div class="fly-list-info">
-              <a href="../user/home.html" link th:text="${activity.publish_id.name}">
+              <a href="../user/home.html" link th:text="${activity.getPublish_id().getName()}">
                 <cite>发布人</cite>
                 <!--
                 <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
                 <i class="layui-badge fly-badge-vip">VIP3</i>
                 -->
               </a>
-              <span th:text="${activity.start_time}">活动开始时间</span>
+              <span th:text="${activity.getStart_time()}">活动开始时间</span>
 
               <span class="fly-list-kiss layui-hide-xs" title="已报名"><i class="iconfont icon-kiss"></i> 60</span>
               <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
@@ -258,42 +259,3 @@ layui.config({
 
 </body>
 </html>
-
-<table class="layui-hide" id="test" lay-filter="test"></table>
-<script>
-  layui.use('table', function(){
-    var table = layui.table;
-
-    table.render({
-      elem: '#test'
-      ,url:'/clerk/getAllPerson'
-      ,toolbar: true
-      ,title: '用户数据表'
-      ,totalRow: true
-      ,cols: [[
-        {field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计行'}
-        ,{field:'username', title:'用户名', width:120, edit: 'text'}
-        ,{field:'email', title:'邮箱', width:150, edit: 'text'}
-        ,{field:'experience', title:'积分', width:80, sort: true, totalRow: true}
-        ,{field:'sex', title:'性别', width:80, edit: 'text', sort: true}
-        ,{field:'logins', title:'登入次数', width:100, sort: true, totalRow: true}
-        ,{field:'sign', title:'签名'}
-        ,{field:'city', title:'城市', width:100}
-        ,{field:'ip', title:'IP', width:120}
-        ,{field:'joinTime', title:'加入时间', width:120}
-      ]]
-      ,page: true
-      ,response: {
-        statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
-      }
-      ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据
-        return {
-          "code": res.status, //解析接口状态
-          "msg": res.message, //解析提示文本
-          "count": res.total, //解析数据长度
-          "data": res.rows.item //解析数据列表
-        };
-      }
-    });
-  });
-</script>

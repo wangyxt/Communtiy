@@ -14,7 +14,7 @@ public interface PersonInfoService {
 
     PersonInfo selectByCard(String card);
 
-    PersonInfo update(PersonInfo personInfo);
+    int update(PersonInfo personInfo);
 
     PersonInfo delete (PersonInfo personInfo);
 

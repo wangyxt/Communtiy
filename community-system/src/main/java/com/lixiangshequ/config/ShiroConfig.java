@@ -64,7 +64,7 @@ public class ShiroConfig {
         return new CustomRealm();
     }
 
-    @Bean
+    /*@Bean
     public static LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
     }
@@ -72,6 +72,6 @@ public class ShiroConfig {
     @Bean
     public static DefaultAdvisorAutoProxyCreator getDefaultAdvisorAutoProxyCreator(){
         return new DefaultAdvisorAutoProxyCreator();
-    }
+    }*/
 
 }

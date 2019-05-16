@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Controller {
     @RequestMapping("/")
     public String index(){
-        return "../static/html/user/login";
+        return "../static/html/index";
+    }
+
+    @RequestMapping("/clerk/getManagementMenu")
+    public String managementMenu(){
+        return "../static/html/management/index";
     }
 }
