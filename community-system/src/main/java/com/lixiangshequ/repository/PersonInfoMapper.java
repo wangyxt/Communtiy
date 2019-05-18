@@ -22,4 +22,6 @@ public interface PersonInfoMapper {
     PersonInfo delete (PersonInfo personInfo);
 
     List selectAll();
+
+    List selectAllVolunteer();
 }

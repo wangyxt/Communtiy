@@ -45,8 +45,16 @@ public class PersonInfoController {
     @ResponseBody
     @RequestMapping("/clerk/getAllPerson")
     public ReturnStatus getAllPerson(Model model){
-        System.out.println("访问成功");
         List list = personInfoService.selectAll();
+        model.addAttribute("persons",list);
+        /*return "../static/html/person/index";*/
+        return new ReturnStatus(0,"",list.size(),list);
+    }
+
+    @ResponseBody
+    @RequestMapping("/clerk/getAllVolunteer")
+    public ReturnStatus getAllVolunteer(Model model){
+        List list = personInfoService.selectAllVolunteer();
         model.addAttribute("persons",list);
         /*return "../static/html/person/index";*/
         return new ReturnStatus(0,"",list.size(),list);

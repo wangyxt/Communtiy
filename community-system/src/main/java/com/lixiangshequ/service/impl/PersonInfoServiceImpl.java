@@ -49,4 +49,9 @@ public class PersonInfoServiceImpl implements PersonInfoService {
     public List selectAll() {
         return personInfoMapper.selectAll();
     }
+
+    @Override
+    public List selectAllVolunteer() {
+        return personInfoMapper.selectAllVolunteer();
+    }
 }

@@ -19,4 +19,6 @@ public interface PersonInfoService {
     PersonInfo delete (PersonInfo personInfo);
 
     List selectAll();
+
+    List selectAllVolunteer();
 }

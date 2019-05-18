@@ -5,6 +5,10 @@
         select * from person_info
     </select>
 
+    <select id="selectAllVolunteer" resultMap="person">
+        select * from person_info where volunteer = ture
+    </select>
+
     <select id="selectByCard" resultMap="person">
         select * from person_info where certificate_no = #{certificate_no}
     </select>
