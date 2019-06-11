@@ -28,9 +28,9 @@
                     <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="../user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
-                    <dd><a href="../user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
-                    <dd><a href="../user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+                    <dd><a href="/auth/set"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+                    <dd><a href="../html/user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+                    <dd><a href="../html/user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
                     <hr style="margin: 5px 0;">
                     <dd><a href="../../auth/logout/" style="text-align: center;">退出</a></dd>
                 </dl>
@@ -52,7 +52,7 @@
             <dl class="layui-nav-child">
                 <dd><a id="0" class="activity" name="/activity/all" href="javascript:;">查看活动</a></dd>
                 <dd><a id="1" class="activity" name="/activity/selectAllByPublishId" href="javascript:;">查看我发布的活动</a></dd>
-                <dd><a id="2" class="activity" name="/activity/selectAllToAudit" href="javascript:;">查看待审核活动</a></dd>
+                <dd th:if="${session.user.getRole() eq 0}"><a id="2" class="activity" name="/activity/selectAllToAudit" href="javascript:;">查看待审核活动</a></dd>
                 <dd><a href="../../html/jie/add.html">添加活动</a></dd>
             </dl>
         </li>
@@ -68,13 +68,16 @@
             </dl>
         </li>
         <li class="layui-nav-item">
-            <a href="javascript:;"><i class="layui-icon">&#xe611;</i>户籍管理</a>
+            <a href="javascript:;"><i class="layui-icon">&#xe611;</i>社区公告管理</a>
             <dl class="layui-nav-child">
                 <dd class="">
-                    <a href="../../html/person/index.html">管理户籍</a>
+                    <a href="/getAllNoticePage">管理公告</a>
                 </dd>
                 <dd class="">
-                    <a href="../../html/person/add.html">添加户籍</a>
+                    <a href="/clerk/addNoticePage">添加公告</a>
+                </dd>
+                <dd class="" th:if="${session.user.getRole() eq 0}">
+                    <a href="/admin/getWaitNoticePage">查看待审核公告</a>
                 </dd>
             </dl>
         </li>
@@ -102,24 +105,10 @@
             </a>
             <dl class="layui-nav-child">
                 <dd class="">
-                    <a href="../../html/person/index.html">管理志愿者</a>
+                    <a href="../../html/volunteer/index.html">管理志愿者</a>
                 </dd>
                 <dd class="">
-                    <a href="../../html/person/add.html">新增志愿者</a>
-                </dd>
-            </dl>
-        </li>
-        <li class="layui-nav-item">
-            <a href="javascript:;">
-                <i class="layui-icon">&#xe612;</i>
-                停车场管理
-            </a>
-            <dl class="layui-nav-child">
-                <dd class="">
-                    <a href="../../html/person/index.html">现有停车位</a>
-                </dd>
-                <dd class="">
-                    <a href="../../html/person/add.html">查询停车位</a>
+                    <a href="../../html/volunteer/add.html">新增志愿者</a>
                 </dd>
             </dl>
         </li>
@@ -130,10 +119,10 @@
             </a>
             <dl class="layui-nav-child">
                 <dd class="">
-                    <a href="../../html/person/index.html">招聘信息管理</a>
+                    <a href="/normal/getAllRecruit">招聘信息管理</a>
                 </dd>
                 <dd class="">
-                    <a href="../../html/person/add.html">添加招聘信息</a>
+                    <a href="../../html/recruit/add.html">添加招聘信息</a>
                 </dd>
             </dl>
         </li>>
@@ -144,21 +133,21 @@
             </a>
             <dl class="layui-nav-child">
                 <dd class="">
-                    <a href="../../html/person/index.html">查看问题</a>
+                    <a href="/clerk/selectAllProblem">查看所有问题</a>
                 </dd>
                 <dd class="">
-                    <a href="../../html/person/add.html">查看未完结问题</a>
+                    <a href="/clerk/selectAllUntreatedProblem">查看未完结问题</a>
                 </dd>
             </dl>
         </li>
-        <li class="layui-nav-item">
+        <li class="layui-nav-item" th:if="${session.user.getRole() eq 0}">
             <a href="javascript:;">
                 <i class="layui-icon">&#xe612;</i>
                 用户管理
             </a>
             <dl class="layui-nav-child">
                 <dd class="">
-                    <a href="../../html/person/index.html">查看用户</a>
+                    <a href="/auth/list">查看所有用户</a>
                 </dd>
                 <dd class="">
                     <a href="../../html/person/add.html">授权用户</a>

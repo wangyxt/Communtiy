@@ -49,7 +49,10 @@ public class SpecialCareServiceImpl implements SpecialCareService {
     }
 
     @Override
-    public List selectAll(int begin,int end) {
+    public List selectAll(int begin,int end,String...condition) {
+        if (condition.length!=0){
+            return specialCareMapper.selectAllByCondition(begin,end,condition[0]);
+        }
         return specialCareMapper.selectAll(begin,end);
     }
 

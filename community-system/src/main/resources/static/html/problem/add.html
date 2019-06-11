@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>编辑活动</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="fly,layui,前端社区">
+  <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
+  <link rel="stylesheet" href="../../res/layui/css/layui.css">
+  <link rel="stylesheet" href="../../res/css/global.css">
+</head>
+<body>
+
+<div class="fly-header layui-bg-black">
+  <div class="layui-container">
+    <a class="fly-logo" href="/">
+      <img src="../../res/images/logo.png" alt="layui">
+    </a>
+    
+    <ul class="layui-nav fly-nav-user">
+      
+      <!-- 登入后的状态 -->
+      <li class="layui-nav-item" th:unless="${session.user==null}">
+        <a class="fly-nav-avatar" href="javascript:;">
+          <cite class="layui-hide-xs" th:text="${session.user.getName()}">用户名</cite>
+          <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
+          <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
+          <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="../user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+          <dd><a href="../user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+          <dd><a href="../user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+          <hr style="margin: 5px 0;">
+          <dd><a href="/auth/logout/" style="text-align: center;">退出</a></dd>
+        </dl>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="layui-container fly-marginTop">
+  <div class="fly-panel" pad20 style="padding-top: 5px;">
+    <!--<div class="fly-none">没有权限</div>-->
+    <div class="layui-form layui-form-pane" id="show2">
+      <div class="layui-tab layui-tab-brief" lay-filter="user">
+        <ul class="layui-tab-title">
+          <li class="layui-this">发表新帖<!-- 编辑帖子 --></li>
+        </ul>
+        <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+          <div class="layui-tab-item layui-show">
+            <form action="/clerk/insertActivity" method="post" id="form">
+              <div class="layui-row layui-col-space15 layui-form-item">
+                <div class="layui-col-md3">
+                  <label class="layui-form-label">活动类型</label>
+                  <div class="layui-input-block">
+                    <select lay-verify="required" lay-filter="column" name="type">
+                      <option th:value="${problem.getType()}" th:text="${problem.getType()}"></option>
+                      <option value="1">逛商场</option>
+                      <option value="2">看电影</option>
+                      <option value="3">棋牌</option>
+                      <option value="4">超市活动</option>
+                      <option value="5">广场舞</option>
+                      <option value="6">网游</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="layui-col-md9">
+                  <label for="L_title" class="layui-form-label">标题</label>
+                  <div class="layui-input-block">
+                    <input type="text" id="L_title" name="title" th:value="${problem.getTitle()}" required lay-verify="required" autocomplete="off" class="layui-input">
+                    <!-- <input type="hidden" name="id" value="{{d.edit.id}}"> -->
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item layui-form-text">
+                <div class="layui-input-block">
+                  <textarea id="L_content" name="des" th:value="${problem.getDes()}" required lay-verify="required" placeholder="详细描述" class="layui-textarea fly-editor" style="height: 260px;"></textarea>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <div class="layui-inline">
+                  <label class="layui-form-label">悬赏飞吻</label>
+                  <div class="layui-input-inline" style="width: 190px;">
+                    <select name="status" th:value="${problem.getStatus()}" th:text="${problem.getStatus()}">
+                      <option value="0">待解决</option>
+                      <option value="1">已解决</option>
+                    </select>
+                  </div>
+                  <div class="layui-form-mid layui-word-aux">发表后无法更改飞吻</div>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <div class="layui-inline">
+                  <label class="layui-form-label">日期时间选择器</label>
+                  <div class="layui-input-inline">
+                    <input type="text" class="layui-input" th:value="${problem.getTime()}" name="time" id="test6" placeholder="yyyy-MM-dd HH:mm:ss">
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item" th:if="${session.user!=null}">
+                <textarea th:if="${session.user.getRole() lt 2}" placeholder="留言回复" th:text="${problem.getBak()}" name="bak" style="height: 260px;"></textarea>
+              </div>
+
+              <div class="layui-form-item">
+                <button class="layui-btn" lay-filter="*" id="submit">立即发布</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fly-footer">
+  <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
+  <p>
+    <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
+    <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
+    <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+  </p>
+</div>
+
+<script src="../../res/layui/layui.js"></script>
+<script>
+layui.cache.page = 'jie';
+layui.cache.user = {
+  username: '游客'
+  ,uid: -1
+  ,avatar: '../../res/images/avatar/00.jpg'
+  ,experience: 83
+  ,sex: '男'
+};
+layui.config({
+  version: "3.0.0"
+  ,base: '../../res/mods/'
+}).extend({
+  fly: 'index'
+}).use('fly');
+</script>
+
+<script>
+  layui.use('laydate', function(){
+    var laydate = layui.laydate;
+
+    //日期时间选择器
+    laydate.render({
+      elem: '#test5'
+      ,type: 'datetime'
+    });
+
+    //日期时间选择器
+    laydate.render({
+      elem: '#test6'
+      ,type: 'datetime'
+    });
+  });
+</script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script th:inline="javascript">
+  $(function () {
+    var problemId = /*[[${problem.getProblemId()}]]*/;
+    if (null!=problemId){
+      $("#form").attr("action","/clerk/updateProblem")
+    }
+    $("#submit").click(
+            function () {
+              $("#form").submit()
+            }
+    )
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Fly Template v3.0，基于 layui 的极简社区页面模版</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="fly,layui,前端社区">
+  <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
+  <link rel="stylesheet" href="../../res/layui/css/layui.css">
+  <link rel="stylesheet" href="../../res/css/global.css">
+</head>
+<body>
+
+<div class="fly-header layui-bg-black">
+  <div class="layui-container">
+    <a class="fly-logo" href="/">
+      <img src="../../res/images/logo.png" alt="layui">
+    </a>
+
+    <ul class="layui-nav fly-nav-user">
+
+      <!-- 未登入的状态 -->
+      <li class="layui-nav-item" th:if="${session.user==null}">
+        <a class="iconfont icon-touxiang layui-hide-xs" href="/auth/"></a>
+      </li>
+      <li class="layui-nav-item" th:if="${session.user==null}">
+        <a href="/auth/">登入</a>
+      </li>
+      <li class="layui-nav-item" th:if="${session.user==null}">
+        <a href="../user/reg.html">注册</a>
+      </li>
+      <!--<li class="layui-nav-item layui-hide-xs">
+        <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>
+      </li>
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" title="微博登入" class="iconfont icon-weibo"></a>
+      </li>-->
+
+      <!--登入后的状态-->
+      <li class="layui-nav-item" th:unless="${session.user==null}">
+        <a class="fly-nav-avatar" href="javascript:;">
+          <cite class="layui-hide-xs" th:text="${session.user.getName()}">用户名</cite>
+          <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
+          <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
+          <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+          <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+          <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+          <hr style="margin: 5px 0;">
+          <dd><a href="/auth/logout/" style="text-align: center;">退出</a></dd>
+        </dl>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="layui-hide-xs">
+  <div class="fly-panel fly-column">
+    <div class="layui-container">
+      <ul class="layui-clear">
+        <li class="layui-hide-xs"><a href="/">首页</a></li>
+        <li class="layui-this"><a href="http://localhost:8000/activity/all">活动</a></li>
+        <li><a href="../../html/jie/index.html">公告<span class="layui-badge-dot"></span></a></li>
+        <div th:if="${session.user ne null}">
+          <li th:if="${session.user.getRole()lt 2}">
+            <a href="/clerk/getManagementMenu">优抚对象</a>
+          </li>
+        </div>
+        <li><a href="/normal/getAllRecruit">招聘求职</a></li>
+        <li><a href="../../html/jie/index.html">问题</a></li>
+        <div th:if="${session.user ne null}">
+          <li>
+            <a href="/clerk/getManagementMenu">社区管理</a>
+          </li>
+        </div>
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
+
+        <!-- 用户登入后显示 -->
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li>
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li>
+      </ul>
+
+      <div class="fly-column-right layui-hide-xs"> 
+        <span class="fly-search"><i class="layui-icon"></i></span> 
+        <a href="add.html" class="layui-btn">发表新帖</a> 
+      </div> 
+      <div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;"> 
+        <a href="add.html" class="layui-btn">发表新帖</a> 
+      </div> 
+    </div>
+  </div>
+</div>
+
+<div class="layui-container">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md8 content detail">
+      <div class="fly-panel detail-box">
+        <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+          <div class="layui-tab-item layui-show">
+            <div class="layui-form layui-form-pane">
+              <form id="register" method="post">
+                <div class="layui-form-item">
+                  <label for="tel" class="layui-form-label">手机号</label>
+                  <div class="layui-input-inline">
+                    <input type="text" id="tel" name="tel" th:value="${u.getTel()}" required lay-verify="tel" autocomplete="off" class="layui-input">
+                  </div>
+                  <div class="layui-form-mid layui-word-aux">将会成为您唯一的登入名</div>
+                </div>
+                <div class="layui-form-item">
+                  <label for="email" class="layui-form-label">邮箱</label>
+                  <div class="layui-input-inline">
+                    <input type="text" id="email" th:value="${u.getEmail()}" name="email" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label for="name" class="layui-form-label">昵称</label>
+                  <div class="layui-input-inline">
+                    <input type="text" id="name" name="name" th:value="${u.getName()}" required lay-verify="required" autocomplete="off" class="layui-input">
+                  </div>
+                  <div id="verificationNameResult"></div>
+                </div>
+                <div class="layui-form-item">
+                  <label for="L_pass" class="layui-form-label">密码</label>
+                  <div class="layui-input-inline">
+                    <input type="text" id="L_pass" th:value="${u.getPassword()}" name="password" required lay-verify="required" autocomplete="off" class="layui-input">
+                  </div>
+                  <div class="layui-form-mid layui-word-aux">6到16个字符</div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">角色</label>
+                  <div class="layui-input-block">
+                    <input type="radio" name="volunteer" th:field="*{u.role}" value="1" title="工作人员">
+                    <input type="radio" name="volunteer" th:field="*{u.role}" value="2" title="普通用户" checked="">
+                  </div>
+                </div>
+                <!--<div class="layui-form-item">
+                  <label for="L_vercode" class="layui-form-label">人类验证</label>
+                  <div class="layui-input-inline">
+                    <input type="text" id="L_vercode" name="vercode" required lay-verify="required" placeholder="请回答后面的问题" autocomplete="off" class="layui-input">
+                  </div>
+                  <div class="layui-form-mid">
+                    <span style="color: #c00;">{{d.vercode}}</span>
+                  </div>
+                </div>-->
+
+                <div class="layui-form-item">
+                  <label for="certificate_no" class="layui-form-label">身份证号</label>
+                  <div class="layui-input-inline">
+                    <input type="text" id="certificate_no" th:value="${u.certificate_no}" name="certificate_no" required lay-verify="required" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+
+                <div class="layui-form-item">
+                  <button id="up" class="layui-btn" lay-filter="*">提交</button>
+                </div>
+                <div class="layui-form-item fly-form-app">
+                  <span>或者直接使用社交账号快捷注册</span>
+                  <a href="" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-qq" title="QQ登入"></a>
+                  <a href="" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-weibo" title="微博登入"></a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md4">
+      <dl class="fly-panel fly-list-one">
+        <dt class="fly-panel-title">本周热议</dt>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+
+        <!-- 无数据时 -->
+        <!--
+        <div class="fly-none">没有相关数据</div>
+        -->
+      </dl>
+
+      <div class="fly-panel">
+        <div class="fly-panel-title">
+          这里可作为广告区域
+        </div>
+        <div class="fly-panel-main">
+          <a href="http://layim.layui.com/?from=fly" target="_blank" class="fly-zanzhu" time-limit="2017.09.25-2099.01.01" style="background-color: #5FB878;">LayIM 3.0 - layui 旗舰之作</a>
+        </div>
+      </div>
+
+      <div class="fly-panel" style="padding: 20px 0; text-align: center;">
+        <img src="../../res/images/weixin.jpg" style="max-width: 100%;" alt="layui">
+        <p style="position: relative; color: #666;">微信扫码关注 layui 公众号</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="fly-footer">
+  <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
+  <p>
+    <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
+    <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
+    <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+  </p>
+</div>
+
+<script src="../../res/layui/layui.js"></script>
+<script>
+layui.cache.page = 'jie';
+layui.cache.user = {
+  username: '游客'
+  ,uid: -1
+  ,avatar: '../../res/images/avatar/00.jpg'
+  ,experience: 83
+  ,sex: '男'
+};
+layui.config({
+  version: "3.0.0"
+  ,base: '../../res/mods/'
+}).extend({
+  fly: 'index'
+}).use(['fly', 'face'], function(){
+  var $ = layui.$
+  ,fly = layui.fly;
+});
+</script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+  $(function(){
+    $('#up').click(function () {
+      $.ajax({
+        type : 'POST',
+        datatype : 'text',
+        url : "/admin/updateUser",
+        data : $("#register").serializeArray(),
+        contentType : "application/x-www-form-urlencoded",
+        success : function (data) {
+          alert(data.message);
+          location.href="/clerk/getManagementMenu";
+        }
+      });
+    })
+  })
+</script>
+
+</body>
+</html>

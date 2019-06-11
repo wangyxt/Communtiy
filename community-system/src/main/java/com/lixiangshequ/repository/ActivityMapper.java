@@ -57,7 +57,7 @@ public interface ActivityMapper {
 
     int insert(Activity activity);
 
-    List selectNumByActId(int act_id);
+    int selectNumByActId(int act_id);
 
     int insertActivityNum(ActivityList activityList);
 

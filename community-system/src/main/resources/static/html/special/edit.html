@@ -122,7 +122,7 @@
                 </div>
             </div>
         </div>
-        <div class="layui-form-item" th:if="${session.user.getRole() eq 0}">
+        <div class="layui-form-item">
             <label class="layui-form-label">申报状态</label>
             <div class="layui-input-block">
                 <select name="status" lay-filter="aihao">
@@ -202,7 +202,12 @@
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block">
-                <textarea placeholder="请输入内容" name="bak" class="layui-textarea" th:text="${specialCare.bak}" th:value="${specialCare.bak}"></textarea>
+                <select name="genre">
+                    <option value="">类型</option>
+                    <option value="退役军人" th:value="${specialCare.genre}">退役军人</option>
+                    <option value="60岁以上老人" th:value="${specialCare.genre}">60岁以上老人</option>
+                    <option value="军人家属" th:value="${specialCare.genre}">军人家属</option>
+                </select>
             </div>
         </div>
         <div class="layui-form-item">
@@ -338,17 +343,9 @@
     });
 </script>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
-<script th:inline="javascript">
+<script>
     $(function () {
         $("#sb").click(function () {
-            /*var id = null;
-            id = [[${specialCare.getId()}]];
-            var url = "/clerk/insertSpecial";
-            if (null===id){
-                url = "/clerk/insertSpecial";
-            } else {
-                url = "/clerk/updateSpecial";
-            }*/
             var url = $("#f").attr("action");
             $.ajax({
                 type : 'POST',

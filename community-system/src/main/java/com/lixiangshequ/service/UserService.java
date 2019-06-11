@@ -2,6 +2,8 @@ package com.lixiangshequ.service;
 
 import com.lixiangshequ.entity.User;
 
+import java.util.List;
+
 public interface UserService {
 
     /**
@@ -24,7 +26,7 @@ public interface UserService {
      * update
      * @param resouces
      */
-    void update(User resouces);
+    int update(User resouces);
 
     /**
      * delete
@@ -38,6 +40,8 @@ public interface UserService {
      * @return
      */
     User findByTel(String tel);
+
+    String validatePass(int id,String pass);
 
     /**
      * 修改密码
@@ -59,4 +63,6 @@ public interface UserService {
      * @param email
      */
     void updateEmail(String username, String email);
+
+    List selectAll(int begin, int end);
 }

@@ -615,13 +615,6 @@
 <script th:inline="javascript">
     $(function () {
         $("#up").click(function () {
-            /*var person_id = /!*[[${person.getPerson_id()}]]*!/;
-            var url = "/clerk/insertPerson";
-            if (null===person_id){
-                url = "/clerk/insertPerson";
-            } else {
-                url = "/clerk/updatePerson";
-            }*/
             var url = $("#fff").attr("action");
             if (url.indexOf("update") != -1) {
                 $("#hidden").attr("name","person_id");

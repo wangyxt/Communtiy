@@ -48,12 +48,16 @@
             <li><a href="../../html/jie/index.html">优抚对象</a></li>
             <li><a href="../../html/jie/index.html">招聘求职</a></li>
             <li><a href="../../html/jie/index.html">问题</a></li>
-            <li><a href="../../html/jie/index.html">动态</a></li>
+            <div th:if="${session.user ne null}" class="layui-inline">
+                <li th:if="${session.user.getRole()lt 2}">
+                    <a href="/clerk/getManagementMenu">社区管理</a>
+                </li>
+            </div>
             <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
 
             <!-- 用户登入后显示 -->
-            <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li>
-            <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li>
+            <!--<li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li>-->
+            <!--<li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li>-->
         </ul>
 
         <div class="fly-column-right layui-hide-xs">
@@ -109,6 +113,17 @@
         var name = $('#test').attr('name');
         if ("toAuditSpecial"===name){
             url = "/admin/selectAllNotPass";
+        }else if(null!=name){
+            url = "/clerk/selectAllSpecialByCondition?condition="+name;
+        }
+        function change() {
+            // var mess = $("#sol").val();
+            alert("233");
+            // var url = '/clerk/searchPerson';
+            // table.reload('tt',{
+            //     url: url
+            //     ,where: {'mess':mess}
+            // })
         }
         table.render({
             elem: '#test'
@@ -128,13 +143,12 @@
                 ,{field:'residency', title:'户口所在地', width:100, sort: true}
                 ,{field:'address', title:'现居住地', width:120}
                 ,{field:'status', title:'办理状态', width:120}
-                ,{field:'bak', title:'户口类别', width:120}
+                ,{field:'genre', title:'<select id="select" lay-ignore onchange="window.location=this.value">\n'+'<option selected>请选择</option>\n' +'<option value="/clerk/getAllVeteran">退役军人</option>\n' +'<option value="/clerk/getAllOldMan">60岁以上老人</option>\n'+'</select>'}
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
                 ]
             ]
             ,page: true
         });
-
         //头工具栏事件
         table.on('toolbar(test)', function(obj){
             var checkStatus = table.checkStatus(obj.config.id);
@@ -157,6 +171,7 @@
         table.on('tool(test)', function(obj){
             var data = obj.data;
             //console.log(obj)
+            var status = data.status;
             if(obj.event === 'del'){
                 layer.confirm('真的删除行么', function(){
                     obj.del();
@@ -178,7 +193,14 @@
         });
     });
 </script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $(function () {
+        function ttt() {
 
+        }
+    })
+</script>
 
 </body>
 </html>

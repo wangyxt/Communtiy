@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -67,14 +68,14 @@ public class PersonInfoController {
      */
     @PostMapping("/clerk/insertPerson")
     @ResponseBody
-    public ResultMap insertPerson(PersonInfo personInfo){
-        System.out.println(personInfo);
-        int i = personInfoService.insertPerson(personInfo);
-        if (i>0){
-            return resultMap.success().message("添加成功！");
-        }
+    public ResultMap insertPerson(@Validated PersonInfo personInfo){
         User user = (User) SecurityUtils.getSubject().getPrincipal();
         if (null!=user){
+            System.out.println(personInfo);
+            int i = personInfoService.insertPerson(personInfo);
+            if (i>0){
+                return resultMap.success().message("添加成功！");
+            }
             logger.info(user.getName()+"添加了一条居民信息，居民身份证ID为:"+personInfo.getCertificate_no());
         }else {
             logger.error("没有获取到当然登录用户信息");
@@ -96,6 +97,7 @@ public class PersonInfoController {
         }
         return resultMap.success().message(personInfo);
     }
+
 
     /**
      * 更新居民信息
@@ -125,15 +127,31 @@ public class PersonInfoController {
         return "../static/html/person/add";
     }
 
+    @ResponseBody
+    @RequestMapping("/clerk/searchPerson")
+    public ReturnStatus searchPerson(String mess){
+        mess = mess.replaceAll("\\s*", "");
+        List list = personInfoService.selectByName(mess);
+        if (null==list||list.size()==0){
+            PersonInfo personInfo = personInfoService.selectByCard(mess);
+            if (null==personInfo){
+                return new ReturnStatus(0,"没有此人",0,"很抱歉，未查询到!");
+            }
+            list.add(personInfo);
+        }
+        return new ReturnStatus(0,"",list.size(),list);
+    }
+
+
     /**
      * 上传头像
      * @param file
-     * @param request
+     * @param file
      * @return
      */
     @ResponseBody
     @PostMapping("/upload/headImg")
-    public Object uploadHeadImg(@RequestParam(value="file") MultipartFile file, HttpServletRequest request){
+    public Object uploadHeadImg(@RequestParam(value="file") MultipartFile file){
         /*if (SecurityUtils.getSubject().isAuthenticated() == false) {
             return "redirect:/backEnd/login";
         }*/
@@ -147,12 +165,10 @@ public class PersonInfoController {
         dateStr = dateStr.replace("-",":");
         dateStr = dateStr.replace(":","");
         System.out.println(dateStr);
-//                filepath = request.getServletContext().getRealPath("/static/") + "photo/" + dateStr + "." + prefix;
         String filepath = "D://temp-photo//"+dateStr+"."+prefix;
-//                filepath = filepath.replace("\\", "/");
         File files=new File(filepath);
         //打印查看上传路径
-        System.out.println(filepath);
+        logger.info("上传了一张头像，路径为："+filepath);
         if(!files.getParentFile().exists()){
             files.getParentFile().mkdirs();
         }
@@ -166,7 +182,6 @@ public class PersonInfoController {
         map.put("code",0);
         map.put("msg","");
         map.put("data",map2);
-//        map2.put("src","../../../static/"+"photo/" + dateStr + "." + prefix);
         map2.put("src","/temp-photo/"+dateStr+"."+prefix);
         return map;
     }

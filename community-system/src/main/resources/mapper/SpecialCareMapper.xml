@@ -13,14 +13,18 @@
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="residency" property="residency" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="bak" property="bak" jdbcType="VARCHAR" />
+    <result column="genre" property="genre" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, idcard_type, idcard_number, street, name, sex, birthday, mobile, address, residency, 
-    status, bak
+    status, genre
   </sql>
   <select id="selectAll" resultMap="BaseResultMap">
     select <include refid="Base_Column_List" /> from special_care where status = 2 limit ${begin},${end}
+  </select>
+
+  <select id="selectAllByCondition" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from special_care where genre=#{s} and status = 2 limit ${begin},${end}
   </select>
 
   <select id="selectAllNotPass" resultMap="BaseResultMap">
@@ -41,12 +45,12 @@
     insert into special_care (id, idcard_type, idcard_number, 
       street, name, sex, 
       birthday, mobile, address, 
-      residency, status, bak
+      residency, status, genre
       )
     values (#{id,jdbcType=INTEGER}, #{idcardType,jdbcType=INTEGER}, #{idcardNumber,jdbcType=VARCHAR}, 
       #{street,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{birthday,jdbcType=DATE}, #{mobile,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{residency,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{bak,jdbcType=VARCHAR}
+      #{residency,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{genre,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.lixiangshequ.entity.SpecialCare" >
@@ -85,8 +89,8 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="bak != null" >
-        bak,
+      <if test="genre != null" >
+        genre,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -123,8 +127,8 @@
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="bak != null" >
-        #{bak,jdbcType=VARCHAR},
+      <if test="genre != null" >
+        #{genre,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -161,8 +165,8 @@
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="bak != null" >
-        bak = #{bak,jdbcType=VARCHAR},
+      <if test="genre != null" >
+        genre = #{genre,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -179,7 +183,7 @@
       address = #{address,jdbcType=VARCHAR},
       residency = #{residency,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
-      bak = #{bak,jdbcType=VARCHAR}
+      genre = #{genre,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

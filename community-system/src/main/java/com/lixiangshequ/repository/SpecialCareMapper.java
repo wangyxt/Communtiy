@@ -25,4 +25,6 @@ public interface SpecialCareMapper {
     List selectAll(@Param("begin") int begin, @Param("end") int end);
 
     List selectAllNotPass();
+
+    List selectAllByCondition(@Param("begin") int begin, @Param("end") int end, @Param("s") String s);
 }

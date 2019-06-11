@@ -59,7 +59,7 @@ public interface ActivityService {
      */
     int insert(Activity activity);
 
-    List selectNumByActId(int act_id);
+    int selectNumByActId(int act_id);
 
     boolean insertActivityNum(ActivityList activityList);
 

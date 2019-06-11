@@ -38,9 +38,38 @@ public class SpecialCareController {
         return new ReturnStatus(0,"",list.size(),list);
     }
 
+    @ResponseBody
+    @RequestMapping("/clerk/selectAllSpecialByCondition")
+    public ReturnStatus selectAllSpecialByCondition(int page,int limit,String condition){
+        //开始条数=页数*每页条数
+        int begin = (page-1)*limit;
+        //结束条数=开始条数+每页条数
+        int end = begin+limit;
+        List list = specialCareService.selectAll(begin,end,condition);
+        return new ReturnStatus(0,"",list.size(),list);
+    }
+
     @RequestMapping("/admin/toAuditSpecial")
     public String toAuditSpecial(Model model){
         model.addAttribute("ratify","toAuditSpecial");
+        return "../static/html/special/index.html";
+    }
+
+    @RequestMapping("/clerk/getAllVeteran")
+    public String getVeteranPage(Model model){
+        model.addAttribute("ratify","退役军人");
+        return "../static/html/special/index.html";
+    }
+
+    @RequestMapping("/clerk/getAllOldMan")
+    public String getOldManPage(Model model){
+        model.addAttribute("ratify","60岁以上老人");
+        return "../static/html/special/index.html";
+    }
+
+    @RequestMapping("/clerk/getRelation")
+    public String getRelation(Model model){
+        model.addAttribute("ratify","军人家属");
         return "../static/html/special/index.html";
     }
 

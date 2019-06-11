@@ -57,7 +57,7 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List selectNumByActId(int act_id) {
+    public int selectNumByActId(int act_id) {
         return activityMapper.selectNumByActId(act_id);
     }
 

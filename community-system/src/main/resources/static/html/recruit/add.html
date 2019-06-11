@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>编辑活动</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="fly,layui,前端社区">
+    <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
+    <link rel="stylesheet" href="../../res/layui/css/layui.css">
+    <link rel="stylesheet" href="../../res/css/global.css">
+</head>
+<body>
+
+<div class="fly-header layui-bg-black">
+    <div class="layui-container">
+        <a class="fly-logo" href="/">
+            <img src="../../res/images/logo.png" alt="layui">
+        </a>
+
+        <ul class="layui-nav fly-nav-user">
+
+            <!-- 未登入的状态 -->
+            <!--
+            <li class="layui-nav-item">
+              <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
+            </li>
+            <li class="layui-nav-item">
+              <a href="user/login.html">登入</a>
+            </li>
+            <li class="layui-nav-item">
+              <a href="user/reg.html">注册</a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs">
+              <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs">
+              <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" title="微博登入" class="iconfont icon-weibo"></a>
+            </li>
+             -->
+
+            <!-- 登入后的状态 -->
+            <li class="layui-nav-item" th:unless="${session.user==null}">
+                <a class="fly-nav-avatar" href="javascript:;">
+                    <cite class="layui-hide-xs" th:text="${session.user.getName()}">用户名</cite>
+                    <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
+                    <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
+                    <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="../user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+                    <dd><a href="../user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+                    <dd><a href="../user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+                    <hr style="margin: 5px 0;">
+                    <dd><a href="/auth/logout/" style="text-align: center;">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="layui-container fly-marginTop">
+    <div class="fly-panel" pad20 style="padding-top: 5px;">
+        <!--<div class="fly-none">没有权限</div>-->
+        <div class="layui-form layui-form-pane" id="show2">
+            <div class="layui-tab layui-tab-brief" lay-filter="user">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">发表新帖<!-- 编辑帖子 --></li>
+                </ul>
+                <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+                    <div class="layui-tab-item layui-show">
+                        <form method="post" id="form">
+                            <div class="layui-col-md9">
+                                <label for="L_title" class="layui-form-label">标题</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="L_title" name="title" th:value="${recruit.getTitle()}" required lay-verify="required" autocomplete="off" class="layui-input">
+                                    <input type="hidden" id="hidden" name="id" th:value="${recruit.getId()}">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label for="company" class="layui-form-label">公 司</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="company" name="company" th:value="${recruit.getCompany()}" required lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <div class="layui-input-block">
+                                    <textarea id="L_content" name="content" th:text="${recruit.getContent()}" required lay-verify="required" placeholder="详细描述" class="layui-textarea" style="height: 260px;"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">悬赏飞吻</label>
+                                    <div class="layui-input-inline" style="width: 190px;">
+                                        <select name="experience">
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                            <option value="60">60</option>
+                                            <option value="80">80</option>
+                                        </select>
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">发表后无法更改飞吻</div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">薪资</label>
+                                    <div class="layui-input-inline" style="width: 100px;">
+                                        <input type="text" name="sal" th:value="${recruit.getSal()}" placeholder="￥" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">关键字</label>
+                                    <div class="layui-input-inline" style="width: 100px;">
+                                        <input type="text" name="keywords" th:value="${recruit.getKeywords()}" placeholder="使用“；”进行分割！" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">发布日期</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" id="time" class="layui-input" th:value="${recruit.getPubTime()}" name="pubTime" placeholder="yyyy-MM-dd" onfocus=this.blur() >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <button class="site-demo-layedit" lay-filter="*" data-type="content" type="button" id="submit">立即发布</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fly-footer">
+    <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
+    <p>
+        <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
+        <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
+        <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+    </p>
+</div>
+
+<script src="../../res/layui/layui.js"></script>
+<script>
+    layui.cache.page = 'jie';
+    layui.cache.user = {
+        username: '游客'
+        ,uid: -1
+        ,avatar: '../../res/images/avatar/00.jpg'
+        ,experience: 83
+        ,sex: '男'
+    };
+    layui.config({
+        version: "3.0.0"
+        ,base: '../../res/mods/'
+    }).extend({
+        fly: 'index'
+    }).use('fly');
+</script>
+
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //日期时间选择器
+        laydate.render({
+            elem: '#test5'
+            ,type: 'datetime'
+        });
+
+        //日期时间选择器
+        laydate.render({
+            elem: '#test6'
+            ,type: 'date'
+        });
+    });
+</script>
+<script>
+    layui.use('layedit', function(){
+        var layedit = layui.layedit
+        ,$ = layui.jquery;
+        layedit.set({
+            uploadImage: {
+                url: '/upload/headImg' //接口url
+                ,type: 'post' //默认post
+            }
+        });
+
+
+        index = layedit.build('L_content', {
+            tool: [
+                'strong' //加粗
+                ,'italic' //斜体
+                ,'underline' //下划线
+                ,'del' //删除线
+
+                ,'|' //分割线
+
+                ,'left' //左对齐
+                ,'center' //居中对齐
+                ,'right' //右对齐
+                ,'link' //超链接
+                ,'unlink' //清除链接
+                ,'face' //表情
+                ,'image' //插入图片
+            ]
+        });
+        var active = {
+            content: function () {
+                alert(layedit.getContent(index));
+                $('#L_content').val(layedit.getContent(index));
+            }
+            ,text: function () {
+                alert(layedit.getText(index));
+            }
+            ,selection: function () {
+                alert(layedit.getSelection(index));
+            }
+        };
+        $('.site-demo-layedit').on('click',function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+
+            var url = "/clerk/insertRecruit";
+            var id = $("#hidden").val();
+            if (null!=id && "" != id) {
+                url = "/clerk/updateRecruit";
+            }else {
+                $("#hidden").attr("name","");
+                $("#time").attr("name","")
+            }
+            alert(url);
+            $.ajax({
+                type : 'Post',
+                datatype : 'text',
+                url : url,
+                data : $("#form").serializeArray(),
+                contentType : "application/x-www-form-urlencoded",
+                success : function (data) {
+                    alert(data.message);
+                    location.href="/normal/getAllRecruit";
+                }
+            });
+        });
+    });
+</script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script th:inline="javascript">
+    /*$(function () {
+        $("#submit").click(function () {
+
+        });
+    })*/
+</script>
+</body>
+</html>

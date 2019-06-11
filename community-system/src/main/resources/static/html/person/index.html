@@ -68,17 +68,25 @@
             <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li>
         </ul>
 
+        <!--<div class="fly-column-right layui-hide-xs">
+            <span class="fly-search"></span>
+            &lt;!&ndash;<i class="layui-icon"></i>&ndash;&gt;
+            &lt;!&ndash;<a href="add.html" class="layui-btn">发表新帖</a>&ndash;&gt;
+        </div>-->
         <div class="fly-column-right layui-hide-xs">
-            <span class="fly-search"><i class="layui-icon"></i></span>
-            <a href="add.html" class="layui-btn">发表新帖</a>
+            <div class="layui-inline">
+                <input type="text" name="title" id="mess" required lay-verify="required" placeholder="请输入姓名或身份证号" autocomplete="off" class="layui-input">
+            </div>
+            <a id="search" class="layui-btn layui-btn-normal">搜索</a>
         </div>
-        <div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;">
+        <!--<div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;">
             <a href="add.html" class="layui-btn">发表新帖</a>
-        </div>
+        </div>-->
     </div>
 </div>
 
 <div>
+
     <table class="layui-hide" id="test" lay-filter="test"></table>
 
     <script type="text/html" id="toolbarDemo">
@@ -122,12 +130,25 @@
 </script>
 
 <script>
-    layui.use('table', function(){
-        var table = layui.table;
 
+    //TODO
+    /*从文本框获取姓名或身份证号，然后改变url发送table的ajax请求*/
+    layui.use('table', function(){
+        $ = layui.jquery;
+        var table = layui.table;
+        var url = '/clerk/getAllPerson';
+        $('#search').click(function () {
+            var mess = $("#mess").val();
+            var url = '/clerk/searchPerson';
+            table.reload('tt',{
+                url: url
+                ,where: {'mess':mess}
+            })
+        });
         table.render({
-            elem: '#test'
-            ,url:'/clerk/getAllPerson'
+            id: 'tt'
+            ,elem: '#test'
+            ,url: url
             ,toolbar: '#toolbarDemo'
             ,title: '用户数据表'
             ,cols: [[

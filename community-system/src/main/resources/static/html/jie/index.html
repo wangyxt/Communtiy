@@ -72,12 +72,18 @@
       <li class="layui-hide-xs"><a href="/">首页</a></li>
       <li class="layui-this"><a href="/activity/all">活动</a></li>
       <li><a href="../../html/jie/index.html">公告<span class="layui-badge-dot"></span></a></li>
-      <li><a href="../../html/jie/index.html">优抚对象</a></li>
-      <li><a href="../../html/jie/index.html">招聘求职</a></li>
+      <div th:if="${session.user ne null}" class="layui-inline">
+        <li th:if="${session.user.getRole()lt 2}">
+          <a href="/clerk/getManagementMenu">优抚对象</a>
+        </li>
+      </div>
+      <li><a href="/normal/getAllRecruit">招聘求职</a></li>
       <li><a href="../../html/jie/index.html">问题</a></li>
-      <li th:if="${session.user ne null}">
-        <a href="/clerk/getManagementMenu" th:if="${session.user.getRole()lt 2}">社区管理</a>
-      </li>
+      <div th:if="${session.user ne null}" class="layui-inline">
+        <li th:if="${session.user.getRole()lt 2}">
+          <a href="/clerk/getManagementMenu">社区管理</a>
+        </li>
+      </div>
       <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
 
       <!-- 用户登入后显示 -->

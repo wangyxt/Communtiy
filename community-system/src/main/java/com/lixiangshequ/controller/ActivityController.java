@@ -93,8 +93,7 @@ public class ActivityController {
      * @return
      */
     @GetMapping(value = "/activity/detail/{act_id}")
-//    @ResponseBody
-    public ModelAndView detail(@PathVariable int act_id, ModelAndView modelAndView, HttpSession httpSession, UsernamePasswordToken token){
+    public ModelAndView detail(@PathVariable int act_id, ModelAndView modelAndView){
         /**
         当前登录用户
          */
@@ -114,9 +113,9 @@ public class ActivityController {
                 modelAndView.addObject("isApply","点击报名!");
             }
         }
-        List list = activityService.selectNumByActId(act_id);
+        int size = activityService.selectNumByActId(act_id);
         modelAndView.addObject("activity",activity);
-        modelAndView.addObject("num",list.size());
+        modelAndView.addObject("num",size);
         modelAndView.setViewName("../static/html/jie/detail");
         return modelAndView;
     }
@@ -238,8 +237,6 @@ public class ActivityController {
     @ResponseBody
     public ResultMap updateActivity(@Validated Activity activity){
         System.out.println(activity);
-        User user = (User) SecurityUtils.getSubject().getPrincipal();
-        activity.setPublish_id(user);
         int i = activityService.update(activity);
         if (i!=0){
             return new ResultMap().success().message("更新成功");

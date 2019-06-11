@@ -6,7 +6,7 @@
     </select>
 
     <select id="selectAllVolunteer" resultMap="person">
-        select * from person_info where volunteer = ture
+        select * from person_info where volunteer = 0
     </select>
 
     <select id="selectByCard" resultMap="person">
