@@ -16,17 +16,6 @@
         <a class="fly-logo" href="/">
             <img src="../../res/images/logo.png" alt="layui">
         </a>
-        <!--<ul class="layui-nav fly-nav layui-hide-xs">
-          <li class="layui-nav-item layui-this">
-            <a href="/"><i class="iconfont icon-jiaoliu"></i>交流</a>
-          </li>
-          <li class="layui-nav-item">
-            <a href="../case/case.html"><i class="iconfont icon-iconmingxinganli"></i>案例</a>
-          </li>
-          <li class="layui-nav-item">
-            <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
-          </li>
-        </ul>-->
 
         <ul class="layui-nav fly-nav-user">
 
@@ -40,13 +29,6 @@
             <li class="layui-nav-item" th:if="${session.user==null}">
                 <a href="user/reg.html">注册</a>
             </li>
-            <!--<li class="layui-nav-item layui-hide-xs">
-              <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>
-            </li>
-            <li class="layui-nav-item layui-hide-xs">
-              <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" title="微博登入" class="iconfont icon-weibo"></a>
-            </li>-->
-
             登入后的状态
             <li class="layui-nav-item" th:unless="${session.user==null}">
                 <a class="fly-nav-avatar" href="javascript:;">
@@ -76,7 +58,9 @@
             <li><a href="../../html/jie/index.html">优抚对象</a></li>
             <li><a href="../../html/jie/index.html">招聘求职</a></li>
             <li><a href="../../html/jie/index.html">问题</a></li>
-            <li><a href="../../html/jie/index.html">动态</a></li>
+            <li>
+                <a href="/clerk/getManagementMenu">社区管理</a>
+            </li>
             <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
 
             <!-- 用户登入后显示 -->
@@ -84,17 +68,25 @@
             <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li>
         </ul>
 
+        <!--<div class="fly-column-right layui-hide-xs">
+            <span class="fly-search"></span>
+            &lt;!&ndash;<i class="layui-icon"></i>&ndash;&gt;
+            &lt;!&ndash;<a href="add.html" class="layui-btn">发表新帖</a>&ndash;&gt;
+        </div>-->
         <div class="fly-column-right layui-hide-xs">
-            <span class="fly-search"><i class="layui-icon"></i></span>
-            <a href="add.html" class="layui-btn">发表新帖</a>
+            <div class="layui-inline">
+                <input type="text" name="title" id="mess" required lay-verify="required" placeholder="请输入姓名或身份证号" autocomplete="off" class="layui-input">
+            </div>
+            <a id="search" class="layui-btn layui-btn-normal">搜索</a>
         </div>
-        <div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;">
+        <!--<div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;">
             <a href="add.html" class="layui-btn">发表新帖</a>
-        </div>
+        </div>-->
     </div>
 </div>
 
 <div>
+
     <table class="layui-hide" id="test" lay-filter="test"></table>
 
     <script type="text/html" id="toolbarDemo">
@@ -138,12 +130,25 @@
 </script>
 
 <script>
-    layui.use('table', function(){
-        var table = layui.table;
 
+    //TODO
+    /*从文本框获取姓名或身份证号，然后改变url发送table的ajax请求*/
+    layui.use('table', function(){
+        $ = layui.jquery;
+        var table = layui.table;
+        var url = '/clerk/getAllPerson';
+        $('#search').click(function () {
+            var mess = $("#mess").val();
+            var url = '/clerk/searchPerson';
+            table.reload('tt',{
+                url: url
+                ,where: {'mess':mess}
+            })
+        });
         table.render({
-            elem: '#test'
-            ,url:'/clerk/getAllPerson'
+            id: 'tt'
+            ,elem: '#test'
+            ,url: url
             ,toolbar: '#toolbarDemo'
             ,title: '用户数据表'
             ,cols: [[
@@ -201,16 +206,7 @@
                     layer.close(index);
                 });
             } else if(obj.event === 'edit'){
-                layer.prompt({
-                    formType: 2
-                    ,value: data.email
-                }, function(value, index){
-                    obj.update({
-                        email: value
-                    });
-                    alert(index)
-                    layer.close(index);
-                });
+                window.location.href = "http://localhost:8000/clerk/findUpdatePageById?id="+data.person_id;
             }
         });
     });

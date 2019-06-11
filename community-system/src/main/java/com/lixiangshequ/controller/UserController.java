@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lixiangshequ.entity.User;
 import com.lixiangshequ.model.ResultMap;
 import com.lixiangshequ.service.UserService;
+import com.lixiangshequ.service.dto.ReturnStatus;
 import com.lixiangshequ.vo.AuthorizationUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/auth",method = RequestMethod.GET)
@@ -56,6 +59,14 @@ public class UserController {
     }
 
     /**
+     * 设置界面
+     */
+    @GetMapping("/set")
+    public String setPage(){
+        return "../static/html/user/set";
+    }
+
+    /**
      * 验证用户名是否存在
      * @param name
      * @return
@@ -70,6 +81,24 @@ public class UserController {
         return true;
     }
 
+    @ResponseBody
+    @RequestMapping("/searchUser")
+    public ReturnStatus searchUser(String mess){
+        mess = mess.replaceAll("\\s*", "");
+        List list = new ArrayList();
+        User user = userService.selectByName(mess);
+        if (null==user){
+            User user1 = userService.findByTel(mess);
+            if (null==user1){
+                return new ReturnStatus(0,"没有此人",0,"很抱歉，未查询到!");
+            }
+            list.add(user1);
+        }else {
+            list.add(user);
+        }
+        return new ReturnStatus(0,"",1,list);
+    }
+
     /**
      * 注销接口
      * @param httpSession
@@ -81,6 +110,17 @@ public class UserController {
         //注销
         subject.logout();
         return "redirect:/auth/";
+    }
+
+    @RequestMapping("/getAllUser")
+    @ResponseBody
+    public ReturnStatus getAllUser(int page,int limit){
+        //开始条数=页数*每页条数
+        int begin = (page-1)*limit;
+        //结束条数=开始条数+每页条数
+        int end = begin+limit;
+        List list = userService.selectAll(begin,end);
+        return new ReturnStatus(0,"",list.size(),list);
     }
 
     /**
@@ -106,8 +146,24 @@ public class UserController {
     }
 
 
-    @RequestMapping("/updatePassword")
-    public void updatePassword(User user){
+    @PostMapping("/updatePassword")
+    public void updatePassword(String pass){
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        user.setPassword(pass);
         userService.update(user);
+    }
+
+    @PostMapping("/validatePass")
+    @ResponseBody
+    public String validatePass(String pass){
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        int id = user.getUid();
+        String result = userService.validatePass(id,pass);
+        return result;
+    }
+
+    @RequestMapping("/list")
+    public String toList(){
+        return "../static/html/user/list";
     }
 }

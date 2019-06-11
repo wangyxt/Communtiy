@@ -83,14 +83,15 @@
                 </div>
               </div>-->
 
-              <!--<div class="layui-form-item">
+              <div class="layui-form-item">
                 <label for="vercode" class="layui-form-label">人类验证</label>
                 <div class="layui-input-inline">
                   <input id="vercode" required lay-verfy="required" type="text" value="" placeholder="请输入验证码" class="layui-input" autocomplete="off">
-                  <canvas id="canvas" width="100" height="43"></canvas>
-                  &lt;!&ndash;<button class="btn">提交</button>&ndash;&gt;
                 </div>
-              </div>-->
+                <div class="layui-input-inline">
+                  <canvas id="canvas" width="100" height="43"></canvas>
+                </div>
+              </div>
 
               <div class="layui-form-item">
                 <button class="layui-btn" type="submit">立即登录</button>
@@ -173,7 +174,6 @@ layui.use(['layer', 'form', 'element'], function(){
         alert('请输入验证码！');
       }else if(val == num){
         /*alert('提交成功！');*/
-        $("#vercode").val('');
         draw(show_num);
         $("#login").submit();
       }else{

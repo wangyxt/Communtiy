@@ -6,7 +6,7 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="company" property="company" jdbcType="VARCHAR" />
-    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+    <result column="pub_time" property="pubTime" />
     <result column="sal" property="sal" jdbcType="VARCHAR" />
     <result column="keywords" property="keywords" jdbcType="VARCHAR" />
   </resultMap>
@@ -19,16 +19,21 @@
     from recruit
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from recruit
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from recruit
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.lixiangshequ.entity.Recruit" >
-    insert into recruit (id, title, content, 
+    insert into recruit (title, content,
       company, pub_time, sal, 
       keywords)
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
-      #{company,jdbcType=VARCHAR}, #{pubTime,jdbcType=TIMESTAMP}, #{sal,jdbcType=VARCHAR}, 
+    values (#{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+      #{company,jdbcType=VARCHAR}, now(), #{sal,jdbcType=VARCHAR},
       #{keywords,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lixiangshequ.entity.Recruit" >

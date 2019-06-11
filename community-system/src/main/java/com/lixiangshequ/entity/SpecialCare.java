@@ -1,7 +1,8 @@
 package com.lixiangshequ.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+
 
 public class SpecialCare implements Serializable {
     private static final long serialVersionUID = -1651453275427392109L;
@@ -27,7 +28,7 @@ public class SpecialCare implements Serializable {
 
     private Integer status;
 
-    private String bak;
+    private String genre;
 
     public Integer getId() {
         return id;
@@ -117,11 +118,11 @@ public class SpecialCare implements Serializable {
         this.status = status;
     }
 
-    public String getBak() {
-        return bak;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setBak(String bak) {
-        this.bak = bak == null ? null : bak.trim();
+    public void setGenre(String genre) {
+        this.genre = genre == null ? null : genre.trim();
     }
 }

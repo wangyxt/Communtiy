@@ -15,4 +15,6 @@ public class ExceptionController {
         model.addAttribute("mess",ex.getMessage());
         return "../static/html/user/login";
     }
+
+
 }

@@ -9,7 +9,7 @@ public class Problem {
 
     private String title;
 
-    private String desc;
+    private String des;
 
     private Integer status;
 
@@ -18,6 +18,12 @@ public class Problem {
     private Date time;
 
     private String bak;
+
+    private Integer handlerId;
+
+    public Integer getHandlerId(){return  handlerId;}
+
+    public void setHandlerId(Integer handlerId){this.handlerId = handlerId;}
 
     public Integer getProblemId() {
         return problemId;
@@ -43,12 +49,12 @@ public class Problem {
         this.title = title == null ? null : title.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDes() {
+        return des;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDesc(String des) {
+        this.des = des == null ? null : des.trim();
     }
 
     public Integer getStatus() {

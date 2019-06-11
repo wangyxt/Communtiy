@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -30,16 +32,28 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectByName(name);
     }
 
-    public void update(User resouces) {
-
+    public int update(User resouces) {
+        return userMapper.update(resouces);
     }
 
     public void delete(int id) {
-
+        userMapper.deleteUser(id);
     }
 
     public User findByTel(String tel) {
         return userMapper.selectByTel(tel);
+    }
+
+    @Override
+    public String validatePass(int id, String pass) {
+        User user = userMapper.selectById(id);
+        if (null!=user){
+            if (pass.equals(user.getPassword())){
+                return "ok";
+            }
+            return "密码错误";
+        }
+        return "该用户已被删除";
     }
 
     public void updatePass(String tel, String encryptPassword) {
@@ -52,6 +66,11 @@ public class UserServiceImpl implements UserService {
 
     public void updateEmail(String username, String email) {
 
+    }
+
+    @Override
+    public List selectAll(int begin, int end) {
+        return userMapper.selectAll(begin,end);
     }
 
 }

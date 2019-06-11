@@ -16,17 +16,6 @@
         <a class="fly-logo" href="/">
             <img src="../../res/images/logo.png" alt="layui">
         </a>
-        <!--<ul class="layui-nav fly-nav layui-hide-xs">
-          <li class="layui-nav-item layui-this">
-            <a href="/"><i class="iconfont icon-jiaoliu"></i>交流</a>
-          </li>
-          <li class="layui-nav-item">
-            <a href="../case/case.html"><i class="iconfont icon-iconmingxinganli"></i>案例</a>
-          </li>
-          <li class="layui-nav-item">
-            <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
-          </li>
-        </ul>-->
 
         <ul class="layui-nav fly-nav-user">
 
@@ -59,12 +48,16 @@
             <li><a href="../../html/jie/index.html">优抚对象</a></li>
             <li><a href="../../html/jie/index.html">招聘求职</a></li>
             <li><a href="../../html/jie/index.html">问题</a></li>
-            <li><a href="../../html/jie/index.html">动态</a></li>
+            <div th:if="${session.user ne null}" class="layui-inline">
+                <li th:if="${session.user.getRole()lt 2}">
+                    <a href="/clerk/getManagementMenu">社区管理</a>
+                </li>
+            </div>
             <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
 
             <!-- 用户登入后显示 -->
-            <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li>
-            <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li>
+            <!--<li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li>-->
+            <!--<li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li>-->
         </ul>
 
         <div class="fly-column-right layui-hide-xs">
@@ -78,7 +71,7 @@
 </div>
 
 <div>
-    <table class="layui-hide" id="test" lay-filter="test"></table>
+    <table class="layui-hide" id="test" lay-filter="test" th:name="${ratify}"></table>
 
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container">
@@ -93,14 +86,6 @@
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
 </div>
-<!--<div class="fly-footer">
-    <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
-    <p>
-        <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
-        <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
-        <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
-    </p>
-</div>-->
 
 <script src="../../res/layui/layui.js"></script>
 <script>
@@ -122,14 +107,31 @@
 
 <script>
     layui.use('table', function(){
+        $ = layui.jquery;
         var table = layui.table;
-
+        var url = "/clerk/selectAllSpecial";
+        var name = $('#test').attr('name');
+        if ("toAuditSpecial"===name){
+            url = "/admin/selectAllNotPass";
+        }else if(null!=name){
+            url = "/clerk/selectAllSpecialByCondition?condition="+name;
+        }
+        function change() {
+            // var mess = $("#sol").val();
+            alert("233");
+            // var url = '/clerk/searchPerson';
+            // table.reload('tt',{
+            //     url: url
+            //     ,where: {'mess':mess}
+            // })
+        }
         table.render({
             elem: '#test'
-            ,url:'/clerk/selectAllSpecial'
+            ,url: url
             ,toolbar: '#toolbarDemo'
             ,title: '用户数据表'
-            ,cols: [[
+            ,cols: [
+                [
                 {type: 'checkbox', fixed: 'left'}
                 ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
                 ,{field:'name', title:'姓名', width:120, edit: 'text'}
@@ -141,12 +143,12 @@
                 ,{field:'residency', title:'户口所在地', width:100, sort: true}
                 ,{field:'address', title:'现居住地', width:120}
                 ,{field:'status', title:'办理状态', width:120}
-                ,{field:'bak', title:'户口类别', width:120}
+                ,{field:'genre', title:'<select id="select" lay-ignore onchange="window.location=this.value">\n'+'<option selected>请选择</option>\n' +'<option value="/clerk/getAllVeteran">退役军人</option>\n' +'<option value="/clerk/getAllOldMan">60岁以上老人</option>\n'+'</select>'}
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
-            ]]
+                ]
+            ]
             ,page: true
         });
-
         //头工具栏事件
         table.on('toolbar(test)', function(obj){
             var checkStatus = table.checkStatus(obj.config.id);
@@ -169,13 +171,15 @@
         table.on('tool(test)', function(obj){
             var data = obj.data;
             //console.log(obj)
+            var status = data.status;
             if(obj.event === 'del'){
-                layer.confirm('真的删除行么', function(index){
+                layer.confirm('真的删除行么', function(){
                     obj.del();
-                    layer.close(index);
+                    location.href = "http://localhost:8000/clerk/deleteSpecial?id="+data.id;
                 });
             } else if(obj.event === 'edit'){
-                layer.prompt({
+                location.href = "http://localhost:8000/clerk/findUpdateSpecialById?id="+data.id;
+                /*layer.prompt({
                     formType: 2
                     ,value: data.email
                 }, function(value, index){
@@ -184,12 +188,19 @@
                     });
                     alert(index)
                     layer.close(index);
-                });
+                });*/
             }
         });
     });
 </script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $(function () {
+        function ttt() {
 
+        }
+    })
+</script>
 
 </body>
 </html>

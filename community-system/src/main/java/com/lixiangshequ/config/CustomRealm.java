@@ -64,6 +64,7 @@ public class CustomRealm extends AuthorizingRealm {
         set.add(role);
         //设置该用户拥有的角色
         info.setRoles(set);
+        System.out.println(role);
         return info;
     }
 }

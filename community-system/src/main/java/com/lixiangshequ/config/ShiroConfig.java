@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.apache.shiro.mgt.SecurityManager;
 
+import javax.servlet.Filter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -22,13 +23,16 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setLoginUrl("/notLogin");
         // 设置无权限时跳转的 url;
         shiroFilterFactoryBean.setUnauthorizedUrl("/notRole");
+        Map<String, Filter> filters = new LinkedHashMap<String,Filter>();
+        filters.put("roles",new CustomRolesAuthorizationFilter());
+        shiroFilterFactoryBean.setFilters(filters);
 
         // 设置拦截器
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         //游客，开发权限
         filterChainDefinitionMap.put("/normal/**", "anon");
         //用户，需要角色权限 “user”
-        filterChainDefinitionMap.put("/clerk/**", "roles[clerk],roles[admin]");
+        filterChainDefinitionMap.put("/clerk/**", "roles[clerk,admin]");
         //管理员，需要角色权限 “admin”
         filterChainDefinitionMap.put("/admin/**", "roles[admin]");
         //开放登陆接口

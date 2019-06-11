@@ -1,62 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a805c3a-f890-404b-b1ca-851acb6f7d5a" name="Default Changelist" comment="添加logback配置。shiro框架。">
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/PersonInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ResidencyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/SpecialCareController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/BuildingInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Club.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/JobApply.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Park.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Problem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/ProblemType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Recruit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/SpecialCare.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/BuildingInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ClubMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/JobApplyMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ParkMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ProblemMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ProblemTypeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/RecruitMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ResidencyMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/SpecialCareMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/ResidencyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/SpecialCareService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/ResidencyServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/SpecialCareServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/BuildingInfoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/ClubMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/JobApplyMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/ParkMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/ProblemMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/ProblemTypeMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/RecruitMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/SpecialCareMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/person/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/person/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/special/index.html" afterDir="false" />
+    <list default="true" id="8a805c3a-f890-404b-b1ca-851acb6f7d5a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/CustomRolesAuthorizationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/NoticeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ProblemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/RecruitController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Notice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/NoticeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/NoticeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/ProblemService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/RecruitService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/NoticeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/ProblemServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/RecruitServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/NoticeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/problem/add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/problem/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/problem/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/recruit/add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/recruit/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/recruit/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/PersonInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/PersonInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Residency.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Residency.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/PersonInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/PersonInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/PersonInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/PersonInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/PersonInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/PersonInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/CustomRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/CustomRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ActivityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ActivityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/PersonInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/PersonInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/SpecialCareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/SpecialCareController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Problem.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Problem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Recruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Recruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/SpecialCare.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/SpecialCare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/exception/ExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/exception/ExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ActivityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ActivityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ProblemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ProblemMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/RecruitMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/RecruitMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/SpecialCareMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/SpecialCareMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/ActivityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/ActivityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/SpecialCareService.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/SpecialCareService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/ActivityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/ActivityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/SpecialCareServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/SpecialCareServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/utils/SimpleDateFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/utils/SimpleDateFormat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/generator/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/generator/generatorConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/mapper/PersonInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/PersonInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/mapper/ProblemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/ProblemMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/mapper/RecruitMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/RecruitMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/mapper/SpecialCareMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/SpecialCareMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/activity/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/activity/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/jie/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/jie/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/jie/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/jie/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/management/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/management/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/person/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/person/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/person/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/person/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/special/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/special/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/special/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/special/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/reg.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/reg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/set.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/set.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/volunteer/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/volunteer/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/html/volunteer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/html/volunteer/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/src/main/resources/static/res/images/sousuo.png" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/src/main/resources/static/res/images/sousuo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/controller/ActivityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/controller/ActivityController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/repository/ActivityMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/repository/ActivityMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/repository/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/repository/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/service/ActivityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/service/ActivityService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/service/impl/ActivityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/service/impl/ActivityServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/com/lixiangshequ/service/impl/UserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/community-system/target/classes/static/html/activity/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/static/html/activity/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/target/classes/static/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/static/html/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/target/classes/static/html/jie/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/static/html/jie/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/community-system/target/classes/static/html/jie/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/static/html/jie/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/target/classes/static/html/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/static/html/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/target/classes/static/html/user/reg.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/static/html/user/reg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community-system/target/classes/static/html/user/set.html" beforeDir="false" afterPath="$PROJECT_DIR$/community-system/target/classes/static/html/user/set.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/community-system/target/" />
@@ -72,10 +102,67 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/special/index.html">
+        <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/problem/detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1408">
+              <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/person/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4488">
+              <caret line="204" column="30" selection-start-line="204" selection-start-column="30" selection-end-line="204" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/NoticeController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
-              <caret line="136" column="62" lean-forward="true" selection-start-line="136" selection-start-column="62" selection-end-line="136" selection-end-column="62" />
+              <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1650">
+              <caret line="75" column="67" selection-start-line="75" selection-start-column="67" selection-end-line="75" selection-end-column="67" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="538">
+              <caret line="210" column="48" selection-start-line="210" selection-start-column="48" selection-end-line="210" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/utils/SimpleDateFormat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Notice.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" column="24" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -83,94 +170,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/ProblemMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/PersonInfoMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="56" column="61" lean-forward="true" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/JobApplyMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/UserMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/SpecialCareMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/SpecialCare.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="23" column="26" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/SpecialCareServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#525#526#0" expanded="true" />
-                <element signature="e#583#584#0" expanded="true" />
-                <element signature="e#265#266#0" expanded="true" />
-                <element signature="e#289#290#0" expanded="true" />
-                <element signature="e#348#349#0" expanded="true" />
-                <element signature="e#372#373#0" expanded="true" />
-                <element signature="e#440#441#0" expanded="true" />
-                <element signature="e#464#465#0" expanded="true" />
-                <element signature="e#535#536#0" expanded="true" />
-                <element signature="e#562#563#0" expanded="true" />
-                <element signature="e#737#738#0" expanded="true" />
-                <element signature="e#761#762#0" expanded="true" />
-                <element signature="e#1448#1449#0" expanded="true" />
-                <element signature="e#1475#1476#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/SpecialCareController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="23" column="51" lean-forward="true" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="418">
+              <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -187,45 +188,51 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>element</find>
-      <find>layui.css</find>
-      <find>element.js</find>
-      <find>注意</find>
-      <find>jie</find>
-      <find>icon-weibo</find>
-      <find>layui-this</find>
-      <find>this</find>
-      <find>说明</find>
-      <find>layui-nav-child</find>
-      <find>child</find>
-      <find>code</find>
-      <find>input-val</find>
-      <find>register</find>
-      <find>btn</find>
-      <find>jq</find>
-      <find>java.lang.SecurityManager</find>
-      <find>SecurityManager</find>
-      <find>shiro拦截</find>
-      <find>=============</find>
-      <find>nav</find>
-      <find>fly-nav-avatar</find>
-      <find>user</find>
-      <find>本地</find>
-      <find>筛选</find>
-      <find>layui-icon</find>
+      <find>birthday</find>
+      <find>edit</find>
+      <find>test</find>
       <find>demo1</find>
-      <find>demoText</find>
-      <find>upload</find>
-      <find>input</find>
+      <find>logo</find>
+      <find>updateActivity</find>
+      <find>index.js</find>
+      <find>shiroFilter</find>
+      <find>sh</find>
+      <find>isAccessAllowed</find>
+      <find>title</find>
+      <find>act</find>
+      <find>desc</find>
+      <find>act_id</find>
+      <find>num</find>
+      <find>objectMapper</find>
+      <find>fly-editor</find>
+      <find>now</find>
+      <find>limit</find>
+      <find>begin</find>
+      <find>all</find>
+      <find>barDemo</find>
+      <find>LAY_TABLE_INDEX</find>
+      <find>recru</find>
+      <find>getId</find>
+      <find>123</find>
+      <find>mysql</find>
+      <find>problem/de</find>
+      <find>detail</find>
+      <find>bak</find>
     </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
     <dirStrings>
       <dir>D:\community\community-system\src\main\resources</dir>
+      <dir>D:\community\community-system\src\main\java\com\lixiangshequ\controller</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="wangyxt &lt;wangyuexing101@163.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -236,59 +243,78 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/ActivityService.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/index.html" />
         <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ActivityMapper.java" />
         <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/ActivityServiceImpl.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/mapper/ActivityMapper.xml" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/Controller.java" />
-        <option value="$PROJECT_DIR$/community-system/pom.xml" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/model/ResultMap.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/user/NormalController.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/user/ClerkController.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/user/AdminController.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ActivityListController.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/RoleResource.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/UserMapper.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/login.html" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/user/LoginController.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/ActivityService.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/ProblemService.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/ProblemServiceImpl.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ProblemMapper.java" />
         <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/set.html" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/ShiroConfig.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/exception/ExceptionController.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/CustomRealm.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/jie/add.html" />
         <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ActivityController.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/jie/detail.html" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/User.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/PersonInfoService.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/PersonInfoMapper.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/PersonInfoServiceImpl.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Residency.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/ResidencyServiceImpl.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ResidencyMapper.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/ResidencyService.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ResidencyController.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/mapper/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/jie/index.html" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/person/index.html" />
-        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/PersonInfo.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/mapper/PersonInfoMapper.xml" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/index.html" />
         <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/PersonInfoController.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/activity/index.html" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/person/add.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/recruit/add.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/jie/detail.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/recruit/detail.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/generator/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/community-system/pom.xml" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/reg.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/mapper/RecruitMapper.xml" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/index.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/UserService.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Role.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/User.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/mapper/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/UserMapper.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/detail.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/NoticeService.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/NoticeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/NoticeMapper.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/management/index.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/mapper/NoticeMapper.xml" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/index.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/login.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/problem/index.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ProblemController.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/SpecialCare.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/user/list.html" />
         <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/SpecialCareService.java" />
         <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/SpecialCareServiceImpl.java" />
         <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/SpecialCareMapper.java" />
-        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/special/index.html" />
         <option value="$PROJECT_DIR$/community-system/src/main/resources/mapper/SpecialCareMapper.xml" />
         <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/SpecialCareController.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/special/index.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/special/edit.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/mapper/ProblemMapper.xml" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/problem/detail.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/utils/SimpleDateFormat.java" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/add.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/detail.html" />
+        <option value="$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/NoticeController.java" />
       </list>
     </option>
+  </component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="community-system" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="community-system" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
   </component>
   <component name="MavenRunner">
     <option name="jreName" value="1.8" />
@@ -354,16 +380,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lixiangshequ" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="community" type="b2602c69:ProjectViewProjectNode" />
-              <item name="community" type="462c0819:PsiDirectoryNode" />
-              <item name="community-system" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lixiangshequ" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -374,17 +390,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lixiangshequ" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="community" type="b2602c69:ProjectViewProjectNode" />
-              <item name="community" type="462c0819:PsiDirectoryNode" />
-              <item name="community-system" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lixiangshequ" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="community" type="b2602c69:ProjectViewProjectNode" />
@@ -403,6 +409,49 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="community" type="b2602c69:ProjectViewProjectNode" />
+              <item name="community" type="462c0819:PsiDirectoryNode" />
+              <item name="community-system" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="community" type="b2602c69:ProjectViewProjectNode" />
+              <item name="community" type="462c0819:PsiDirectoryNode" />
+              <item name="community-system" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="notice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="community" type="b2602c69:ProjectViewProjectNode" />
+              <item name="community" type="462c0819:PsiDirectoryNode" />
+              <item name="community-system" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="special" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="community" type="b2602c69:ProjectViewProjectNode" />
+              <item name="community" type="462c0819:PsiDirectoryNode" />
+              <item name="community-system" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="volunteer" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -418,7 +467,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557637592691" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559723992160" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../eladmin-qd" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -427,7 +476,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.JRebelSettingsComponent" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -438,9 +487,11 @@
       <recent name="D:\community\community-system\src\main\resources\templates\aaa" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\community\community-system\src\main\resources\templates" />
-      <recent name="D:\community\community-system\src\main\resources\tamplates" />
-      <recent name="D:\community\community-system\src\main\resources\static" />
+      <recent name="D:\community\community-system\src\main\resources\static\html\notice" />
+      <recent name="D:\community\community-system\src\main\resources\static\html\user" />
+      <recent name="D:\community\community-system\src\main\resources\static\html\problem" />
+      <recent name="D:\community\community-system\src\main\resources\static\res\images" />
+      <recent name="D:\community\community-system\src\main\resources\static\html\volunteer" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -627,7 +678,14 @@
       <workItem from="1556424747860" duration="9619000" />
       <workItem from="1556514120172" duration="13292000" />
       <workItem from="1556625855156" duration="108147000" />
-      <workItem from="1557018082966" duration="136739000" />
+      <workItem from="1557018082966" duration="180277000" />
+      <workItem from="1557810455627" duration="80059000" />
+      <workItem from="1558085193041" duration="25109000" />
+      <workItem from="1558333456166" duration="95301000" />
+      <workItem from="1559103571004" duration="89955000" />
+      <workItem from="1559792691899" duration="5399000" />
+      <workItem from="1559833264658" duration="6000" />
+      <workItem from="1559886241118" duration="420000" />
     </task>
     <task id="LOCAL-00001" summary="添加用户注册，图片验证">
       <created>1556941216911</created>
@@ -650,85 +708,115 @@
       <option name="project" value="LOCAL" />
       <updated>1557363803556</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit">
+      <created>1557638026325</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1557638026325</updated>
+    </task>
+    <task id="LOCAL-00005" summary="完善居民信息管理，添加优抚对象管理。">
+      <created>1558016798824</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1558016798824</updated>
+    </task>
+    <task id="LOCAL-00006" summary="testcommit">
+      <created>1558151778490</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1558151778490</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301710000" />
+    <option name="totallyTimeSpent" value="641497000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22693998" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Problems" order="0" />
-      <window_info anchor="bottom" id="Messages" order="1" weight="0.32753164" />
-      <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.32911393" />
-      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.39556962" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.45411393" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" />
-      <window_info anchor="bottom" id="Spring" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32911393" />
-      <window_info anchor="bottom" id="Java Enterprise" order="13" />
-      <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info id="JRebel" order="0" sideWeight="0.50274724" side_tool="true" weight="0.22693998" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49725273" visible="true" weight="0.22693998" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="Web" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="JRebel Console" order="0" sideWeight="0.5021962" side_tool="true" weight="0.45411393" />
+      <window_info anchor="bottom" id="JRebel Executor" order="1" sideWeight="0.49926794" weight="0.35443038" />
+      <window_info anchor="bottom" id="Problems" order="2" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.32753164" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32911393" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49926794" weight="0.41613925" />
+      <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.4978038" weight="0.375" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Spring" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="12" />
+      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.50073206" side_tool="true" weight="0.42405063" />
+      <window_info anchor="bottom" id="Java Enterprise" order="15" />
+      <window_info anchor="bottom" id="Database Changes" order="16" />
+      <window_info anchor="bottom" id="Version Control" order="17" />
+      <window_info anchor="right" id="JRebel Setup Guide" order="0" weight="0.329429" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.24963397" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.329429" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="10" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22693998" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Problems" order="0" />
-      <window_info anchor="bottom" id="Messages" order="1" weight="0.32753164" />
-      <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.32911393" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.39556962" />
-      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.45411393" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" />
-      <window_info anchor="bottom" id="Spring" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32911393" />
-      <window_info anchor="bottom" id="Java Enterprise" order="13" />
-      <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info id="JRebel" order="0" sideWeight="0.50274724" side_tool="true" weight="0.22693998" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49725273" visible="true" weight="0.22693998" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="Web" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="JRebel Console" order="0" sideWeight="0.5021962" side_tool="true" weight="0.45411393" />
+      <window_info anchor="bottom" id="JRebel Executor" order="1" sideWeight="0.49926794" weight="0.35443038" />
+      <window_info anchor="bottom" id="Problems" order="2" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.32753164" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32911393" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49926794" weight="0.41613925" />
+      <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.4978038" visible="true" weight="0.36708862" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Spring" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="12" />
+      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.50073206" side_tool="true" weight="0.42405063" />
+      <window_info anchor="bottom" id="Java Enterprise" order="15" />
+      <window_info anchor="bottom" id="Database Changes" order="16" />
+      <window_info anchor="bottom" id="Version Control" order="17" />
+      <window_info anchor="right" id="JRebel Setup Guide" order="0" weight="0.329429" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.24963397" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.329429" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="10" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -738,445 +826,400 @@
     <MESSAGE value="添加用户注册，图片验证" />
     <MESSAGE value="活动申请。使用generator生成代码。" />
     <MESSAGE value="添加logback配置。shiro框架。" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加logback配置。shiro框架。" />
+    <MESSAGE value="commit" />
+    <MESSAGE value="完善居民信息管理，添加优抚对象管理。" />
+    <MESSAGE value="testcommit" />
+    <option name="LAST_COMMIT_MESSAGE" value="testcommit" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="37" column="24" lean-forward="true" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
+        <state relative-caret-position="167">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/user/AdminController.java">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/user/reg.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="1832">
+          <caret line="133" column="12" selection-start-line="59" selection-start-column="6" selection-end-line="133" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/model/ResultMap.java">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-130">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ActivityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="66" column="69" lean-forward="true" selection-start-line="66" selection-start-column="69" selection-end-line="66" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="214">
+          <caret line="48" column="42" lean-forward="true" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="79" column="53" selection-start-line="79" selection-start-column="53" selection-end-line="79" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/AppRun.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/PersonInfoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="11" column="44" lean-forward="true" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+        <state relative-caret-position="315">
+          <caret line="96" column="27" lean-forward="true" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/JobApplyMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/PersonInfoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ProblemTypeMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/PersonInfoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="158">
+          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
           <folding>
-            <element signature="e#525#526#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#1006#1007#0" expanded="true" />
+            <element signature="e#1030#1031#0" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Recruit.java">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="227">
+          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/BuildingInfoMapper.java">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/user/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state relative-caret-position="315">
+          <caret line="279" column="9" selection-start-line="279" selection-start-column="9" selection-end-line="279" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/ResidencyServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+        <state relative-caret-position="183">
+          <caret line="48" column="41" lean-forward="true" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#263#264#0" expanded="true" />
-            <element signature="e#287#288#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-            <element signature="e#380#381#0" expanded="true" />
-            <element signature="e#447#448#0" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#547#548#0" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#635#636#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#1261#1262#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/ResidencyMapper.java">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/NoticeService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="406">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ResidencyController.java">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/NoticeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="26" column="17" lean-forward="true" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        <state relative-caret-position="538">
+          <caret line="62" column="43" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1509#1510#0" expanded="true" />
+            <element signature="e#1536#1537#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Residency.java">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/problem/add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/CustomRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/ResidencyService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/user/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="122" column="48" lean-forward="true" selection-start-line="122" selection-start-column="48" selection-end-line="122" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/json/signin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="115" selection-start-column="115" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/dto/ReturnStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="282">
+          <caret line="168" column="25" lean-forward="true" selection-start-line="168" selection-start-column="25" selection-end-line="168" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/jie/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="294" column="10" lean-forward="true" selection-end-line="298" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/user/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3246" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/PersonInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/index.html">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
-          <caret line="77" column="17" lean-forward="true" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
+          <caret line="128" column="12" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/user/set.html">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/ShiroConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="84" column="35" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
+        <state relative-caret-position="44">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/activity/yanzheng.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.4.RELEASE/spring-web-5.0.4.RELEASE.jar!/org/springframework/web/method/HandlerMethod.class">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/CustomRealm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
-          <folding>
-            <element signature="e#5911#5912#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-220">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/5.0.4.RELEASE/spring-core-5.0.4.RELEASE.jar!/org/springframework/util/ReflectionUtils.class">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/config/CustomRolesAuthorizationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="263" selection-start-line="263" selection-end-line="263" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.4.RELEASE/spring-web-5.0.4.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="118" selection-start-line="118" selection-end-line="118" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/utils/SimpleDateFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/activity/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="59" column="51" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/person/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="75" column="69" selection-start-line="75" selection-start-column="69" selection-end-line="75" selection-end-column="69" />
-          <folding>
-            <element signature="n#style#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/views/user/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="47" column="50" lean-forward="true" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
+        <state relative-caret-position="110">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/PersonInfoController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1452">
-          <caret line="108" column="88" selection-start-line="108" selection-start-column="75" selection-end-line="108" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="194">
+          <caret line="156" column="11" lean-forward="true" selection-start-line="156" selection-start-column="11" selection-end-line="156" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/person/index.html">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="145" column="38" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
+        <state relative-caret-position="286">
+          <caret line="70" column="17" lean-forward="true" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/SpecialCareMapper.java">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/NoticeMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="132">
+          <caret line="24" column="40" lean-forward="true" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/SpecialCareServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#525#526#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#289#290#0" expanded="true" />
-            <element signature="e#348#349#0" expanded="true" />
-            <element signature="e#372#373#0" expanded="true" />
-            <element signature="e#440#441#0" expanded="true" />
-            <element signature="e#464#465#0" expanded="true" />
-            <element signature="e#535#536#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-            <element signature="e#737#738#0" expanded="true" />
-            <element signature="e#761#762#0" expanded="true" />
-            <element signature="e#1448#1449#0" expanded="true" />
-            <element signature="e#1475#1476#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/SpecialCareService.java">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/NoticeMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="428">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/jie/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="170" column="107" lean-forward="true" selection-start-line="170" selection-start-column="9" selection-end-line="170" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/management/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="79" column="66" selection-start-line="79" selection-start-column="66" selection-end-line="79" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="58" column="33" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/user/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="89" column="22" lean-forward="true" selection-start-line="89" selection-start-column="22" selection-end-line="89" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/problem/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="120" column="49" selection-start-line="120" selection-start-column="49" selection-end-line="120" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/recruit/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2398">
+          <caret line="145" column="24" lean-forward="true" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/recruit/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="249" column="15" selection-start-line="239" selection-start-column="12" selection-end-line="249" selection-end-column="15" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/SpecialCare.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="212">
+          <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/UserMapper.xml">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/volunteer/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="-3077" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/user/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4752">
+          <caret line="216" column="20" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/SpecialCareMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/SpecialCareController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="23" column="51" lean-forward="true" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="616">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/special/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="136" column="62" lean-forward="true" selection-start-line="136" selection-start-column="62" selection-end-line="136" selection-end-column="62" />
+        <state relative-caret-position="2530">
+          <caret line="115" column="29" selection-start-line="115" selection-start-column="29" selection-end-line="115" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/PersonInfoMapper.xml">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/SpecialCareController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="56" column="61" lean-forward="true" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
+        <state relative-caret-position="1276">
+          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/BuildingInfoMapper.xml">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/SpecialCareService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="42" lean-forward="true" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+        <state relative-caret-position="484">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/service/impl/SpecialCareServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="53" column="57" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/repository/SpecialCareMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="28" column="89" selection-start-line="28" selection-start-column="89" selection-end-line="28" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/special/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="206" column="77" selection-start-line="206" selection-start-column="77" selection-end-line="206" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Problem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-66">
+          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/ProblemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="57" column="66" selection-start-line="57" selection-start-column="66" selection-end-line="57" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/person/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="625" column="34" lean-forward="true" selection-start-line="625" selection-start-column="34" selection-end-line="625" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/problem/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1408">
+          <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/person/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4488">
+          <caret line="204" column="30" selection-start-line="204" selection-start-column="30" selection-end-line="204" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="75" column="67" selection-start-line="75" selection-start-column="67" selection-end-line="75" selection-end-column="67" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/utils/SimpleDateFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/entity/Notice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/ProblemMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
+        <state relative-caret-position="418">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/mapper/JobApplyMapper.xml">
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/resources/static/html/notice/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+        <state relative-caret-position="538">
+          <caret line="210" column="48" selection-start-line="210" selection-start-column="48" selection-end-line="210" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="82" column="36" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/util/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4138">
+          <caret line="539" selection-start-line="539" selection-end-line="539" />
+          <folding>
+            <element signature="e#21679#21680#0" expanded="true" />
+            <element signature="e#21750#21751#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/community-system/src/main/java/com/lixiangshequ/controller/NoticeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1232,12 +1275,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>community-system</last-edited>
+          <last-edited>JRebel|community-system</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1261,7 +1303,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.38965517" />
+                <option value="0.29799107" />
               </list>
             </option>
           </splitter-proportions>

@@ -18,5 +18,8 @@ public interface SpecialCareService {
 
     int updateByPrimaryKey(SpecialCare record);
 
-    List selectAll();
+    List selectAll(int begin,int end,String...condition);
+
+    List selectAllNotPass();
+
 }

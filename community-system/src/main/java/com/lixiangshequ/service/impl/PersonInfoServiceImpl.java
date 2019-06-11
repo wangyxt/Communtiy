@@ -36,7 +36,7 @@ public class PersonInfoServiceImpl implements PersonInfoService {
     }
 
     @Override
-    public PersonInfo update(PersonInfo personInfo) {
+    public int update(PersonInfo personInfo) {
         return personInfoMapper.update(personInfo);
     }
 
@@ -48,5 +48,10 @@ public class PersonInfoServiceImpl implements PersonInfoService {
     @Override
     public List selectAll() {
         return personInfoMapper.selectAll();
+    }
+
+    @Override
+    public List selectAllVolunteer() {
+        return personInfoMapper.selectAllVolunteer();
     }
 }

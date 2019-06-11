@@ -3,9 +3,10 @@ package com.lixiangshequ.entity;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Data
 @Getter
@@ -16,9 +17,9 @@ public class Activity implements Serializable {
     private int act_id;
     private User publish_id;
     private String type;
-    private Date start_time;
-    private Date end_time;
-    private String desc;
+    private Timestamp start_time;
+    private Timestamp end_time;
+    private String detail;
     private int state;
 
     @Override
@@ -29,7 +30,7 @@ public class Activity implements Serializable {
                 ", type='" + type + '\'' +
                 ", start_time=" + start_time +
                 ", end_time=" + end_time +
-                ", desc='" + desc + '\'' +
+                ", detail='" + detail + '\'' +
                 ", state=" + state +
                 '}';
     }

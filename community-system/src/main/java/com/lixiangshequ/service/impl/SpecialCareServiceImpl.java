@@ -49,7 +49,17 @@ public class SpecialCareServiceImpl implements SpecialCareService {
     }
 
     @Override
-    public List selectAll() {
-        return specialCareMapper.selectAll();
+    public List selectAll(int begin,int end,String...condition) {
+        if (condition.length!=0){
+            return specialCareMapper.selectAllByCondition(begin,end,condition[0]);
+        }
+        return specialCareMapper.selectAll(begin,end);
     }
+
+    /**
+     * 查询所有待审核对象
+     * @return
+     */
+    @Override
+    public List selectAllNotPass(){return specialCareMapper.selectAllNotPass();}
 }

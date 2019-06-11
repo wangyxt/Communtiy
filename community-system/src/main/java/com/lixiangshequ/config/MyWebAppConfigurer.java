@@ -1,7 +1,14 @@
 package com.lixiangshequ.config;
 
 
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
+@Configuration
+public class MyWebAppConfigurer implements WebMvcConfigurer{
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/temp-photo/**").addResourceLocations("file:D:/temp-photo/");
+    }
 }

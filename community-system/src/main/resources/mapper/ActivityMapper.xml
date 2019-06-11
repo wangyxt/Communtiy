@@ -6,7 +6,7 @@
         <result property="type" column="type"></result>
         <result property="start_time" column="start_time"></result>
         <result property="end_time" column="end_time"></result>
-        <result property="desc" column="desc"></result>
+        <result property="detail" column="detail"></result>
         <result property="state" column="state"></result>
         <association property="publish_id" select="selectPublish" column="publish_id"></association>
     </resultMap>
@@ -20,11 +20,19 @@
     </select>
 
     <select id="selectAll" resultMap="activityList">
-        select * from activity
+        select * from activity where state = 0
+    </select>
+
+    <select id="selectAllByPublishId" resultMap="activityList">
+        select * from activity where publish_id = #{publish_id}
+    </select>
+
+    <select id="selectAllToAudit" resultMap="activityList">
+        select * from activity where state = 1
     </select>
 
     <insert id="insert" parameterType="com.lixiangshequ.entity.Activity">
-        insert into activity (publish_id,type,start_time,end_time,desc,state) activity values (#{publish_id.uid},#{type},#{start_time},#{end_time},#{desc},#{state})
+        insert into activity (publish_id,type,start_time,end_time,detail,state) values (#{publish_id.uid},#{type},#{start_time},#{end_time},#{detail,jdbcType=VARCHAR},#{state})
     </insert>
 
     <delete id="delete" parameterType="int">
@@ -47,4 +55,14 @@
         select * from activity_list where act_id = #{act_id} and uid = #{uid}
     </select>
 
+    <update id="update" parameterType="com.lixiangshequ.entity.Activity" >
+    update activity
+    set publish_id = #{publish_id.uid},
+      type = #{type,jdbcType=VARCHAR},
+      start_time = #{start_time,jdbcType=TIMESTAMP},
+      end_time = #{end_time,jdbcType=TIMESTAMP},
+      detail = #{detail,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER}
+    where act_id = #{act_id}
+  </update>
 </mapper>

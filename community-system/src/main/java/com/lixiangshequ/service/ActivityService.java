@@ -8,10 +8,22 @@ import java.util.List;
 public interface ActivityService {
 
     /**
-     * 查询所有活动
+     * 查询所有审核通过活动
      * @return
      */
     List selectAll();
+
+    /**
+     * 根据发布人id查询活动
+     * @return
+     */
+    List selectAllByPublishId(int id);
+
+    /**
+     * 查询所有待审核活动
+     * @return
+     */
+    List selectAllToAudit();
 
     /**
      * 根据发布人id查活动
@@ -47,11 +59,13 @@ public interface ActivityService {
      */
     int insert(Activity activity);
 
-    List selectNumByActId(int act_id);
+    int selectNumByActId(int act_id);
 
     boolean insertActivityNum(ActivityList activityList);
 
     ActivityList selectIsApply(ActivityList activityList);
 
     void cancelActivityNum(ActivityList activityList);
+
+    int update(Activity activity);
 }
