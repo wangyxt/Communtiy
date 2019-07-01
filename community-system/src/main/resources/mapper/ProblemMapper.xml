@@ -56,7 +56,7 @@
   </delete>
   <insert id="insert" parameterType="com.lixiangshequ.entity.Problem" >
     insert into problem (type, title,
-      'des', status, user_id,
+      des, status, user_id,
       time, bak)
     values (#{type,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
       #{des,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},

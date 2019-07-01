@@ -3,6 +3,7 @@ package com.lixiangshequ.controller;
 import com.lixiangshequ.entity.Problem;
 import com.lixiangshequ.entity.User;
 import com.lixiangshequ.service.ProblemService;
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,10 @@ public class ProblemController {
     @PostMapping("/normal/insertProblem")
     @ResponseBody
     public String insertProblem(Problem problem){
+        //获取当前登录用户
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        problem.setUserId(user.getUid());
+        problem.setStatus(0);
         int r = service.insert(problem);
         if (r>0){
             return "上报成功";

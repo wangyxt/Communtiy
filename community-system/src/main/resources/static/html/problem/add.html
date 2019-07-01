@@ -50,40 +50,36 @@
         </ul>
         <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
           <div class="layui-tab-item layui-show">
-            <form action="/clerk/insertActivity" method="post" id="form">
+            <form action="" method="post" id="form">
               <div class="layui-row layui-col-space15 layui-form-item">
                 <div class="layui-col-md3">
-                  <label class="layui-form-label">活动类型</label>
+                  <label class="layui-form-label">问题类型</label>
                   <div class="layui-input-block">
                     <select lay-verify="required" lay-filter="column" name="type">
-                      <option th:value="${problem.getType()}" th:text="${problem.getType()}"></option>
-                      <option value="1">逛商场</option>
-                      <option value="2">看电影</option>
-                      <option value="3">棋牌</option>
-                      <option value="4">超市活动</option>
-                      <option value="5">广场舞</option>
-                      <option value="6">网游</option>
+                      <option th:value="${problem!=null}?${problem.getType()}" th:text="${problem!=null}?${problem.getType()}"></option>
+                      <option value="1">公共设施损坏</option>
+                      <option value="2">其他</option>
                     </select>
                   </div>
                 </div>
                 <div class="layui-col-md9">
                   <label for="L_title" class="layui-form-label">标题</label>
                   <div class="layui-input-block">
-                    <input type="text" id="L_title" name="title" th:value="${problem.getTitle()}" required lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="L_title" name="title" th:value="${problem!=null}?${problem.getTitle()}" required lay-verify="required" autocomplete="off" class="layui-input">
                     <!-- <input type="hidden" name="id" value="{{d.edit.id}}"> -->
                   </div>
                 </div>
               </div>
               <div class="layui-form-item layui-form-text">
                 <div class="layui-input-block">
-                  <textarea id="L_content" name="des" th:value="${problem.getDes()}" required lay-verify="required" placeholder="详细描述" class="layui-textarea fly-editor" style="height: 260px;"></textarea>
+                  <textarea id="des" name="des" th:text="${problem!=null}?${problem.getDes()}" required lay-verify="required" placeholder="详细描述" class="layui-textarea fly-editor" style="height: 260px;"></textarea>
                 </div>
               </div>
               <div class="layui-form-item">
                 <div class="layui-inline">
                   <label class="layui-form-label">悬赏飞吻</label>
                   <div class="layui-input-inline" style="width: 190px;">
-                    <select name="status" th:value="${problem.getStatus()}" th:text="${problem.getStatus()}">
+                    <select name="status" th:value="${problem!=null}?${problem.getStatus()}" th:text="${problem!=null}?${problem.getStatus()}">
                       <option value="0">待解决</option>
                       <option value="1">已解决</option>
                     </select>
@@ -95,16 +91,17 @@
                 <div class="layui-inline">
                   <label class="layui-form-label">日期时间选择器</label>
                   <div class="layui-input-inline">
-                    <input type="text" class="layui-input" th:value="${problem.getTime()}" name="time" id="test6" placeholder="yyyy-MM-dd HH:mm:ss">
+                    <input type="text" class="layui-input" th:value="${problem!=null}?${problem.getTime()}" name="time" id="test6" placeholder="yyyy-MM-dd HH:mm:ss">
                   </div>
                 </div>
               </div>
               <div class="layui-form-item" th:if="${session.user!=null}">
-                <textarea th:if="${session.user.getRole() lt 2}" placeholder="留言回复" th:text="${problem.getBak()}" name="bak" style="height: 260px;"></textarea>
+                <textarea th:if="${session.user.getRole() lt 2}" placeholder="留言回复" th:text="${problem!=null}?${problem.getBak()}" name="bak" style="height: 260px;"></textarea>
+                <input type="hidden" name="des" id="hidden">
               </div>
 
               <div class="layui-form-item">
-                <button class="layui-btn" lay-filter="*" id="submit">立即发布</button>
+                <button class="layui-btn" lay-filter="*" type="button" id="submit">立即发布</button>
               </div>
             </form>
           </div>
@@ -161,14 +158,31 @@ layui.config({
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script th:inline="javascript">
   $(function () {
-    var problemId = /*[[${problem.getProblemId()}]]*/;
+    var problemId = /*[[${problem!=null}?${problem.getProblemId()}]]*/;
     if (null!=problemId){
       $("#form").attr("action","/clerk/updateProblem")
+    }else {
+      $('#test6').attr("name","");
+      $("#form").attr("action","/normal/insertProblem");
     }
     $("#submit").click(
-            function () {
-              $("#form").submit()
-            }
+      function () {
+        // $("#des").val($('#des').innerHTML);
+        alert($("#des").text());
+        $('#hidden').val();
+        var url = $("#form").attr("action");
+        $.ajax({
+          type : 'POST',
+          datatype : 'text',
+          url : url,
+          data : $("#form").serializeArray(),
+          contentType : "application/x-www-form-urlencoded",
+          success : function (data) {
+            alert(data);
+            location.href="/"
+          }
+        });
+      }
     )
   })
 </script>
